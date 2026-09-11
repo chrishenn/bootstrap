@@ -1,9 +1,12 @@
 alias j='just'
 alias p='pixi'
-alias m='mise'
-alias mr='mise run'
 alias k='kubectl'
 alias cm='chezmoi'
+
+alias m='mise'
+alias mr='mise run'
+alias mb='mise bootstrap'
+alias mbd='mise bootstrap dotfiles'
 
 alias grep='grep --color=always'
 alias fgrep='fgrep --color=always'

@@ -1,0 +1,4 @@
+# windows tools
+
+zoxide = "latest"
+starship = "latest"

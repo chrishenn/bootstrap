@@ -1,0 +1,16 @@
+[settings]
+experimental = true
+
+[env]
+FNOX_AGE_KEY_FILE = "~/.ssh/id_ed25519"
+HK_LIBGIT2 = 0
+TERM = "xterm-256color"
+EDITOR = "nano"
+KUBE_EDITOR = "nano"
+COMPOSE_BAKE = true
+OP_RUN_NO_MASKING = true
+HK_MISE = 1
+UV_PREVIEW = 1
+MISE_NPM_BUN = 1
+
+[tools]

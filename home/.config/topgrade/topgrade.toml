@@ -10,7 +10,7 @@ pre_sudo = true
 
 # Disable specific steps - same options as the command line flag
 disable = ["vscode", "jetbrains_toolbox", "jetbrains_pycharm", "jetbrains_clion", "jetbrains_goland",
-    "jetbrains_rustrover", "microsoft_store", "system", "containers", "shell", "pnpm", "firmware"]
+    "jetbrains_rustrover", "microsoft_store", "system", "containers", "shell", "pnpm", "firmware", "chezmoi"]
 
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
