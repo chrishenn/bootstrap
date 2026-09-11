@@ -6,7 +6,7 @@ note: the presets directory changes if easyeffects is installed using flatpak or
 # flatpak
 $HOME/.var/app/com.github.wwmm.easyeffects/config/easyeffects
 
-# others
+# others``
 $HOME/.config/easyeffects
 ```
 

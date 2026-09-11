@@ -1,0 +1,26 @@
+amends "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.pkl"
+
+steps {
+  ["oxfmt"] = Builtins.oxfmt
+  ["rumdl_format"] = Builtins.rumdl_format
+  ["rumdl"] = Builtins.rumdl
+  ["ryl_markdown"] = Builtins.ryl_markdown
+
+  ["shfmt"] = Builtins.shfmt
+  ["shellharden"] = Builtins.shellharden
+  ["shellcheck"] = Builtins.shellcheck
+
+  ["pkl_format"] = Builtins.pkl_format
+  ["pkl"] = Builtins.pkl
+  ["mise"] = Builtins.mise
+
+  ["check_case_conflict"] = Builtins.check_case_conflict
+  ["check_merge_conflict"] = Builtins.check_merge_conflict
+  ["check_symlinks"] = Builtins.check_symlinks
+  ["fix_smart_quotes"] = Builtins.fix_smart_quotes
+  ["mixed_line_ending"] = Builtins.mixed_line_ending
+  ["newlines"] = Builtins.newlines
+  ["trailing_whitespace"] = Builtins.trailing_whitespace
+}

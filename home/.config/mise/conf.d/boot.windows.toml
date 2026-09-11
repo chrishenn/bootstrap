@@ -1,0 +1,13 @@
+# system file bootstrap is not supported on windows
+# bootstrap hook does not respect 'shell' on windows
+# mise also won't touch files outside the home dir using hooks directly - but invoking a script will work
+
+# [bootstrap.files."C:/ProgramData/ssh/sshd_config"]
+# content = '''
+# AuthorizedKeysFile .ssh/authorized_keys
+# PasswordAuthentication no
+# PubkeyAuthentication yes
+# '''
+
+[bootstrap.hooks.final]
+run = 'pwsh -c "& ~/.config/mise/conf.d/sshd.ps1"'

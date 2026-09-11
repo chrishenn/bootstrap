@@ -1,0 +1,3 @@
+[bootstrap.packages]
+"scoop:chris/nvgfx" = "latest"
+"scoop:chris/nvapp" = "latest"

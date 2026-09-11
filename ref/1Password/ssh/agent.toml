@@ -1,0 +1,4 @@
+# goes into ~/.config/1Password/ssh/ - I don't use the op ssh agent any more, so it's not needed
+
+[[ssh-keys]]
+vault = "homelab"

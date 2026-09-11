@@ -1,0 +1,23 @@
+[tools]
+dust = "latest"
+bottom = "latest"
+gh = "latest"
+bat = "latest"
+eza = "latest"
+fd = "latest"
+rg = "latest"
+jq = "latest"
+sd = "latest"
+yq = "latest"
+jqp = "latest"
+yazi = "latest"
+fzf = "latest"
+
+op = "latest"
+fnox = "latest"
+starship = "latest"
+zoxide = "latest"
+zellij = "latest"
+atuin = "latest"
+
+bun = "latest"
