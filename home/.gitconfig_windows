@@ -1,0 +1,60 @@
+[user]
+    name = chrishenn
+    email = chenn@alum.mit.edu
+[alias]
+    st = status -s
+    lol = log --oneline --graph --all
+[feature]
+    experimental = true
+[column]
+    ui = auto
+[credential]
+    helper =
+    modalprompt = false
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = main
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
+[core]
+    editor = nano
+    excludesfile = ~/.gitignore
+    fsmonitor = true
+    untrackedCache = true
+    sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+    askpass =
+    ignorecase = false
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+[merge]
+    conflictstyle = zdiff3
+[pull]
+    rebase = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[commit]
+    verbose = true

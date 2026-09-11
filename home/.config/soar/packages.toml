@@ -12,21 +12,21 @@ discord = "*"
 btop = "*"
 
 # the latest release is never a pre-release, so this filtering is unnecessary
-#version_command = "curl -qfsSL https://api.github.com/repos/signalapp/signal-desktop/releases?per_page=10 | 'map(select(.prerelease == false)) | first | .tag_name'"
+# version_command = "curl -qfsSL https://api.github.com/repos/signalapp/signal-desktop/releases?per_page=10 | 'map(select(.prerelease == false)) | first | .tag_name'"
 [packages.signal]
 url = "https://updates.signal.org/desktop/signal-desktop.AppImage"
 version_command = "curl -qfsSL https://api.github.com/repos/signalapp/signal-desktop/releases/latest | jq -r '.tag_name'"
-version = "8.26.0"
+version = "8.30.0"
 
-#version_command = "curl -qfsSLI https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/appimage | rg 'fluxer-stable-(.*)-x86_64.AppImage' -or '$1'"
+# version_command = "curl -qfsSLI https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/appimage | rg 'fluxer-stable-(.*)-x86_64.AppImage' -or '$1'"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.908.173325"
+version = "2026.1012.194217"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
-hooks = {post_download = "7z x kicad"}
+hooks = { post_download = "7z x kicad" }
 version_command = "curl -qfsSL https://api.github.com/repos/KiCad/kicad-source-mirror/releases/latest | rg -m 1 'kicad-(.*)-x86_64' -or '$1'"
 version = "10.0.5"
 pinned = true
@@ -45,12 +45,12 @@ version = "*"
 [packages.prusaslicer]
 github = "sarrchri/PrusaSlicer.AppImage"
 asset_pattern = "PrusaSlicer-*-anylinux-x86_64.AppImage"
-version = "2.9.6-5@2026-08-21_1787296835"
+version = "2.9.6-5@2026-09-21_1789997558"
 
 [packages.handy]
 github = "cjpais/handy"
 asset_pattern = "Handy_*_amd64.AppImage"
-version = "*"
+version = "0.9.8"
 
 [packages.caligula]
 github = "ifd3f/caligula"
@@ -60,14 +60,9 @@ version = "*"
 [packages.yaak]
 github = "mountain-loop/yaak"
 asset_pattern = "yaak_*_amd64.AppImage"
-version = "*"
+version = "2026.9.0"
 
-[packages.stoat]
-github = "stoatchat/for-desktop"
-asset_pattern = "Stoat-*-anylinux-x86_64.AppImage"
-version = "*"
-
-[packages.avia]
-github = "AvaLilac/for-desktop"
-asset_pattern = "AviaClient-linux-x64.zip"
-version = "*"
+[packages.jellybox]
+github = "avdept/jellyboxplayer"
+asset_pattern = "jellybox-linux-x86_64.AppImage"
+version = "2.9.1"

@@ -1,0 +1,94 @@
+# nfs rdma client mounts
+
+[vars]
+nfs_opt = "auto,nofail,soft,intr,x-systemd.automount,x-systemd.mount-timeout=1s,timeo=10,retrans=3,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime"
+nfs_ip = "192.168.1.142"
+
+[bootstrap.files."/etc/systemd/system/var-mnt-f.mount"]
+notify = ["var-mnt-f.mount"]
+template = true
+content = """
+[Unit]
+Description=NFS
+After=network.target
+
+[Mount]
+What={{vars.nfs_ip}}:/var/mnt/f
+Where=/var/mnt/f
+Type=nfs
+Options={{vars.nfs_opt}}
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+[bootstrap.files."/etc/systemd/system/var-mnt-h.mount"]
+notify = ["var-mnt-h.mount"]
+template = true
+content = """
+[Unit]
+Description=NFS
+After=network.target
+
+[Mount]
+What={{vars.nfs_ip}}:/var/mnt/h
+Where=/var/mnt/h
+Type=nfs
+Options={{vars.nfs_opt}}
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+[bootstrap.files."/etc/systemd/system/var-mnt-k.mount"]
+notify = ["var-mnt-k.mount"]
+template = true
+content = """
+[Unit]
+Description=NFS
+After=network.target
+
+[Mount]
+What={{vars.nfs_ip}}:/var/mnt/k
+Where=/var/mnt/k
+Type=nfs
+Options={{vars.nfs_opt}}
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+[bootstrap.files."/etc/systemd/system/var-mnt-r.mount"]
+notify = ["var-mnt-r.mount"]
+template = true
+content = """
+[Unit]
+Description=NFS
+After=network.target
+
+[Mount]
+What={{vars.nfs_ip}}:/var/mnt/r
+Where=/var/mnt/r
+Type=nfs
+Options={{vars.nfs_opt}}
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+[bootstrap.services."var-mnt-f.mount"]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"
+[bootstrap.services."var-mnt-h.mount"]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"
+[bootstrap.services."var-mnt-k.mount"]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"
+[bootstrap.services."var-mnt-r.mount"]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"

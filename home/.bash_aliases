@@ -1,9 +1,12 @@
 alias j='just'
 alias p='pixi'
+alias k='kubectl'
+
 alias m='mise'
 alias mr='mise run'
-alias k='kubectl'
-alias cm='chezmoi'
+alias mb='mise bootstrap'
+alias mbd='mise bootstrap dotfiles'
+alias mbda='mise bootstrap dotfiles apply -y'
 
 alias grep='grep --color=always'
 alias fgrep='fgrep --color=always'
@@ -36,6 +39,9 @@ alias dlogs='docker compose logs'
 
 alias t='talosctl'
 alias pup='pulumi up -y'
+
+alias ro='sudo rpm-ostree'
+alias rol='sudo rpm-ostree apply-live'
 
 # todo: for these below, allow overrides for env-vars and pat token paths
 

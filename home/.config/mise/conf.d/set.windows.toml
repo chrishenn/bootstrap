@@ -1,0 +1,34 @@
+[settings]
+minimum_release_age = "0h"
+self_update.minimum_release_age = "0h"
+
+[env]
+# fnox can't expand paths with ~ as home on windows, and tera templates can't expand ~ into C:/users/chris/
+FNOX_AGE_KEY_FILE = "C:/users/chris/.ssh/id_ed25519"
+FNOX_CONFIG_DIR = "C:/users/chris/.config/fnox"
+MISE_AGE_KEY_FILE = "C:/users/chris/.ssh/id_ed25519"
+STARSHIP_CONFIG = "C:/users/chris/.config/starship/starship.toml"
+
+[tools]
+dust = "latest"
+bottom = "latest"
+gh = "latest"
+bat = "latest"
+eza = "latest"
+fd = "latest"
+rg = "latest"
+jq = "latest"
+sd = "latest"
+yq = "latest"
+jqp = "latest"
+yazi = "latest"
+fzf = "latest"
+
+op = "latest"
+fnox = "latest"
+starship = "latest"
+zoxide = "latest"
+zellij = "latest"
+atuin = "latest"
+
+bun = "latest"

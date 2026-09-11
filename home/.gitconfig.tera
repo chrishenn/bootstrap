@@ -1,0 +1,7 @@
+{% if os() == "linux" %}
+{{ read_file(path='home/.gitconfig_linux') }}
+{% endif %}
+
+{% if os() == "windows" %}
+{{ read_file(path='home/.gitconfig_windows') }}
+{% endif %}

@@ -1,0 +1,13 @@
+schema_version = 1
+
+[defaults]
+output = "human"
+color = "auto"
+progress = true
+
+[[aliases]]
+name = "wasabi"
+endpoint = "https://s3.us-east-1.wasabisys.com"
+access_key = "{{exec(command='mise exec op -- op read op://homelab/wasabi/access_key')}}"
+secret_key = "{{exec(command='mise exec op -- op read op://homelab/wasabi/secret_key')}}"
+region = "us-east-1"

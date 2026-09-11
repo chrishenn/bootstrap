@@ -1,0 +1,4 @@
+schema.strict = false
+
+[format.rules]
+line-width = 120

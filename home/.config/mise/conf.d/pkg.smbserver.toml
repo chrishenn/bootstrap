@@ -1,0 +1,9 @@
+[bootstrap.files."/etc/samba/smb.conf"]
+source = "smb.conf"
+owner = "root"
+group = "root"
+mode = "0644"
+notify = ["smb"]
+
+[bootstrap.services]
+smb = { enabled = true, on_change = "reload_or_restart", state = "running" }

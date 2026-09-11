@@ -1,5 +1,20 @@
-set-alias cm chezmoi
 set-alias j just
+set-alias m mise
+
+function customLS {
+    [alias('ls')]
+    param(
+        [parameter(Mandatory = $false)][string] $path = "."
+    )
+    eza -aal $path
+}
+function customDC {
+    [alias('dc')]
+    param(
+        [parameter(Mandatory = $false)][string] $cmd = ""
+    )
+    docker compose $cmd
+}
 
 function ghlogin {
     if (-not (gh auth status *> $null)) {
@@ -27,29 +42,16 @@ function newrepog {
     git push --set-upstream origin --all
     git push --set-upstream origin --tags
 }
-function customLS {
-    [alias('ls')]
-    param(
-        [parameter(Mandatory = $false)][string] $path = "."
-    )
-    eza -aal $path
-}
-function customDC {
-    [alias('dc')]
-    param(
-        [parameter(Mandatory = $false)][string] $cmd = ""
-    )
-    docker compose $cmd
-}
-if (gcm mise -ea 0) {
+
+if ([bool](gcm mise -ea 0)) {
     (&mise activate pwsh) | Out-String | Invoke-Expression
 }
-if (gcm starship -ea 0) {
+if ([bool](gcm starship -ea 0)) {
     iex (&starship init powershell)
 }
-if (gcm zoxide -ea 0) {
+if ([bool](gcm zoxide -ea 0)) {
     iex (&{zoxide init powershell | out-string})
 }
-if (gcm fnox -ea 0) {
+if ([bool](gcm fnox -ea 0)) {
     (&fnox activate pwsh) | Out-String | Invoke-Expression
 }

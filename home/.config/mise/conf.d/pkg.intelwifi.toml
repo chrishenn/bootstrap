@@ -1,0 +1,3 @@
+[bootstrap.packages]
+"scoop:chris/intelwifi" = "latest"
+"scoop:chris/intelbt" = "latest"

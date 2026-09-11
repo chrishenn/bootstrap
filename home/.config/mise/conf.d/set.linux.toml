@@ -1,0 +1,51 @@
+[env]
+STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"
+
+[bootstrap.services.mise-tool-update]
+builtin = "tool-update"
+
+[tools]
+"aqua:Canop/dysk" = { lazy = true, lazy_bins = ["dysk"], version = "latest" }
+7z = { lazy = true, version = "latest" }
+bat = { lazy = true, version = "latest" }
+bottom = { lazy = true, version = "latest" }
+dust = { lazy = true, version = "latest" }
+eza = { lazy = true, version = "latest" }
+fd = { lazy = true, version = "latest" }
+fnox = { lazy = true, version = "latest" }
+gh = { lazy = true, version = "latest" }
+jq = { lazy = true, version = "latest" }
+op = { lazy = true, version = "latest" }
+rg = { lazy = true, version = "latest" }
+sd = { lazy = true, version = "latest" }
+starship = { lazy = true, version = "latest" }
+television = { lazy = true, version = "latest" }
+topgrade = { lazy = true, version = "latest" }
+yazi = { lazy = true, version = "latest" }
+yq = { lazy = true, version = "latest" }
+zellij = { lazy = true, version = "latest" }
+zoxide = { lazy = true, version = "latest" }
+
+[tasks.fix]
+alias = "f"
+description = "run project formatters declared in hk.pkl in 'fix' mode"
+run = "hk fix --all"
+dir = "{{cwd}}"
+
+[tasks.check]
+alias = "c"
+description = "run project linters declared in hk.pkl in 'check' mode"
+run = "hk check --all"
+dir = "{{cwd}}"
+
+[tasks.sync]
+alias = "s"
+description = "git: sync local changes to remote"
+usage = 'arg "<msg>" default="sync"'
+run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'
+dir = "{{cwd}}"
+
+[tasks.ss]
+description = "sync fnox secrets to age-encrypted plaintext local file"
+run = "fnox sync --provider age --local-file -f"
+dir = "{{cwd}}"
