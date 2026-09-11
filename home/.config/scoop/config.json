@@ -1,0 +1,7 @@
+{
+  "last_update": "2026-09-11T01:35:10.9006335-05:00",
+  "aria2-warning-enabled": false,
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
+  "scoop_branch": "master",
+  "gh_token": "{{env.GITHUB_TOKEN}}"
+}

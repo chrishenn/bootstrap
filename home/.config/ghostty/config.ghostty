@@ -1,0 +1,23 @@
+# theme = Dark Pastel
+# theme = Dracula+
+# theme = Midnight In Mojave
+theme = Monokai Vivid
+# theme = Niji
+# theme = Raycast Dark
+# theme = Vercel
+# theme = Xcode Dark hc
+
+font-family = Fira Code Retina
+background-opacity = 1.0
+background-blur = true
+confirm-close-surface = false
+window-padding-x = 4
+window-padding-balance = true
+cursor-style = block
+shell-integration-features = no-cursor
+notify-on-command-finish = never
+bell-features = no-system,no-audio,no-attention,no-title,no-border
+
+# gtk only
+app-notifications = no-clipboard-copy
+mouse-scroll-multiplier = 1

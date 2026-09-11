@@ -1,0 +1,36 @@
+[ContentDisplay]
+DirectorySizeMode=ContentSize
+
+[ContextMenu]
+ShowDuplicateHere=false
+ShowMoveToOtherSplitView=false
+ShowSortBy=false
+ShowViewMode=false
+
+[DetailsMode]
+PreviewSize=32
+
+[General]
+ConfirmClosingMultipleTabs=false
+ConfirmClosingTerminalRunningProgram=false
+DoubleClickViewAction=none
+ShowFullPath=true
+ShowFullPathInTitlebar=true
+ShowStatusBar=Disabled
+Version=202
+ViewPropsTimestamp=2026,4,13,16,46,33.799
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[Notification Messages]
+ShowPasteHugeTextWarning=false
+warnAboutRisksBeforeActingAsAdmin=false
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gdk-pixbuf-thumbnailer,gsthumbnail,rawthumbnail,librsvg,svgthumbnail,ffmpegthumbs
+soar

@@ -1,0 +1,6 @@
+{
+  "device": "alsa_input.usb-Universal_Audio_Volt_1_23202036048246-00.analog-stereo",
+  "device-description": "Volt 1 Analog Stereo",
+  "device-profile": "Analog Input",
+  "preset-name": "sm7b_voice"
+}

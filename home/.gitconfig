@@ -1,0 +1,67 @@
+[user]
+    name = chrishenn
+    email = chenn@alum.mit.edu
+    # public key
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL
+[alias]
+    st = status -s
+    lol = log --oneline --graph --all
+    linecount = "! git log --author=\"$1\" --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1 - $2 } \
+        END { printf \"added lines: %s, removed lines: %s, net lines: %s\\n\", add, subs, loc }' #"
+[feature]
+    experimental = true
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = main
+    # until cargo libgit2 can handle "reftable"
+    defaultRefFormat = files
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
+[core]
+    editor = nano
+    excludesfile = ~/.gitignore
+    fsmonitor = true
+    untrackedCache = true
+    autocrlf = false
+    ignorecase = false
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+[merge]
+    conflictstyle = zdiff3
+[pull]
+    rebase = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    program = "op-ssh-sign"
+[commit]
+    verbose = true
+    gpgsign = false

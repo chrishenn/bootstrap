@@ -1,0 +1,6 @@
+{
+  "device": "alsa_output.usb-Universal_Audio_Volt_1_23202036048246-00.analog-stereo",
+  "device-description": "Volt 1 Analog Stereo",
+  "device-profile": "Analog Output",
+  "preset-name": "volt"
+}

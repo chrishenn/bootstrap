@@ -1,0 +1,240 @@
+{
+  // various core vscode settings
+  "update.showReleaseNotes": false,
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+  "window.enableMenuBarMnemonics": false,
+  "window.menuBarVisibility": "visible",
+  "telemetry.telemetryLevel": "off",
+  "background.enabled": false,
+
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.enabled": false,
+
+  // linux
+  "redhat.telemetry.enabled": false,
+  "xml.symbols.maxItemsComputed": 10000,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  // arduino
+  "arduino.useArduinoCli": true,
+  "arduino.path": "",
+  "arduino.commandPath": "",
+
+  // cmake
+  "cmake.configureOnOpen": false,
+  "cmake.showOptionsMovedNotification": false,
+
+  // yaml
+  "yaml.customTags": ["!secret scalar", "!env_var scalar"],
+
+  // explorer
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.sortOrder": "filesFirst",
+  "explorer.confirmPasteNative": false,
+  "workbench.tree.indent": 20,
+
+  // git
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  // terminal
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "path": "pwsh"
+    }
+  },
+
+  // theme
+  "workbench.colorTheme": "Carbon React Color Theme - Pure",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.letterSpacing": 0.16,
+  "editor.lineHeight": 1.3,
+  "terminal.integrated.fontSize": 16,
+  "editor.suggestFontSize": 16,
+  "editor.suggestLineHeight": 24,
+  "terminal.integrated.lineHeight": 1.1,
+
+  "workbench.sideBar.location": "right",
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "hidden",
+  "workbench.statusBar.visible": false,
+  "window.density.editorTabHeight": "compact",
+  "workbench.editor.enablePreview": false,
+
+  "vscode_custom_css.imports": ["file://home/chris/.config/Code/User/code.css"],
+
+  // editor
+  "editor.suggestSelection": "first",
+  "editor.wordWrap": "on",
+  "editor.largeFileOptimizations": false,
+  "editor.codeLens": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.linkedEditing": true,
+  "editor.formatOnSave": false,
+  "editor.minimap.maxColumn": 250,
+  "editor.accessibilitySupport": "off",
+  "editor.fontWeight": "400",
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.padding.top": 16,
+  "editor.cursorBlinking": "solid",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.emptySelectionClipboard": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "off",
+  "editor.guides.indentation": false,
+  "editor.snippetSuggestions": "none",
+  "editor.detectIndentation": true,
+  "editor.cursorSmoothCaretAnimation": "off",
+
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.wordWrap": "on",
+
+  "notebook.output.wordWrap": true,
+  "chat.editor.wordWrap": "on",
+
+  "[plaintext]": {
+    "editor.suggest.showSnippets": false,
+    "editor.suggest.showWords": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off"
+  },
+
+  // settings from glennraya https://github.com/glennraya/vscode-settings-json
+  "window.newWindowDimensions": "inherit",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Silence the Noise
+  "breadcrumbs.enabled": false,
+  "scm.diffDecorations": "none",
+  "workbench.tips.enabled": false,
+  "git.decorations.enabled": false,
+  "problems.decorations.enabled": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.renderControlCharacters": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.lightbulb.enabled": "off",
+  "editor.selectionHighlight": true,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.occurrencesHighlight": "off",
+  "editor.colorDecorators": false,
+  "editor.hover.delay": 1000,
+  "editor.hover.enabled": true,
+  "editor.matchBrackets": "always",
+  "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    // Hide everything in /vendor, except the "laravel" and "livewire" folder.
+    "**/vendor/{[^l],?[^ai]}*": true,
+    // Hide everything in /public, except "index.php"
+    "**/public/{[^i],?[^n]}*": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/_ide_helper.php": true,
+    "**/composer.lock": true,
+    "**/package-lock.json": true,
+    "storage": true,
+    ".phpunit.result.cache": true
+  },
+
+  // web
+  "emmet.includeLanguages": {
+    "blade": "html",
+    "vue-html": "html",
+    "vue": "html",
+    "react": "html",
+    "javascript": "html"
+  },
+  "files.associations": {
+    ".php_cs": "php",
+    ".php_cs.dist": "php"
+  },
+  "php.suggest.basic": false,
+
+  // prettier
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "prettier.tabWidth": 4,
+  "[html]": {
+    "editor.defaultFormatter": "apility.beautify-blade",
+    "editor.formatOnSave": true
+  },
+  "editor.wordWrapColumn": 120,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "variable.language",
+          "entity.other.attribute-name.html",
+          "entity.other.attribute-name",
+          "keyword.control",
+          "storage.type",
+          "comment",
+          "comment.block",
+          "comment.line"
+        ],
+        "settings": {"fontStyle": ""}
+      }
+    ]
+  }
+}

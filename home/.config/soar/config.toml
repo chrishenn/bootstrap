@@ -1,0 +1,26 @@
+default_profile = "default"
+parallel = true
+parallel_limit = 8
+ghcr_concurrency = 8
+search_limit = 20
+cross_repo_updates = false
+install_patterns = [
+    "!*.log",
+    "!SBUILD",
+    "!*.json",
+    "!*.version",
+]
+
+[profile.default]
+root_path = "$HOME/.local/share/soar"
+
+[[repositories]]
+name = "soarpkgs"
+url = "https://github.com/pkgforge/soarpkgs/releases/latest/download/metadata-x86_64-linux.sdb.zstd"
+desktop_integration = true
+pubkey = "RWQ109gKujRqohsA7RERlXFfeJi23EcHN3Dz8TxyPAywa5mLw/fbcbU4"
+
+[display]
+progress_style = "modern"  # classic, modern, minimal
+icons = true
+spinners = true

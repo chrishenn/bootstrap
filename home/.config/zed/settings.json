@@ -1,0 +1,17 @@
+{
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "auto_update": false,
+  "base_keymap": "JetBrains",
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}
