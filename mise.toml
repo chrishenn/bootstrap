@@ -85,7 +85,7 @@ recipients = [
 
 [dotfiles]
 "~/.bash_aliases" = {}
-"~/.bashrc" = {}
+"~/.bashrc" = { variants = [{ os = "linux"}] }
 "~/.config/1Password/ssh/agent.toml" = {}
 "~/.config/Code/User" = {}
 "~/.config/Kvantum" = {}
