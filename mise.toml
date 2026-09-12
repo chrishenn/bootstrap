@@ -86,7 +86,6 @@ recipients = [
 [dotfiles]
 "~/.bash_aliases" = {}
 "~/.bashrc" = { variants = [{ os = "linux"}] }
-"~/.config/1Password/ssh/agent.toml" = {}
 "~/.config/Code/User" = {}
 "~/.config/Kvantum" = {}
 "~/.config/Proton" = {}
@@ -116,6 +115,7 @@ recipients = [
 "~/.local/share/konsole/Utterly-Sweet-Konsole.colorscheme" = {}
 "~/.local/share/plasma-systemmonitor" = {}
 "~/.local/share/wallpapers/back.png" = {}
+"~/.nanorc" = {}
 "~/.profile" = {}
 "~/.yt-dlp/config" = {}
 "~/.zprofile" = {}
