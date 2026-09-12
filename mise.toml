@@ -128,8 +128,8 @@ recipients = [
 "~/.ssh/id_ed25519" = { source = "~/Projects/bootstrap/home/.ssh/id_ed25519.tera", mode = "template" }
 "~/.ssh/known_hosts" = { source = "~/Projects/bootstrap/home/.ssh/known_hosts.tera", mode = "template" }
 
-"~/.config/scoop/config.json" = { source = "~/Projects/bootstrap/home/.config/scoop/config.json", mode = "template" }
-"~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = {}
+"~/.config/scoop/config.json" = { source = "~/Projects/bootstrap/home/.config/scoop/config.json", mode = "template", variants = [{ os = "windows"}] }
+"~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = { variants = [{ os = "windows"}] }
 
 [dotfiles.fnox]
 # fnox does not respect FNOX_CONFIG_DIR on windows

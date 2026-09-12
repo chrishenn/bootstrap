@@ -1,4 +1,11 @@
-# bootstrap
+# mise bootstrap
+
+Note: only 'desktop' linux and windows are set up as the default profile so far.
+
+This bootstrap project needs to merge with chrishenn/homelab/aurora, with appropriate flags to choose linux, windows, 
+server, and desktop configuration chunks. See the 'todo' section below.
+
+---
 
 bash 
 
@@ -39,6 +46,9 @@ mise bootstrap -y --skip-dirty
 
 # todo
 
+- mise bootstrap a windows machine: setup system files
+    - github keys into C:\ProgramData\ssh\administrators_authorized_keys
+    - https://github.com/chrishenn/dotfiles/blob/main/home/.chezmoiscripts/windows/run_onchange_keys.ps1.tmpl
 - bootstrap from repo, set diff profiles for linux/windows, desktop/server, pass from cli
     - https://github.com/bassemkaroui/.dotfiles-mise/tree/main
     - https://github.com/cicorias/mise-bootstrap/tree/main
