@@ -12,11 +12,6 @@ bash
 ```bash
 mise use -g gh op
 export OP_SERVICE_ACCOUNT_TOKEN=value
-export GITHUB_TOKEN=$(op read "op://homelab/github/credential")
-export KNOWN_HOSTS=$(op read "op://homelab/known_hosts/text")
-export DKEY_PRIVATE=$(op read "op://homelab/dkey/private key?ssh-format=openssh")
-export DKEY_PUBLIC=$(op read "op://homelab/dkey/public key")
-export AUTHORIZED_KEYS=$(op read "op://homelab/authorized_keys/text")
 mise bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty
 ```
 
@@ -27,12 +22,6 @@ scoop install mise
 mise use -g gh op
 
 $env:OP_SERVICE_ACCOUNT_TOKEN = value
-$env:GITHUB_TOKEN = op read "op://homelab/github/credential"
-$env:KNOWN_HOSTS = op read "op://homelab/known_hosts/text"
-$env:DKEY_PRIVATE = ((op read "op://homelab/dkey/private key?ssh-format=openssh") -join "`n") + "`n"
-$env:DKEY_PUBLIC = op read "op://homelab/dkey/public key"
-$env:AUTHORIZED_KEYS = op read "op://homelab/authorized_keys/text"
-
 mkdir -p ~/Projects
 cd ~/Projects
 gh repo clone chrishenn/bootstrap
@@ -40,6 +29,12 @@ cd boostrap
 mise bootstrap -y --skip-dirty
 
 # mise bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty
+```
+
+general
+
+```bash
+mise bootstrap dotfiles apply -y
 ```
 
 ---
