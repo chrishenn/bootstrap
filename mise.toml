@@ -1,3 +1,7 @@
+[settings]
+dotfiles.root = "~/Projects/bootstrap/home"
+dotfiles.default_mode = "copy"
+
 [history.encryption]
 recipients = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL",
@@ -8,7 +12,7 @@ recipients = [
 
 [dotfiles]
 "~/.bash_aliases" = {}
-"~/.bashrc" = { variants = [{ os = "linux"}] }
+"~/.bashrc" = { mode = "copy", variants = [{ os = "linux"}] }
 "~/.config/Code/User" = {}
 "~/.config/Kvantum" = {}
 "~/.config/Proton" = {}
@@ -19,12 +23,11 @@ recipients = [
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
 "~/.config/mbx/config.toml" = {}
-#"~/.config/mise/config.toml" = { source = "~/Projects/bootstrap/mise.toml" }
-"~/.config/mise/config.toml" = { source = "~/Projects/bootstrap/mise.toml" }
+"~/.config/mise/config.toml" = {}
 "~/.config/no-show-user-motd" = {}
 "~/.config/nushell/config.nu" = {}
 "~/.config/soar" = {}
-"~/.config/starship.toml" = {}
+"~/.config/starship/starship.toml" = {}
 "~/.config/tealdeer/config.toml" = {}
 "~/.config/topgrade/topgrade.toml" = {}
 "~/.config/wezterm/wezterm.lua" = {}
@@ -53,9 +56,10 @@ recipients = [
 "~/.ssh/known_hosts" = { source = "~/Projects/bootstrap/home/.ssh/known_hosts.tera", mode = "template" }
 
 "~/.config/scoop/config.json" = { source = "~/Projects/bootstrap/home/.config/scoop/config.json", mode = "template", variants = [{ os = "windows"}] }
-"~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = { variants = [{ os = "windows"}] }
+"~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = { mode = "copy", variants = [{ os = "windows"}] }
 
 [dotfiles.fnox]
+# todo: try this now that we used $HOME instead of ~
 # fnox does not respect FNOX_CONFIG_DIR on windows
 source = "~/Projects/bootstrap/home/.config/fnox/config.toml"
 variants = [
