@@ -10,4 +10,4 @@
 # '''
 
 [bootstrap.hooks.final]
-run = 'pwsh -c "& C:\Users\chris\Projects\bootstrap\windows.ps1"'
+run = 'pwsh -c "& ~/.config/mise/conf.d/sshd.ps1"'
