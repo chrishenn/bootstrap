@@ -16,7 +16,7 @@ mise use -g gh op
 echo 'env = ["aurora"]' > ~/.config/mise/miserc.local.toml
 export OP_SERVICE_ACCOUNT_TOKEN=value
 $("op://homelab/github/token bash")
-mise bootstrap --from-dir ~/Projects/bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y
+mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
 ```
 
 pwsh
@@ -27,7 +27,7 @@ mise use -g gh op
 echo 'env = ["windows"]' > ~/.config/mise/miserc.local.toml
 $env:OP_SERVICE_ACCOUNT_TOKEN = value
 $env:GITHUB_TOKEN = (op read "op://homelab/github/credential")
-mise bootstrap --from-dir ~/Projects/bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y 
+mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
 ```
 
 general
