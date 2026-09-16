@@ -71,7 +71,7 @@ variants = [
 [dotfiles.fnox]
 # todo: try this now that we used $HOME instead of ~
 # fnox does not respect FNOX_CONFIG_DIR on windows
-source = "{{vars.dot}}/.config/fnox/config.toml"
+source = "~/Projects/bootstrap/home/.config/fnox/config.toml"
 variants = [
   { os = "linux", target = "~/.config/fnox/config.toml" },
   { os = "windows", target = "~/AppData/Local/fnox/config.toml" },

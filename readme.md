@@ -10,6 +10,7 @@ server, and desktop configuration chunks. See the 'todo' section below.
 bash 
 
 ```bash
+rm -rf ~/.local/share/mise/bootstrap-repo
 mise use -g gh op
 export OP_SERVICE_ACCOUNT_TOKEN=value
 mise bootstrap -E desktop --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update
