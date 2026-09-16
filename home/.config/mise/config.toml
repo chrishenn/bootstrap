@@ -8,10 +8,10 @@ dotfiles.root = "~/Projects/bootstrap/home"
 dotfiles.default_mode = "copy"
 
 [env]
-FNOX_AGE_KEY_FILE = "$HOME/.ssh/id_ed25519"
-FNOX_CONFIG_DIR = "$HOME/.config/fnox"
-MISE_AGE_KEY_FILE = "$HOME/.ssh/id_ed25519"
-STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml"
+FNOX_AGE_KEY_FILE = "~/.ssh/id_ed25519"
+FNOX_CONFIG_DIR = "~/.config/fnox"
+MISE_AGE_KEY_FILE = "~/.ssh/id_ed25519"
+STARSHIP_CONFIG = "~/.config/starship/starship.toml"
 
 TERM = "xterm-256color"
 EDITOR = "nano"

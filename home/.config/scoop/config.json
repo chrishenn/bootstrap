@@ -3,5 +3,5 @@
   "aria2-warning-enabled": false,
   "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
   "scoop_branch": "master",
-  "gh_token": "{{mise exec op -- op read op://homelab/github/credential}}"
+  "gh_token": "{{exec(command='mise exec op -- op read op://homelab/github/credential')}}"
 }

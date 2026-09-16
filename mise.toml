@@ -63,7 +63,7 @@ variants = [
 ]
 
 [dotfiles.pwsh]
-source = "$DOT/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+source = "~/Projects/bootstrap/home/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
 variants = [
     { os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" },
 ]
@@ -90,3 +90,9 @@ variants = [
     { os = "linux", target = "~/.config/gh" },
     { os = "windows", target = "~/AppData/Roaming/Github CLI/" },
 ]
+
+[tasks.sync]
+alias = 's'
+usage = 'arg "<msg>" default="sync"'
+run = 'git commit -a -m "${usage_msg}" || true && git pull && git push'
+
