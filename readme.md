@@ -13,7 +13,6 @@ bash
 rm -rf ~/.local/share/mise/bootstrap-repo
 mise use -g gh op
 export OP_SERVICE_ACCOUNT_TOKEN=value
-export MISE_ENV_CONF_D = "true"
 mise bootstrap -E aurora --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y
 ```
 
