@@ -12,7 +12,7 @@ bash
 ```bash
 mise use -g gh op
 export OP_SERVICE_ACCOUNT_TOKEN=value
-mise bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty
+mise bootstrap -E desktop --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update
 ```
 
 pwsh
