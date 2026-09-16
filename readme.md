@@ -13,7 +13,8 @@ bash
 rm -rf ~/.local/share/mise/bootstrap-repo
 mise use -g gh op
 export OP_SERVICE_ACCOUNT_TOKEN=value
-mise bootstrap -E desktop --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update
+export MISE_ENV_CONF_D = "true"
+mise bootstrap -E aurora --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y
 ```
 
 pwsh
@@ -28,14 +29,13 @@ cd ~/Projects
 gh repo clone chrishenn/bootstrap
 cd boostrap
 mise bootstrap -y --skip-dirty
-
-# mise bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty
 ```
 
 general
 
 ```bash
 mise bootstrap dotfiles apply -y
+mise bootstrap -E aurora --skip-dirty -y
 ```
 
 ---
@@ -46,9 +46,9 @@ mise bootstrap dotfiles apply -y
     - github keys into C:\ProgramData\ssh\administrators_authorized_keys
     - https://github.com/chrishenn/dotfiles/blob/main/home/.chezmoiscripts/windows/run_onchange_keys.ps1.tmpl
 - bootstrap from repo, set diff profiles for linux/windows, desktop/server, pass from cli
-    - https://github.com/bassemkaroui/.dotfiles-mise/tree/main
-    - https://github.com/cicorias/mise-bootstrap/tree/main
-    - https://github.com/jensdev/mise-bootstrap/tree/main
+    - https://github.com/bassemkaroui/.dotfiles-mise/
+    - https://github.com/cicorias/mise-bootstrap/
+    - https://github.com/jensdev/mise-bootstrap/
     - format the bootstrap project such that those 'global mise config settings' warnings don't show on bootstrap 
     - merge aurora bootstrap mise.toml into some 'linux+desktop+fedora' dotfiles setup
         - may be too many switches for cli
