@@ -36,6 +36,7 @@ general
 ```bash
 mise bootstrap dotfiles apply -y
 mise bootstrap -E aurora --skip-dirty -y
+mbd apply -y -E aurora
 ```
 
 ---

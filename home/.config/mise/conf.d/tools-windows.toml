@@ -1,3 +1,4 @@
+[tools]
 dust = "latest"
 bottom = "latest"
 gh = "latest"

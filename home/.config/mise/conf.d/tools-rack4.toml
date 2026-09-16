@@ -1,0 +1,31 @@
+[tools]
+semver = { version = "latest", os = ["linux"] }
+jless = { version = "latest", os = ["linux"] }
+dust = "latest"
+bottom = "latest"
+gh = "latest"
+bat = "latest"
+eza = "latest"
+fd = "latest"
+rg = "latest"
+jq = "latest"
+sd = "latest"
+yq = "latest"
+jqp = "latest"
+yazi = "latest"
+fzf = "latest"
+
+op = "latest"
+fnox = "latest"
+starship = "latest"
+zoxide = "latest"
+zellij = "latest"
+atuin = "latest"
+
+television = { version = "latest", os = ["linux"] }
+rclone = { version = "latest", os = ["linux"] }
+aws-cli = { version = "latest", os = ["linux"] }
+ruff = { version = "latest", os = ["linux"] }
+shellcheck = { version = "latest", os = ["linux"] }
+
+bun = "latest"
