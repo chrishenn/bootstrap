@@ -24,7 +24,8 @@ recipients = [
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
 "~/.config/mbx/config.toml" = {}
-"~/.config/mise/" = {}
+#"~/.config/mise/" = {}
+"~/.config/mise/" = { source = "~/Projects/bootstrap/mise" }
 "~/.config/no-show-user-motd" = {}
 "~/.config/nushell/config.nu" = {}
 "~/.config/soar" = {}

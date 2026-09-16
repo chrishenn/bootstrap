@@ -12,8 +12,9 @@ bash
 ```bash
 rm -rf ~/.local/share/mise/bootstrap-repo
 mise use -g gh op
+echo 'env = ["aurora"]' > ~/.config/mise/miserc.local.toml
 export OP_SERVICE_ACCOUNT_TOKEN=value
-mise bootstrap -E aurora --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y --from-dir ~/Projects/bootstrap
+mise bootstrap --from-dir ~/Projects/bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y
 ```
 
 pwsh
@@ -23,7 +24,7 @@ scoop install mise
 mise use -g gh op
 echo 'env = ["windows"]' > ~/.config/mise/miserc.local.toml
 $env:OP_SERVICE_ACCOUNT_TOKEN = value
-mise bootstrap -E windows --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y --from-dir ~/Projects/bootstrap
+mise bootstrap --from-dir ~/Projects/bootstrap --from git@github.com:chrishenn/bootstrap.git --skip-dirty --update -y 
 ```
 
 general
