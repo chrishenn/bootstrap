@@ -183,6 +183,7 @@ gpgkey = https://repo.protonvpn.com/fedora-$releasever-stable/public_key.asc
 owner = "root"
 group = "root"
 mode = "0644"
+phase = "pre-packages"
 
 # chrome repo
 [bootstrap.files."/etc/yum.repos.d/google-chrome.repo"]
@@ -197,6 +198,7 @@ gpgkey=https://dl.google.com/linux/linux_signing_key.pub
 owner = "root"
 group = "root"
 mode = "0644"
+phase = "pre-packages"
 
 # services
 [bootstrap.services.docker]

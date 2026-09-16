@@ -7,7 +7,7 @@ dotfiles.default_mode = "copy"
 
 [history.encryption]
 recipients = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL",
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL",
 ]
 
 [dotfiles]
@@ -19,6 +19,7 @@ recipients = [
 "~/.config/atuin/config.toml" = {}
 "~/.config/bottom/bottom.toml" = {}
 "~/.config/dolphinrc" = {}
+"~/.config/fnox/config.toml" = {}
 "~/.config/ghostty" = {}
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
@@ -58,37 +59,26 @@ recipients = [
 [dotfiles.scoop]
 source = "~/Projects/bootstrap/home/.config/scoop/config.json"
 mode = "template"
-variants = [
-    { os = "windows", target = "~/.config/scoop/config.json" },
-]
+variants = [{ os = "windows", target = "~/.config/scoop/config.json" }]
 
 [dotfiles.pwsh]
 source = "~/Projects/bootstrap/home/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
 variants = [
-    { os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" },
-]
-
-[dotfiles.fnox]
-# todo: try this now that we used $HOME instead of ~
-# fnox does not respect FNOX_CONFIG_DIR on windows
-source = "~/Projects/bootstrap/home/.config/fnox/config.toml"
-variants = [
-    { os = "linux", target = "~/.config/fnox/config.toml" },
-    { os = "windows", target = "~/AppData/Local/fnox/config.toml" },
+  { os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" },
 ]
 
 [dotfiles.mpv]
 source = "~/Projects/bootstrap/home/.config/mpv/mpv.conf"
 variants = [
-    { os = "linux", target = "~/.config/mpv/mpv.conf" },
-    { os = "windows", target = "~/AppData/Roaming/mpv/mpv.conf" },
+  { os = "linux", target = "~/.config/mpv/mpv.conf" },
+  { os = "windows", target = "~/AppData/Roaming/mpv/mpv.conf" },
 ]
 
 [dotfiles.gh]
 source = "~/Projects/bootstrap/home/.config/gh"
 variants = [
-    { os = "linux", target = "~/.config/gh" },
-    { os = "windows", target = "~/AppData/Roaming/Github CLI/" },
+  { os = "linux", target = "~/.config/gh" },
+  { os = "windows", target = "~/AppData/Roaming/Github CLI/" },
 ]
 
 [tasks.sync]
