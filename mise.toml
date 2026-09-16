@@ -94,5 +94,5 @@ variants = [
 [tasks.sync]
 alias = 's'
 usage = 'arg "<msg>" default="sync"'
-run = 'git add -A && git commit -am "{{usage.msg}}" || true && git pull && git push'
+run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'
 
