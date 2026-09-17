@@ -14,7 +14,7 @@ if [[ -z "${GITHUB_TOKEN:-}" ]]; then
   echo 'abort: GITHUB_TOKEN not set'
   exit 1
 fi
-if ! command -v mise >/dev/null 2>&1; then
+if ! command -v mise >/dev/null; then
   curl https://mise.run | sh
   eval "$(~/.local/bin/mise activate bash)"
 fi
