@@ -3,30 +3,26 @@
 The only clunky bit is manually setting the miserc environment(s) for the machine. ~/.config/mise/miserc.toml does not 
 support templating, and the only per-machine setting is the `env = [..]` line, which is slightly irritating.
 
-linux/aurora
+## linux/aurora
 
 ```bash
-export OP_SERVICE_ACCOUNT_TOKEN=
+export OP_SERVICE_ACCOUNT_TOKEN=<token>
 export DOT_ENV='["aurora"]'
-curl https://github.com/chrishenn/bootstrap/blob/main/init.sh | bash
+curl https://raw.githubusercontent.com/chrishenn/bootstrap/refs/heads/main/init.sh | bash
 ```
 
-windows
+## windows
+
+For now, I don't set `env = [..]` in miserc.toml using DOT_ENV because I'm using the auto_env feature, which activates
+the os-named ('windows') environment. To select configurations with more granularity, I'll use the same approach
+as the init.sh script above.
 
 ```pwsh
-scoop install mise
-mise use -g gh op
-$env:OP_SERVICE_ACCOUNT_TOKEN = value
-$env:GITHUB_TOKEN = (op read "op://homelab/github/credential")
-tee ~/.config/mise/miserc.toml >/dev/null <<- 'END'
-env_conf_d = true
-auto_env = true
-env = ["aurora"]
-END
-mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
+$env:OP_SERVICE_ACCOUNT_TOKEN=<token>
+irm https://raw.githubusercontent.com/chrishenn/bootstrap/refs/heads/main/init.ps1 | iex
 ```
 
-general
+## general commands
 
 ```bash
 mise bootstrap dotfiles apply -E aurora -C ~/Projects/bootstrap -y
@@ -40,7 +36,13 @@ mbd apply -y -E aurora
 
 ---
 
-# todo
+## todo
 
 - bootstrap windows with 'mise bootstrap remote'
 - add formatters
+
+## ref
+
+- https://github.com/bassemkaroui/.dotfiles-mise
+- https://github.com/cicorias/mise-bootstrap
+- https://github.com/jensdev/mise-bootstrap/

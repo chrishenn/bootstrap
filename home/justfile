@@ -6,10 +6,6 @@ dot:
 boot:
     mise bootstrap -C ~/Projects/bootstrap --skip-dirty -y
 
-# mise bootstrap initial from repo
-boot_init:
-    mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
-
 # sync secrets to age home-level config
 ss:
     fnox sync -p age -c ~/.config/fnox/config.toml
