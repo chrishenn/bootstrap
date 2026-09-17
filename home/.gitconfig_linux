@@ -1,7 +1,6 @@
 [user]
     name = chrishenn
     email = chenn@alum.mit.edu
-    # public key
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL
 [alias]
     st = status -s

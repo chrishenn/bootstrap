@@ -1,27 +1,20 @@
-# initialize or update chezmoi dotfiles
-cm:
-    $(op read op://homelab/svc/bash) \
-    ; chezmoi init chrishenn -a --force \
-    ; chezmoi update -a --force
+# update dotfiles
+dot:
+    mise bootstrap dotfiles apply -C ~/Projects/bootstrap -y
 
-# full upgrade of package manager packages
-topgrade:
-    $(op read op://homelab/svc/bash) \
-    ; topgrade
+# mise bootstrap
+boot:
+    mise bootstrap -C ~/Projects/bootstrap --skip-dirty -y
 
-# !!DANGER!! unsafe overwriting 'git clone' for all repos
-gclone:
-    $(op read op://homelab/svc/bash) \
-    ; ~/gclone.sh
+# mise bootstrap initial from repo
+boot_init:
+    mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
 
 # sync secrets to age home-level config
 ss:
     fnox sync -p age -c ~/.config/fnox/config.toml
 
-# mise bootstrap
-mb:
-    mise bootstrap apply --skip-dirty -y
-
+# ssh targets
 _pty(flag) := if flag == "true" {"-t"} else {""}
 _cmd(dir) := f"$(op read op://homelab/svc/bash) && cd {{ dir }} && exec bash -l"
 
