@@ -5,6 +5,10 @@ if [[ -z "${OP_SERVICE_ACCOUNT_TOKEN:-}" ]]; then
   echo 'abort: OP_SERVICE_ACCOUNT_TOKEN not set'
   exit 1
 fi
+if [[ -z "${DOT_ENV:-}" ]]; then
+  echo 'abort: DOT_ENV not set'
+  exit 1
+fi
 $(op read "op://homelab/github/token bash")
 if [[ -z "${GITHUB_TOKEN:-}" ]]; then
   echo 'abort: GITHUB_TOKEN not set'

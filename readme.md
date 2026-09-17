@@ -8,7 +8,7 @@ support templating, and the only per-machine setting is the `env = [..]` line, w
 ```bash
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
 export DOT_ENV='["aurora"]'
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/refs/heads/main/init.sh | bash
+curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 ```
 
 ## windows
@@ -19,7 +19,7 @@ as the init.sh script above.
 
 ```pwsh
 $env:OP_SERVICE_ACCOUNT_TOKEN=<token>
-irm https://raw.githubusercontent.com/chrishenn/bootstrap/refs/heads/main/init.ps1 | iex
+irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1 | iex
 ```
 
 ## general commands
