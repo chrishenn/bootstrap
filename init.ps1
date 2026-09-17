@@ -25,6 +25,8 @@ function init {
         scoop install mise
         (&mise activate pwsh) | Out-String | Invoke-Expression
     }
+    start-service w32time
+    w32tm /resync /force
 
     mise use -g gh op
     $cnt = '
