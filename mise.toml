@@ -14,6 +14,14 @@ recipients = [
   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL",
 ]
 
+[bootstrap.hooks]
+pre-dotfiles = """
+sudo chmod 600 \
+~/Projects/bootstrap/home/.ssh/authorized_keys.tera \
+~/Projects/bootstrap/home/.ssh/id_ed25519.tera \
+~/Projects/bootstrap/home/.ssh/known_hosts.tera
+"""
+
 [dotfiles]
 "~/.bash_aliases" = {}
 "~/.bashrc" = { mode = "copy", variants = [{ os = "linux" }] }
@@ -97,15 +105,15 @@ run = 'mise bootstrap --skip-dirty'
 alias = 'p'
 run = 'mise bootstrap packages'
 
-[tasks.fix]
-alias = "f"
-description = "run project formatters declared in hk.pkl in 'fix' mode"
-run = "hk fix --all"
-
-[tasks.check]
-alias = "c"
-description = "run project linters declared in hk.pkl in 'check' mode"
-run = "hk check --all"
+#[tasks.fix]
+#alias = "f"
+#description = "run project formatters declared in hk.pkl in 'fix' mode"
+#run = "hk fix --all"
+#
+#[tasks.check]
+#alias = "c"
+#description = "run project linters declared in hk.pkl in 'check' mode"
+#run = "hk check --all"
 
 #[tasks.sync]
 #alias = 's'

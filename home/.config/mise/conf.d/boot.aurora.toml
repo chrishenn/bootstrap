@@ -126,8 +126,8 @@ mode = "0755"
 
 [bootstrap.files."/etc/sudoers.d/pwr"]
 content = """
-{{ env.USER }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/shutdown.sh
-{{ env.USER }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/restart.sh
+{{ exec(command='whoami') }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/shutdown.sh
+{{ exec(command='whoami') }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/restart.sh
 """
 template = true
 owner = "root"
