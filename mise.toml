@@ -105,22 +105,6 @@ run = 'mise bootstrap --skip-dirty'
 alias = 'p'
 run = 'mise bootstrap packages'
 
-#[tasks.fix]
-#alias = "f"
-#description = "run project formatters declared in hk.pkl in 'fix' mode"
-#run = "hk fix --all"
-#
-#[tasks.check]
-#alias = "c"
-#description = "run project linters declared in hk.pkl in 'check' mode"
-#run = "hk check --all"
-
-#[tasks.sync]
-#alias = 's'
-#description = "git: sync local changes to remote"
-#usage = 'arg "<msg>" default="sync"'
-#run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'
-
 [tools]
 "aqua:owenlamont/ryl" = "latest"
 hk = "latest"
