@@ -39,7 +39,7 @@ sudo chmod 600 \
 "~/.config/mise/" = {}
 "~/.config/no-show-user-motd" = {}
 "~/.config/nushell/config.nu" = {}
-"~/.config/soar" = {}
+"~/.config/soar" = { mode = "symlink" }
 "~/.config/starship/starship.toml" = {}
 "~/.config/tealdeer/config.toml" = {}
 "~/.config/topgrade/topgrade.toml" = {}
