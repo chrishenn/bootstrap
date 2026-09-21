@@ -1,4 +1,6 @@
 [tools]
+semver = "latest"
+jless = "latest"
 dust = "latest"
 bottom = "latest"
 gh = "latest"
@@ -19,5 +21,11 @@ starship = "latest"
 zoxide = "latest"
 zellij = "latest"
 atuin = "latest"
+
+television = "latest"
+rclone = "latest"
+aws-cli = "latest"
+ruff = "latest"
+shellcheck = "latest"
 
 bun = "latest"

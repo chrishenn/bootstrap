@@ -7,6 +7,7 @@ eza = { version = "latest", lazy = true }
 fd = { version = "latest", lazy = true }
 fnox = { version = "latest", lazy = true }
 gh = { version = "latest", lazy = true }
+hk = { version = "latest", lazy = true }
 jq = { version = "latest", lazy = true }
 just = { version = "latest", lazy = true }
 op = { version = "latest", lazy = true }
@@ -18,3 +19,22 @@ yazi = { version = "latest", lazy = true }
 yq = { version = "latest", lazy = true }
 zellij = { version = "latest", lazy = true }
 zoxide = { version = "latest", lazy = true }
+
+[tasks.fix]
+alias = "f"
+description = "run project formatters declared in hk.pkl in 'fix' mode"
+run = "hk fix --all"
+dir = "{{cwd}}"
+
+[tasks.check]
+alias = "c"
+description = "run project linters declared in hk.pkl in 'check' mode"
+run = "hk check --all"
+dir = "{{cwd}}"
+
+[tasks.sync]
+alias = 's'
+description = "git: sync local changes to remote"
+usage = 'arg "<msg>" default="sync"'
+run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'
+dir = "{{cwd}}"
