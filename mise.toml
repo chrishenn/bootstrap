@@ -5,10 +5,6 @@ dotfiles.default_mode = "copy"
 [bootstrap.repos]
 "~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
 
-[bootstrap.packages]
-"scoop:chris/wt" = "latest"
-"scoop:zed" = "latest"
-
 [history.encryption]
 recipients = [
   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL",

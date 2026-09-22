@@ -15,44 +15,56 @@ uid = 1000
 adopt = true
 
 [bootstrap.packages]
-"brew:atuin" = "latest"
-"brew:detect-secrets" = "latest"
-"brew:feroxbuster" = "latest"
-"brew:media-info" = "latest"
-"brew:parallel" = "latest"
-"brew:sevenzip" = "latest"
-"brew:trash-cli" = "latest"
-"brew:stalwartlabs/tap/stalwart-cli" = "latest"
-
 # only "tapped casks" with no preflight_ or postflight_steps are supported by mise
 # "brew-cask:ublue-os/tap/zed-linux" = "latest"
 # "brew-cask:ublue-os/tap/1password-gui-linux" = "latest"
 # "brew-cask:ublue-os/tap/jetbrains-toolbox-linux" = "latest"
-# "brew-cask:suzuki-shunsuke/ghtkn/ghtkn" = "latest"
 "brew-cask:font-fira-code-nerd-font" = "latest"
 "brew-cask:font-jetbrains-mono-nerd-font" = "latest"
+
+"brew:feroxbuster" = "latest"
+"brew:media-info" = "latest"
+"brew:parallel" = "latest"
+"brew:trash-cli" = "latest"
+"brew:stalwartlabs/tap/stalwart-cli" = "latest"
 
 "flatpak:io.mpv.Mpv" = "latest"
 "flatpak:org.kde.haruna" = "latest"
 "flatpak:org.kde.kdenlive" = "latest"
 "flatpak:com.belmoussaoui.Obfuscate" = "latest"
-"flatpak:io.gitlab.adhami3310.Converter" = "latest"
 "flatpak:org.darktable.Darktable" = "latest"
 "flatpak:com.github.wwmm.easyeffects" = "latest"
 "flatpak:org.audacityteam.Audacity" = "latest"
-
 "flatpak:md.obsidian.Obsidian" = "latest"
 "flatpak:io.github.cboxdoerfer.FSearch" = "latest"
 "flatpak:com.prusa3d.PrusaSlicer" = "latest"
 "flatpak:org.onlyoffice.desktopeditors" = "latest"
 "flatpak:io.missioncenter.MissionCenter" = "latest"
 "flatpak:me.iepure.devtoolbox" = "latest"
-
 "flatpak:com.github.tchx84.Flatseal" = "latest"
 "flatpak:io.github.flattool.Warehouse" = "latest"
-
 "flatpak:com.vysp3r.ProtonPlus" = "latest"
 "flatpak:org.deskflow.deskflow" = "latest"
+"flatpak:io.gitlab.adhami3310.Converter" = "latest"
+"flatpak:com.valvesoftware.Steam" = "latest"
+"flatpak:com.obsproject.Studio" = "latest"
+"flatpak:com.obsproject.Studio.Plugin.DroidCam" = "latest"
+"flatpak:org.gnome.Loupe" = "latest"
+"flatpak:org.gnome.Loupe.HEIC" = "latest"
+"flatpak:be.alexandervanhee.gradia" = "latest"
+"flatpak:io.github.DenysMb.Kontainer" = "latest"
+"flatpak:org.fedoraproject.MediaWriter" = "latest"
+"flatpak:io.github.getnf.embellish" = "latest"
+"flatpak:com.usebottles.bottles" = "latest"
+
+# "flatpak:org.gnome.DejaDup" = { state = "absent" }
+# "flatpak:org.mozilla.Thunderbird" = { state = "absent" }
+# "flatpak:org.mozilla.firefox" = { state = "absent" }
+# "flatpak:org.kde.skanpage" = { state = "absent" }
+# "flatpak:org.kde.okular" = { state = "absent" }
+# "flatpak:org.kde.kontact" = { state = "absent" }
+# "flatpak:org.kde.kclock"= { state = "absent" }
+# "flatpak:org.fkoehler.KTailctl"= { state = "absent" }
 
 "rpm-ostree:firefox" = "latest"
 "rpm-ostree:google-chrome-stable" = "latest"
@@ -186,11 +198,11 @@ phase = "pre-packages"
 [bootstrap.files."/etc/yum.repos.d/google-chrome.repo"]
 content = """
 [google-chrome]
-name=google-chrome
-baseurl=https://dl.google.com/linux/chrome/rpm/stable/x86_64
-enabled=1
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+name = google-chrome
+baseurl = https://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled = 1
+gpgcheck = 1
+gpgkey = https://dl.google.com/linux/linux_signing_key.pub
 """
 owner = "root"
 group = "root"

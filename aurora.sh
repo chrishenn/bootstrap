@@ -19,13 +19,17 @@ function installs {
 	bash <(curl -fsSL https://moonrepo.dev/install/proto.sh)
 	curl -fsSL "https://raw.githubusercontent.com/pkgforge/soar/main/install.sh" | sh
 
+	# mise bootstrap packages: flatpak does not support declarative removal
 	flatpak uninstall -y \
-		org.mozilla.Thunderbird \
-		org.mozilla.firefox \
-		org.kde.skanpage \
-		org.kde.okular \
-		org.kde.kontact \
-		org.kde.kclock
+    	org.mozilla.Thunderbird \
+    	org.mozilla.firefox \
+		org.gnome.DejaDup \
+    	org.kde.skanpage \
+    	org.kde.okular \
+    	org.kde.kontact \
+    	org.kde.kclock \
+    	org.fkoehler.KTailctl
+
 	brew tap ublue-os/tap
 	brew install --cask \
 		zed-linux \

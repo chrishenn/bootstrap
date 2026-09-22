@@ -19,6 +19,7 @@ yazi = { version = "latest", lazy = true }
 yq = { version = "latest", lazy = true }
 zellij = { version = "latest", lazy = true }
 zoxide = { version = "latest", lazy = true }
+7z = { version = "latest", lazy = true }
 
 [tasks.fix]
 alias = "f"
