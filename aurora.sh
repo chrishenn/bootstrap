@@ -21,14 +21,14 @@ function installs {
 
 	# mise bootstrap packages: flatpak does not support declarative removal
 	flatpak uninstall -y \
-    	org.mozilla.Thunderbird \
-    	org.mozilla.firefox \
+		org.mozilla.Thunderbird \
+		org.mozilla.firefox \
 		org.gnome.DejaDup \
-    	org.kde.skanpage \
-    	org.kde.okular \
-    	org.kde.kontact \
-    	org.kde.kclock \
-    	org.fkoehler.KTailctl
+		org.kde.skanpage \
+		org.kde.okular \
+		org.kde.kontact \
+		org.kde.kclock \
+		org.fkoehler.KTailctl
 
 	brew tap ublue-os/tap
 	brew install --cask \

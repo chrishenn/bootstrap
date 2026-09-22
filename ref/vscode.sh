@@ -41,8 +41,8 @@ function main {
 	sudo chown -R "$(whoami)" /usr/share/code/resources/app/out/vs/code/electron-browser/workbench
 
 	cfg="$HOME/.vscode/extensions/isudox.vscode-jetbrains-keybindings-*/package.json"
-	yq -iP 'del(.contributes.keybindings[] | select(.key == "ctrl+`"))' $cfg -o json
-	yq -iP 'del(.contributes.keybindings[] | select(.key == "ctrl+k"))' $cfg -o json
+	yq -iP 'del(.contributes.keybindings[] | select(.key == "ctrl+`"))' "$cfg" -o json
+	yq -iP 'del(.contributes.keybindings[] | select(.key == "ctrl+k"))' "$cfg" -o json
 }
 
 main "$@"
