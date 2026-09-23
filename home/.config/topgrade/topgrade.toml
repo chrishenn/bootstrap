@@ -9,8 +9,21 @@ pre_sudo = true
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["vscode", "jetbrains_toolbox", "jetbrains_pycharm", "jetbrains_clion", "jetbrains_goland",
-    "jetbrains_rustrover", "microsoft_store", "system", "containers", "shell", "pnpm", "firmware", "chezmoi"]
+disable = [
+  "vscode",
+  "jetbrains_toolbox",
+  "jetbrains_pycharm",
+  "jetbrains_clion",
+  "jetbrains_goland",
+  "jetbrains_rustrover",
+  "microsoft_store",
+  "system",
+  "containers",
+  "shell",
+  "pnpm",
+  "firmware",
+  "chezmoi"
+]
 
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
@@ -117,7 +130,6 @@ no_self_update = true
 # Upgrade formulae built from the HEAD branch; `brew upgrade --fetch-HEAD`
 # fetch_head = true
 
-
 [linux]
 rpm_ostree = true
 bootc = false
@@ -150,7 +162,6 @@ bootc = false
 # Extra Home Manager arguments
 # home_manager_arguments = ["--flake", "file"]
 
-
 [git]
 # How many repos to pull at max in parallel
 # max_concurrency = 5
@@ -166,7 +177,6 @@ bootc = false
 
 # Arguments to pass Git when pulling Repositories
 # arguments = "--rebase --autostash"
-
 
 [windows]
 # Manually select Windows updates
@@ -187,21 +197,17 @@ bootc = false
 # manager such as Scoop or Cargo
 # self_rename = true
 
-
 # [npm]
 # Use sudo if the NPM directory isn't owned by the current user
 # use_sudo = true
-
 
 [yarn]
 # Run `yarn global upgrade` with `sudo`
 # use_sudo = true
 
-
 [deno]
 # Upgrade deno executable to the given version.
 # version = "stable"
-
 
 [vim]
 # For `vim-plug`, execute `PlugUpdate!` instead of `PlugUpdate`

@@ -82,6 +82,11 @@ systemctl --user restart xdg-document-portal.service
 flatpak override --user --device=all com.obsproject.Studio
 """
 
+[bootstrap.hooks.final]
+run = """
+sudo sysctl -q --system
+"""
+
 # sudo timeout
 [bootstrap.files."/etc/sudoers.d/sudo_timeout"]
 content = "Defaults timestamp_timeout=180"
@@ -215,52 +220,47 @@ state = "running"
 enabled = true
 on_change = "reload_or_restart"
 
-[bootstrap.hooks.final]
-run = """
-sudo sysctl -q --system
-"""
-
 [bootstrap.repos]
 # My parallel gclone.sh is much faster for initial clones, since mise here fetches serially.
 #   However, this mise update is safe for dirty worktrees, where gclone.sh
 #   is destructive because it was designed for backing up github repos to a restic target.
 "~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
 
-#"~/Projects/a4dj" = { url = "https://github.com/chrishenn/a4dj" }
-#"~/Projects/agent_interface" = { url = "https://github.com/chrishenn/agent_interface" }
-#"~/Projects/better_power" = { url = "https://github.com/chrishenn/better_power" }
-#"~/Projects/canny" = { url = "https://github.com/chrishenn/canny" }
-#"~/Projects/ccpt" = { url = "https://github.com/chrishenn/ccpt" }
-#"~/Projects/chplib" = { url = "https://github.com/chrishenn/chplib" }
-#"~/Projects/chrishenn" = { url = "https://github.com/chrishenn/chrishenn" }
-#"~/Projects/configs" = { url = "https://github.com/chrishenn/configs" }
-#"~/Projects/const_fonts" = { url = "https://github.com/chrishenn/const_fonts" }
-#"~/Projects/cuda_libraries" = { url = "https://github.com/chrishenn/cuda_libraries" }
-#"~/Projects/deep_mem" = { url = "https://github.com/chrishenn/deep_mem" }
-#"~/Projects/dotfiles" = { url = "https://github.com/chrishenn/dotfiles" }
-#"~/Projects/drivers" = { url = "https://github.com/chrishenn/drivers" }
-#"~/Projects/find_strings" = { url = "https://github.com/chrishenn/find_strings" }
-#"~/Projects/hardware" = { url = "https://github.com/chrishenn/hardware" }
-#"~/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }
-#"~/Projects/hotkey" = { url = "https://github.com/chrishenn/hotkey" }
-#"~/Projects/leetcode" = { url = "https://github.com/chrishenn/leetcode" }
-#"~/Projects/lnks" = { url = "https://github.com/chrishenn/lnks" }
-#"~/Projects/oodl" = { url = "https://github.com/chrishenn/oodl" }
-#"~/Projects/patch_sample" = { url = "https://github.com/chrishenn/patch_sample" }
-#"~/Projects/pixelate" = { url = "https://github.com/chrishenn/pixelate" }
-#"~/Projects/portable" = { url = "https://github.com/chrishenn/portable" }
-#"~/Projects/private" = { url = "https://github.com/chrishenn/private" }
-#"~/Projects/private_archive" = { url = "https://github.com/chrishenn/private_archive" }
-#"~/Projects/project_stubs" = { url = "https://github.com/chrishenn/project_stubs" }
-#"~/Projects/py_ref" = { url = "https://github.com/chrishenn/py_ref" }
-#"~/Projects/realtek" = { url = "https://github.com/chrishenn/realtek" }
-#"~/Projects/rtoolz" = { url = "https://github.com/chrishenn/rtoolz" }
-#"~/Projects/scoops" = { url = "https://github.com/chrishenn/scoops" }
-#"~/Projects/tr_agent" = { url = "https://github.com/chrishenn/tr_agent" }
-#"~/Projects/tr_backend" = { url = "https://github.com/chrishenn/tr_backend" }
-#"~/Projects/type-stubs" = { url = "https://github.com/chrishenn/type-stubs" }
-#"~/Projects/uavolt" = { url = "https://github.com/chrishenn/uavolt" }
-#"~/Projects/unattend" = { url = "https://github.com/chrishenn/unattend" }
-#"~/Projects/vscode" = { url = "https://github.com/chrishenn/vscode" }
-#"~/Projects/zenprof" = { url = "https://github.com/chrishenn/zenprof" }
-#"~/Projects/zentool" = { url = "https://github.com/chrishenn/zentool" }
+# "~/Projects/a4dj" = { url = "https://github.com/chrishenn/a4dj" }
+# "~/Projects/agent_interface" = { url = "https://github.com/chrishenn/agent_interface" }
+# "~/Projects/better_power" = { url = "https://github.com/chrishenn/better_power" }
+# "~/Projects/canny" = { url = "https://github.com/chrishenn/canny" }
+# "~/Projects/ccpt" = { url = "https://github.com/chrishenn/ccpt" }
+# "~/Projects/chplib" = { url = "https://github.com/chrishenn/chplib" }
+# "~/Projects/chrishenn" = { url = "https://github.com/chrishenn/chrishenn" }
+# "~/Projects/configs" = { url = "https://github.com/chrishenn/configs" }
+# "~/Projects/const_fonts" = { url = "https://github.com/chrishenn/const_fonts" }
+# "~/Projects/cuda_libraries" = { url = "https://github.com/chrishenn/cuda_libraries" }
+# "~/Projects/deep_mem" = { url = "https://github.com/chrishenn/deep_mem" }
+# "~/Projects/dotfiles" = { url = "https://github.com/chrishenn/dotfiles" }
+# "~/Projects/drivers" = { url = "https://github.com/chrishenn/drivers" }
+# "~/Projects/find_strings" = { url = "https://github.com/chrishenn/find_strings" }
+# "~/Projects/hardware" = { url = "https://github.com/chrishenn/hardware" }
+# "~/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }
+# "~/Projects/hotkey" = { url = "https://github.com/chrishenn/hotkey" }
+# "~/Projects/leetcode" = { url = "https://github.com/chrishenn/leetcode" }
+# "~/Projects/lnks" = { url = "https://github.com/chrishenn/lnks" }
+# "~/Projects/oodl" = { url = "https://github.com/chrishenn/oodl" }
+# "~/Projects/patch_sample" = { url = "https://github.com/chrishenn/patch_sample" }
+# "~/Projects/pixelate" = { url = "https://github.com/chrishenn/pixelate" }
+# "~/Projects/portable" = { url = "https://github.com/chrishenn/portable" }
+# "~/Projects/private" = { url = "https://github.com/chrishenn/private" }
+# "~/Projects/private_archive" = { url = "https://github.com/chrishenn/private_archive" }
+# "~/Projects/project_stubs" = { url = "https://github.com/chrishenn/project_stubs" }
+# "~/Projects/py_ref" = { url = "https://github.com/chrishenn/py_ref" }
+# "~/Projects/realtek" = { url = "https://github.com/chrishenn/realtek" }
+# "~/Projects/rtoolz" = { url = "https://github.com/chrishenn/rtoolz" }
+# "~/Projects/scoops" = { url = "https://github.com/chrishenn/scoops" }
+# "~/Projects/tr_agent" = { url = "https://github.com/chrishenn/tr_agent" }
+# "~/Projects/tr_backend" = { url = "https://github.com/chrishenn/tr_backend" }
+# "~/Projects/type-stubs" = { url = "https://github.com/chrishenn/type-stubs" }
+# "~/Projects/uavolt" = { url = "https://github.com/chrishenn/uavolt" }
+# "~/Projects/unattend" = { url = "https://github.com/chrishenn/unattend" }
+# "~/Projects/vscode" = { url = "https://github.com/chrishenn/vscode" }
+# "~/Projects/zenprof" = { url = "https://github.com/chrishenn/zenprof" }
+# "~/Projects/zentool" = { url = "https://github.com/chrishenn/zentool" }

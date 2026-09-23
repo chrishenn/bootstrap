@@ -1,9 +1,9 @@
 [files]
-yaml = ['']
+yaml = [""]
 markdown = ["*.md", "*.markdown", "*.qmd", "*.Rmd", "*.mdx"]
 
 [markdown]
-front-matter  = true
+front-matter = true
 fenced-blocks = true
 
 [rules]

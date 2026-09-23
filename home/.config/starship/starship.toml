@@ -5,195 +5,195 @@ vimcmd_symbol = "[<](bold green)"
 
 [aws]
 disabled = true
-symbol = 'aws '
-format = '[$symbol$profile]($style) | '
+symbol = "aws "
+format = "[$symbol$profile]($style) | "
 
 [bun]
-symbol = 'bun '
-format = '[$symbol$version]($style) | '
+symbol = "bun "
+format = "[$symbol$version]($style) | "
 
 [c]
-symbol = 'c '
-format = '[$symbol($version(-$name))]($style) | '
+symbol = "c "
+format = "[$symbol($version(-$name))]($style) | "
 
 [cpp]
-symbol = 'cpp '
-format = '[$symbol($version(-$name))]($style) | '
+symbol = "cpp "
+format = "[$symbol($version(-$name))]($style) | "
 
 [cmake]
-symbol = 'cmake '
-format = '[$symbol$version]($style) | '
+symbol = "cmake "
+format = "[$symbol$version]($style) | "
 
 [cmd_duration]
-format = '[$duration]($style) | '
+format = "[$duration]($style) | "
 
 [cobol]
-symbol = 'cobol '
-format = '[$symbol$version]($style) | '
+symbol = "cobol "
+format = "[$symbol$version]($style) | "
 
 [conda]
-symbol = 'conda '
-format = '[$symbol$environment]($style) | '
+symbol = "conda "
+format = "[$symbol$environment]($style) | "
 
 [container]
 disabled = true
-symbol = 'container '
-format = '[$symbol$name]($style) | '
+symbol = "container "
+format = "[$symbol$name]($style) | "
 
 [crystal]
-symbol = 'crystal '
-format = '[$symbol$version]($style) | '
+symbol = "crystal "
+format = "[$symbol$version]($style) | "
 
 [daml]
-symbol = 'daml '
-format = '[$symbol$version]($style) | '
+symbol = "daml "
+format = "[$symbol$version]($style) | "
 
 [dart]
-symbol = 'dart '
-format = '[$symbol$version]($style) | '
+symbol = "dart "
+format = "[$symbol$version]($style) | "
 
 [deno]
-symbol = 'deno '
-format = '[$symbol$version]($style) | '
+symbol = "deno "
+format = "[$symbol$version]($style) | "
 
 [docker_context]
-symbol = 'docker '
-format = '[$symbol$context]($style) | '
+symbol = "docker "
+format = "[$symbol$context]($style) | "
 
 [dotnet]
-symbol = 'dotnet '
-format = '[$symbol$version$tfm]($style) | '
+symbol = "dotnet "
+format = "[$symbol$version$tfm]($style) | "
 
 [elixir]
-symbol = 'elixir '
+symbol = "elixir "
 format = '[$symbol($version \(OTP $otp_version\))]($style) | '
 
 [elm]
-symbol = 'elm '
-format = '[$symbol$version]($style) | '
+symbol = "elm "
+format = "[$symbol$version]($style) | "
 
 [erlang]
-symbol = 'erlang '
-format = '[$symbol$version]($style) | '
+symbol = "erlang "
+format = "[$symbol$version]($style) | "
 
 [fennel]
-symbol = 'fennel '
-format = '[$symbol$version]($style) | '
+symbol = "fennel "
+format = "[$symbol$version]($style) | "
 
 [fossil_branch]
-symbol = 'fossil '
-format = '[$symbol$branch]($style) | '
+symbol = "fossil "
+format = "[$symbol$branch]($style) | "
 
 [gcloud]
-symbol = 'gcloud '
+symbol = "gcloud "
 format = '[$symbol$account(@$domain)(\($region\))]($style) | '
 
 [git_branch]
 symbol = "git "
-format = '[$symbol$branch]($style) | '
+format = "[$symbol$branch]($style) | "
 
 [git_commit]
 tag_symbol = " tag "
 
 [git_status]
 disabled = true
-format = '[$all_status$ahead_behind]($style) | '
+format = "[$all_status$ahead_behind]($style) | "
 
 [golang]
-symbol = 'golang '
-format = '[$symbol$version]($style) | '
+symbol = "golang "
+format = "[$symbol$version]($style) | "
 
 [gradle]
-symbol = 'gradle '
-format = '[$symbol$version]($style) | '
+symbol = "gradle "
+format = "[$symbol$version]($style) | "
 
 [guix_shell]
-symbol = 'guix '
-format = '[$symbol]($style) | '
+symbol = "guix "
+format = "[$symbol]($style) | "
 
 [haskell]
-symbol = 'haskell '
-format = '[$symbol$version]($style) | '
+symbol = "haskell "
+format = "[$symbol$version]($style) | "
 
 [haxe]
-symbol = 'haxe '
-format = '[$symbol$version]($style) | '
+symbol = "haxe "
+format = "[$symbol$version]($style) | "
 
 [helm]
-symbol = 'helm '
-format = '[$symbol$version]($style) | '
+symbol = "helm "
+format = "[$symbol$version]($style) | "
 
 [hg_branch]
-symbol = 'hg '
-format = '[$symbol$branch]($style) | '
+symbol = "hg "
+format = "[$symbol$branch]($style) | "
 
 [hostname]
 ssh_only = false
-format = '[$hostname](bold red) '
+format = "[$hostname](bold red) "
 
 [java]
-symbol = 'java '
-format = '[$symbol$version]($style) | '
+symbol = "java "
+format = "[$symbol$version]($style) | "
 
 [julia]
-symbol = 'julia '
-format = '[$symbol$version]($style) | '
+symbol = "julia "
+format = "[$symbol$version]($style) | "
 
 [kotlin]
-symbol = 'kotlin '
-format = '[$symbol$version]($style) | '
+symbol = "kotlin "
+format = "[$symbol$version]($style) | "
 
 [kubernetes]
-symbol = 'k8s '
+symbol = "k8s "
 format = '[$symbol$context( \($namespace\))]($style) | '
 
 [lua]
-symbol = 'lua '
-format = '[$symbol$version]($style) | '
+symbol = "lua "
+format = "[$symbol$version]($style) | "
 
 [memory_usage]
-symbol = 'memory '
-format = '|$symbol[$ram( | $swap)]($style) | '
+symbol = "memory "
+format = "|$symbol[$ram( | $swap)]($style) | "
 
 [meson]
-symbol = 'meson '
-format = '[$symbol$project]($style) | '
+symbol = "meson "
+format = "[$symbol$project]($style) | "
 
 [mise]
 disabled = true
-symbol = 'mise '
-format = '[$symbol$health]($style) | '
+symbol = "mise "
+format = "[$symbol$health]($style) | "
 
 [mojo]
-symbol = 'mojo '
-format = '[$symbol$version]($style) | '
+symbol = "mojo "
+format = "[$symbol$version]($style) | "
 
 [nim]
-symbol = 'nim '
-format = '[$symbol$version]($style) | '
+symbol = "nim "
+format = "[$symbol$version]($style) | "
 
 [nix_shell]
-symbol = 'nix '
+symbol = "nix "
 format = '[$symbol$state( \($name\))]($style) | '
 
 [nodejs]
-symbol = 'node '
-format = '[$symbol$version]($style) | '
-version_format = '${major}.${minor}'
+symbol = "node "
+format = "[$symbol$version]($style) | "
+version_format = "${major}.${minor}"
 detect_extensions = []
 detect_files = []
-detect_folders = ['node_modules']
+detect_folders = ["node_modules"]
 
 [ocaml]
-symbol = 'ocaml '
+symbol = "ocaml "
 format = '[$symbol$version(\($switch_indicator$switch_name\))]($style) | '
 
 [opa]
-symbol = 'opa '
-format = '[$symbol$version]($style) | '
+symbol = "opa "
+format = "[$symbol$version]($style) | "
 
 [os]
-format = '[$symbol]($style) | '
+format = "[$symbol]($style) | "
 
 [os.symbols]
 AIX = "aix "
@@ -249,103 +249,103 @@ Void = "void "
 Windows = "win "
 
 [openstack]
-symbol = 'openstack '
+symbol = "openstack "
 format = '[$symbol$cloud(\($project\))]($style) | '
 
 [package]
 disabled = true
-symbol = 'package '
-format = '[$symbol$version]($style) | '
+symbol = "package "
+format = "[$symbol$version]($style) | "
 
 [perl]
-symbol = 'perl '
-format = '[$symbol$version]($style) | '
+symbol = "perl "
+format = "[$symbol$version]($style) | "
 
 [php]
-symbol = 'php '
-format = '[$symbol$version]($style) | '
+symbol = "php "
+format = "[$symbol$version]($style) | "
 
 [pijul_channel]
-symbol = 'pijul '
-format = '[$symbol$channel]($style) | '
+symbol = "pijul "
+format = "[$symbol$channel]($style) | "
 
 [pixi]
-detect_files = ['pixi.toml']
+detect_files = ["pixi.toml"]
 detect_folders = []
-style = 'bold blue'
-symbol = 'pixi '
-format = '[$symbol($environment)]($style) | '
+style = "bold blue"
+symbol = "pixi "
+format = "[$symbol($environment)]($style) | "
 
 [pulumi]
-symbol = 'pulumi '
-format = '[$symbol$stack]($style) | '
+symbol = "pulumi "
+format = "[$symbol$stack]($style) | "
 
 [purescript]
-symbol = 'purescript '
-format = '[$symbol$version]($style) | '
+symbol = "purescript "
+format = "[$symbol$version]($style) | "
 
 [python]
-symbol = 'py '
-format = '[$symbol$version]($style) | '
-version_format = '${major}.${minor}'
+symbol = "py "
+format = "[$symbol$version]($style) | "
+version_format = "${major}.${minor}"
 detect_extensions = []
 detect_files = []
 
 [raku]
-symbol = 'raku '
-format = '[$symbol($version-$vm_version)]($style) | '
+symbol = "raku "
+format = "[$symbol($version-$vm_version)]($style) | "
 
 [red]
-symbol = 'red '
-format = '[$symbol$version]($style) | '
+symbol = "red "
+format = "[$symbol$version]($style) | "
 
 [ruby]
-symbol = 'ruby '
-format = '[$symbol$version]($style) | '
+symbol = "ruby "
+format = "[$symbol$version]($style) | "
 
 [rust]
-symbol = 'rust '
-format = '[$symbol$version]($style) | '
+symbol = "rust "
+format = "[$symbol$version]($style) | "
 
 [scala]
-symbol = 'scala '
-format = '[$symbol$version]($style) | '
+symbol = "scala "
+format = "[$symbol$version]($style) | "
 
 [spack]
-symbol = 'spack '
-format = '[$symbol$environment]($style) | '
+symbol = "spack "
+format = "[$symbol$environment]($style) | "
 
 [sudo]
-symbol = 'sudo '
-format = '[as $symbol]($style) | '
+symbol = "sudo "
+format = "[as $symbol]($style) | "
 
 [swift]
-symbol = 'swift '
-format = '[$symbol$version]($style) | '
+symbol = "swift "
+format = "[$symbol$version]($style) | "
 
 [terraform]
-symbol = 'terraform '
-format = '[$symbol$workspace]($style) | '
+symbol = "terraform "
+format = "[$symbol$workspace]($style) | "
 
 [time]
-format = '[$time]($style) | '
+format = "[$time]($style) | "
 
 [username]
 disabled = true
-format = '[$user]($style) | '
+format = "[$user]($style) | "
 
 [vagrant]
-symbol = 'vagrant '
-format = '[$symbol$version]($style) | '
+symbol = "vagrant "
+format = "[$symbol$version]($style) | "
 
 [vlang]
-symbol = 'vlang '
-format = '[$symbol$version]($style) | '
+symbol = "vlang "
+format = "[$symbol$version]($style) | "
 
 [zig]
-symbol = 'zig '
-format = '[$symbol$version]($style) | '
+symbol = "zig "
+format = "[$symbol$version]($style) | "
 
 [solidity]
-symbol = 'solidity '
-format = '[$symbol$version]($style) | '
+symbol = "solidity "
+format = "[$symbol$version]($style) | "

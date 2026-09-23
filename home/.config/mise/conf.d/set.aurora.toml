@@ -1,3 +1,6 @@
+[settings]
+minimum_release_age = "0h"
+
 [env]
 # starship won't expand "~/.config..." for some reason
 STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"

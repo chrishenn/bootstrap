@@ -34,7 +34,7 @@ run = "hk check --all"
 dir = "{{cwd}}"
 
 [tasks.sync]
-alias = 's'
+alias = "s"
 description = "git: sync local changes to remote"
 usage = 'arg "<msg>" default="sync"'
 run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'

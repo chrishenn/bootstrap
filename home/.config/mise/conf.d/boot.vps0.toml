@@ -20,15 +20,15 @@ login_shell = "/bin/bash"
 system = true
 gid = 1000
 
+[bootstrap.groups.chris]
+system = true
+gid = 1001
+
 [bootstrap.users.ubuntu]
 system = true
 group = "ubuntu"
 groups = ["adm", "cdrom", "sudo", "dip", "lxd"]
 uid = 1000
-
-[bootstrap.groups.chris]
-system = true
-gid = 1001
 
 [bootstrap.users.chris]
 system = true

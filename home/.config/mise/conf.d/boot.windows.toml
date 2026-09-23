@@ -44,8 +44,8 @@ run = 'pwsh -c "& ~/.config/mise/conf.d/sshd.ps1"'
 
 "scoop:chris/a4dj" = "latest"
 "scoop:chris/amesettings" = "latest"
-#"scoop:chris/audiorelay" = "latest"
-#"scoop:chris/docker" = "latest"
+# "scoop:chris/audiorelay" = "latest"
+# "scoop:chris/docker" = "latest"
 "scoop:chris/chplib" = "latest"
 "scoop:chris/epatcher" = "latest"
 "scoop:chris/everything" = "latest"
