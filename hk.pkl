@@ -7,8 +7,8 @@ steps {
   ["rumdl_format"] = Builtins.rumdl_format
   ["rumdl"] = Builtins.rumdl
   ["ryl_markdown"] = Builtins.ryl_markdown
-  ["tombi_format"] = (Builtins.tombi_format) { stomp = false }
-  ["tombi"] = Builtins.tombi
+  ["tombi_format"] = Builtins.tombi_format
+  //   ["tombi"] = Builtins.tombi
 
   ["shfmt"] = Builtins.shfmt
   ["shellharden"] = Builtins.shellharden
