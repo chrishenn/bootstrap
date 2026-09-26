@@ -1,3 +1,5 @@
+# mise bootstrap won't write to non-home files directly - workaround with this script
+
 $cfgf = "C:/ProgramData/ssh/sshd_config"
 $cfg = '
 AuthorizedKeysFile .ssh/authorized_keys

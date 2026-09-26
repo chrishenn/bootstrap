@@ -10,6 +10,10 @@ Problem:
 
 Solution:
 
+- mise bootstrap added a 'permissions' key for dotfiles files
+
+Solution (deprecated):
+
 - use mise.bootstrap.files to apply secrets with correct permissions
 
 ```toml
