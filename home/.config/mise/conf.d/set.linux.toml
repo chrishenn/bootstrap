@@ -39,3 +39,8 @@ description = "git: sync local changes to remote"
 usage = 'arg "<msg>" default="sync"'
 run = 'git add -A && git commit -am "{{usage.msg}}" && git pull && git push'
 dir = "{{cwd}}"
+
+[tasks.ss]
+description = "sync fnox secrets to age-encrypted plaintext local file"
+run = "fnox sync --provider age --local-file -f"
+dir = "{{cwd}}"

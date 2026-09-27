@@ -1,0 +1,14 @@
+[bootstrap.files."/etc/sysctl.d/99-keepalived.conf"]
+content = """
+net.ipv4.ip_nonlocal_bind=1
+"""
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.hooks.final]
+run = "sudo sysctl -p /etc/sysctl.d/99-keepalived.conf"
+
+# todo
+# add "ip_vs" to
+# /etc/modules-load.d/modules.conf
