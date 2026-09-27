@@ -1,0 +1,41 @@
+[bootstrap.files."/etc/systemd/system/newt.service"]
+content = """
+[Unit]
+Description=Newt
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+EnvironmentFile=/etc/newt/newt.env
+ExecStart=/usr/local/bin/newt
+Restart=always
+RestartSec=2
+UMask=0077
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+"""
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.files."/etc/newt/newt.env"]
+content = """
+NEWT_ID={{ env.NEWT_ID }}
+NEWT_SECRET={{ env.NEWT_SECRET }}
+PANGOLIN_ENDPOINT={{ env.PANGOLIN_ENDPOINT }}
+"""
+template = true
+owner = "root"
+group = "root"
+mode = "0600"
+notify = ["newt"]
+
+[bootstrap.services.newt]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"
