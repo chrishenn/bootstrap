@@ -40,7 +40,7 @@ alias dlogs='docker compose logs'
 alias t='talosctl'
 alias pup='pulumi up -y'
 
-alias ro='rpm-ostree'
+alias ro='sudo rpm-ostree'
 
 # todo: for these below, allow overrides for env-vars and pat token paths
 
