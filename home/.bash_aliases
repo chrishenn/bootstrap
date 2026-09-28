@@ -41,6 +41,7 @@ alias t='talosctl'
 alias pup='pulumi up -y'
 
 alias ro='sudo rpm-ostree'
+alias rol='sudo rpm-ostree apply-live'
 
 # todo: for these below, allow overrides for env-vars and pat token paths
 
