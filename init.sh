@@ -20,15 +20,8 @@ if [[ -z "${GITHUB_TOKEN:-}" ]]; then
 	fi
 fi
 
-if [[ -z "${DOT_ENV:-}" ]]; then
-	tee ~/.config/mise/miserc.toml >/dev/null <<-END
-		env_conf_d = true
-		auto_env = true
-	END
-else
-	tee ~/.config/mise/miserc.toml >/dev/null <<-END
-		env_conf_d = true
-		auto_env = true
+if [[ ! -z "${DOT_ENV:-}" ]]; then
+	tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
 		env = $DOT_ENV
 	END
 fi

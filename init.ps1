@@ -83,13 +83,7 @@ function init (
         $profs = $profs | select -unique | % { "`"" + $_ + "`"" }
         $profs = $profs -join (", ")
     }
-
-    $cfg = "
-env_conf_d = true
-auto_env = true
-"
-    $cfg = $cfg + "env = [$profs]"
-    set-content ~/.config/mise/miserc.toml $cfg
+    set-content ~/.config/mise/miserc.local.toml "env = [$profs]"
 
     mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
 }
