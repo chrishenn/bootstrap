@@ -30,6 +30,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/tealdeer/config.toml" = {}
 "~/.config/topgrade/topgrade.toml" = {}
 "~/.config/wezterm/wezterm.lua" = {}
+"~/.config/yazi/yazi.toml" = {}
 "~/.config/zed/settings.json" = {}
 "~/.config/zellij/config.kdl" = {}
 "~/.gitconfig" = { source = "~/Projects/bootstrap/home/.gitconfig.tera", mode = "template" }
