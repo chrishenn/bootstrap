@@ -62,7 +62,7 @@ notify = ["docker"]
 
 [bootstrap.files."/etc/ssh/sshd_config"]
 content = """
-AuthorizedKeysFile      .ssh/authorized_keys
+AuthorizedKeysFile .ssh/authorized_keys
 Include /etc/ssh/sshd_config.d/*.conf
 PasswordAuthentication no
 PermitRootLogin no
@@ -107,9 +107,11 @@ smb = { state = "running", enabled = true, on_change = "reload_or_restart" }
 [bootstrap.hooks.final]
 run = """
 sudo sysctl -q --system
-sudo systemctl restart sshd
-echo '${PASS}' > sudo smbpasswd -a chris -s
-sudo smbpasswd -e chris
-sudo systemctl restart smb
+
+#echo '${PASS}' > sudo smbpasswd -a chris -s
+#sudo smbpasswd -e chris
+#sudo systemctl restart smb
+
 sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml --quiet
+sudo systemctl restart sshd
 """
