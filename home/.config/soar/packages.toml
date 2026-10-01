@@ -62,17 +62,7 @@ github = "mountain-loop/yaak"
 asset_pattern = "yaak_*_amd64.AppImage"
 version = "2026.8.1"
 
-[packages.stoat]
-github = "stoatchat/for-desktop"
-asset_pattern = "Stoat-*-anylinux-x86_64.AppImage"
-version = "*"
-
-[packages.avia]
-github = "AvaLilac/for-desktop"
-asset_pattern = "AviaClient-linux-x64.zip"
-version = "*"
-
 [packages.jellybox]
 github = "avdept/jellyboxplayer"
 asset_pattern = "jellybox-linux-x86_64.AppImage"
-version = "2.9.0"
+version = "2.9.1"
