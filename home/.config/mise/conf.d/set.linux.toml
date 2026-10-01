@@ -17,6 +17,7 @@ rg = { version = "latest", lazy = true }
 sd = { version = "latest", lazy = true }
 starship = { version = "latest", lazy = true }
 television = { version = "latest", lazy = true }
+topgrade = { version = "latest", lazy = true }
 yazi = { version = "latest", lazy = true }
 yq = { version = "latest", lazy = true }
 zellij = { version = "latest", lazy = true }
