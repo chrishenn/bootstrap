@@ -93,11 +93,13 @@ alias = "p"
 run = "mise bootstrap packages"
 
 [tools]
-"aqua:owenlamont/ryl" = { version = "latest", lazy = true }
+"aqua:owenlamont/ryl" = { version = "latest", lazy = true, lazy_bins = "ryl" }
 hk = { version = "latest", lazy = true }
+node = "latest"
 oxfmt = { version = "latest", lazy = true }
 pkl = { version = "latest", lazy = true }
 rumdl = { version = "latest", lazy = true }
+shellcheck = "latest"
 shellharden = { version = "latest", lazy = true }
 shfmt = { version = "latest", lazy = true }
 tombi = { version = "latest", lazy = true }

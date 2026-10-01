@@ -3,6 +3,7 @@ STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"
 
 [tools]
 "aqua:Canop/dysk" = "latest"
+7z = { version = "latest", lazy = true }
 bat = { version = "latest", lazy = true }
 bottom = { version = "latest", lazy = true }
 dust = { version = "latest", lazy = true }
@@ -10,9 +11,7 @@ eza = { version = "latest", lazy = true }
 fd = { version = "latest", lazy = true }
 fnox = { version = "latest", lazy = true }
 gh = { version = "latest", lazy = true }
-hk = { version = "latest", lazy = true }
 jq = { version = "latest", lazy = true }
-just = { version = "latest", lazy = true }
 op = { version = "latest", lazy = true }
 rg = { version = "latest", lazy = true }
 sd = { version = "latest", lazy = true }
@@ -22,7 +21,6 @@ yazi = { version = "latest", lazy = true }
 yq = { version = "latest", lazy = true }
 zellij = { version = "latest", lazy = true }
 zoxide = { version = "latest", lazy = true }
-7z = { version = "latest", lazy = true }
 
 [tasks.fix]
 alias = "f"
