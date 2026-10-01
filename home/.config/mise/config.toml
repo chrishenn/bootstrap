@@ -3,7 +3,7 @@ auto_update = true
 trusted_config_paths = ["/"]
 
 experimental = true
-registry_floating = true
+#registry_floating = true
 
 dotfiles.root = "~/Projects/bootstrap/home"
 dotfiles.default_mode = "copy"
