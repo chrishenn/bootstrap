@@ -1,3 +1,7 @@
+[env]
+# starship won't expand "~/.config..." for some reason
+STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"
+
 [tools]
 "aqua:Canop/dysk" = "latest"
 bat = { version = "latest", lazy = true }

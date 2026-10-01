@@ -14,6 +14,9 @@ Can be used for linux desktop/server, or in conjunction with my other windows bo
 ## usage
 
 ```bash
+# force-overwrite dotfiles during bootstrap
+curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -s -- --force-dotfiles
+
 # profiles 'linux, aurora' active
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
 export DOT_ENV='["aurora"]'
