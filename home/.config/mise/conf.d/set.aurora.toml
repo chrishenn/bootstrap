@@ -1,8 +1,9 @@
 [settings]
 minimum_release_age = "0h"
+self_update.minimum_release_age = "0h"
 
 [env]
-MISE_JOBS = 8
+MISE_JOBS = 16
 
 [tools]
 semver = "latest"
