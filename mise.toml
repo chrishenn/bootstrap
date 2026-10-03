@@ -55,6 +55,10 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.ssh/id_ed25519" = { mode = "template", permissions = "0600", source = "~/Projects/bootstrap/home/.ssh/id_ed25519.tera" }
 "~/.ssh/known_hosts" = { mode = "template", permissions = "0600", source = "~/Projects/bootstrap/home/.ssh/known_hosts.tera" }
 
+[dotfiles."~/.config/rc/config.toml"]
+mode = "template"
+source = "~/Projects/bootstrap/home/.config/rc/config.toml"
+
 [dotfiles.scoop]
 source = "~/Projects/bootstrap/home/.config/scoop/config.json"
 mode = "template"
@@ -99,3 +103,4 @@ shellharden = { lazy = true, version = "latest" }
 shfmt = { lazy = true, version = "latest" }
 taplo = { lazy = true, version = "latest" }
 tombi = { lazy = true, version = "latest" }
+"github:rustfs/cli" = { lazy = true, lazy_bins = ["rc"], version = "latest" }

@@ -67,7 +67,7 @@ Include /etc/ssh/sshd_config.d/*.conf
 PasswordAuthentication no
 PermitRootLogin no
 Port 2200
-Subsystem       sftp    /usr/libexec/openssh/sftp-server
+Subsystem sftp /usr/libexec/openssh/sftp-server
 """
 owner = "root"
 group = "root"
@@ -97,7 +97,7 @@ notify = ["smb"]
 "suspend.target" = { enabled = false, masked = true, state = "stopped" }
 "hibernate.target" = { enabled = false, masked = true, state = "stopped" }
 "hybrid-sleep.target" = { enabled = false, masked = true, state = "stopped" }
-sshd = { enabled = true, on_change = "none", state = "running" }
+sshd = { enabled = true, on_change = "reload_or_restart", state = "running" }
 docker = { enabled = true, on_change = "reload_or_restart", state = "running" }
 smb = { enabled = true, on_change = "reload_or_restart", state = "running" }
 
@@ -107,11 +107,10 @@ smb = { enabled = true, on_change = "reload_or_restart", state = "running" }
 [bootstrap.hooks.final]
 run = """
 sudo sysctl -q --system
-
-#echo '${PASS}' > sudo smbpasswd -a chris -s
-#sudo smbpasswd -e chris
-#sudo systemctl restart smb
-
 sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml --quiet
-sudo systemctl restart sshd
+
+# sudo smbpasswd -e chris
+# pass=$(op read op://homelab/chris/password)
+# echo -e "${pass}\n${pass}" | sudo smbpasswd -s chris
+# sudo systemctl restart smb
 """
