@@ -2,26 +2,26 @@
 STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"
 
 [tools]
-"aqua:Canop/dysk" = "latest"
-7z = { version = "latest", lazy = true }
-bat = { version = "latest", lazy = true }
-bottom = { version = "latest", lazy = true }
-dust = { version = "latest", lazy = true }
-eza = { version = "latest", lazy = true }
-fd = { version = "latest", lazy = true }
-fnox = { version = "latest", lazy = true }
-gh = { version = "latest", lazy = true }
-jq = { version = "latest", lazy = true }
-op = { version = "latest", lazy = true }
-rg = { version = "latest", lazy = true }
-sd = { version = "latest", lazy = true }
-starship = { version = "latest", lazy = true }
-television = { version = "latest", lazy = true }
-topgrade = { version = "latest", lazy = true }
-yazi = { version = "latest", lazy = true }
-yq = { version = "latest", lazy = true }
-zellij = { version = "latest", lazy = true }
-zoxide = { version = "latest", lazy = true }
+"aqua:Canop/dysk" = { lazy = true, lazy_bins = ["dysk"], version = "latest" }
+7z = { lazy = true, version = "latest" }
+bat = { lazy = true, version = "latest" }
+bottom = { lazy = true, version = "latest" }
+dust = { lazy = true, version = "latest" }
+eza = { lazy = true, version = "latest" }
+fd = { lazy = true, version = "latest" }
+fnox = { lazy = true, version = "latest" }
+gh = { lazy = true, version = "latest" }
+jq = { lazy = true, version = "latest" }
+op = { lazy = true, version = "latest" }
+rg = { lazy = true, version = "latest" }
+sd = { lazy = true, version = "latest" }
+starship = { lazy = true, version = "latest" }
+television = { lazy = true, version = "latest" }
+topgrade = { lazy = true, version = "latest" }
+yazi = { lazy = true, version = "latest" }
+yq = { lazy = true, version = "latest" }
+zellij = { lazy = true, version = "latest" }
+zoxide = { lazy = true, version = "latest" }
 
 [tasks.fix]
 alias = "f"

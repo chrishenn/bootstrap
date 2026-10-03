@@ -27,13 +27,13 @@ gid = 1001
 [bootstrap.users.ubuntu]
 system = true
 group = "ubuntu"
-groups = ["adm", "cdrom", "sudo", "dip", "lxd"]
+groups = ["adm", "cdrom", "dip", "lxd", "sudo"]
 uid = 1000
 
 [bootstrap.users.chris]
 system = true
 group = "chris"
-groups = ["sudo", "users", "docker"]
+groups = ["docker", "sudo", "users"]
 uid = 1001
 
 [bootstrap.linux.firewall]

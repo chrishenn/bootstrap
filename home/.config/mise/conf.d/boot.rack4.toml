@@ -14,7 +14,7 @@ gid = 1000
 [bootstrap.users.chris]
 system = true
 group = "chris"
-groups = ["wheel", "docker", "incus-admin", "libvirt"]
+groups = ["docker", "incus-admin", "libvirt", "wheel"]
 uid = 1000
 
 [bootstrap.files."/etc/sysctl.d/99-custom.conf"]
@@ -93,13 +93,13 @@ mode = "0644"
 notify = ["smb"]
 
 [bootstrap.services]
-"sleep.target" = { state = "stopped", enabled = false, masked = true }
-"suspend.target" = { state = "stopped", enabled = false, masked = true }
-"hibernate.target" = { state = "stopped", enabled = false, masked = true }
-"hybrid-sleep.target" = { state = "stopped", enabled = false, masked = true }
-sshd = { state = "running", enabled = true, on_change = "none" }
-docker = { state = "running", enabled = true, on_change = "reload_or_restart" }
-smb = { state = "running", enabled = true, on_change = "reload_or_restart" }
+"sleep.target" = { enabled = false, masked = true, state = "stopped" }
+"suspend.target" = { enabled = false, masked = true, state = "stopped" }
+"hibernate.target" = { enabled = false, masked = true, state = "stopped" }
+"hybrid-sleep.target" = { enabled = false, masked = true, state = "stopped" }
+sshd = { enabled = true, on_change = "none", state = "running" }
+docker = { enabled = true, on_change = "reload_or_restart", state = "running" }
+smb = { enabled = true, on_change = "reload_or_restart", state = "running" }
 
 [bootstrap.repos]
 "/var/home/chris/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }

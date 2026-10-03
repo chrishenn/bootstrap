@@ -1,6 +1,6 @@
 [files]
 yaml = [""]
-markdown = ["*.md", "*.markdown", "*.qmd", "*.Rmd", "*.mdx"]
+markdown = ["*.Rmd", "*.markdown", "*.md", "*.mdx", "*.qmd"]
 
 [markdown]
 front-matter = true

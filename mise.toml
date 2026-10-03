@@ -33,7 +33,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/yazi/yazi.toml" = {}
 "~/.config/zed/settings.json" = {}
 "~/.config/zellij/config.kdl" = {}
-"~/.gitconfig" = { source = "~/Projects/bootstrap/home/.gitconfig.tera", mode = "template" }
+"~/.gitconfig" = { mode = "template", source = "~/Projects/bootstrap/home/.gitconfig.tera" }
 "~/.hushlogin" = {}
 "~/.local/share/color-schemes/UtterlySweet.colors" = {}
 "~/.local/share/custom_icons" = {}
@@ -50,10 +50,10 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/gclone.sh" = {}
 "~/justfile" = {}
 
-"~/.ssh/authorized_keys" = { source = "~/Projects/bootstrap/home/.ssh/authorized_keys.tera", mode = "template", permissions = "0600" }
-"~/.ssh/id_ed25519.pub" = { source = "~/Projects/bootstrap/home/.ssh/id_ed25519.pub.tera", mode = "template", permissions = "0644" }
-"~/.ssh/id_ed25519" = { source = "~/Projects/bootstrap/home/.ssh/id_ed25519.tera", mode = "template", permissions = "0600" }
-"~/.ssh/known_hosts" = { source = "~/Projects/bootstrap/home/.ssh/known_hosts.tera", mode = "template", permissions = "0600" }
+"~/.ssh/authorized_keys" = { mode = "template", permissions = "0600", source = "~/Projects/bootstrap/home/.ssh/authorized_keys.tera" }
+"~/.ssh/id_ed25519.pub" = { mode = "template", permissions = "0644", source = "~/Projects/bootstrap/home/.ssh/id_ed25519.pub.tera" }
+"~/.ssh/id_ed25519" = { mode = "template", permissions = "0600", source = "~/Projects/bootstrap/home/.ssh/id_ed25519.tera" }
+"~/.ssh/known_hosts" = { mode = "template", permissions = "0600", source = "~/Projects/bootstrap/home/.ssh/known_hosts.tera" }
 
 [dotfiles.scoop]
 source = "~/Projects/bootstrap/home/.config/scoop/config.json"
@@ -62,9 +62,7 @@ variants = [{ os = "windows", target = "~/.config/scoop/config.json" }]
 
 [dotfiles.pwsh]
 source = "~/Projects/bootstrap/home/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
-variants = [
-  { os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" },
-]
+variants = [{ os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" }]
 
 [dotfiles.mpv]
 source = "~/Projects/bootstrap/home/.config/mpv/mpv.conf"
@@ -75,10 +73,7 @@ variants = [
 
 [dotfiles.gh]
 source = "~/Projects/bootstrap/home/.config/gh"
-variants = [
-  { os = "linux", target = "~/.config/gh" },
-  { os = "windows", target = "~/AppData/Roaming/Github CLI/" },
-]
+variants = [{ os = "linux", target = "~/.config/gh" }, { os = "windows", target = "~/AppData/Roaming/Github CLI/" }]
 
 [tasks.apply]
 alias = "a"
@@ -93,13 +88,14 @@ alias = "p"
 run = "mise bootstrap packages"
 
 [tools]
-"aqua:owenlamont/ryl" = { version = "latest", lazy = true, lazy_bins = "ryl" }
-hk = { version = "latest", lazy = true }
+"aqua:owenlamont/ryl" = { lazy = true, lazy_bins = ["ryl"], version = "latest" }
+hk = { lazy = true, version = "latest" }
 node = "latest"
-oxfmt = { version = "latest", lazy = true }
-pkl = { version = "latest", lazy = true }
-rumdl = { version = "latest", lazy = true }
+oxfmt = { lazy = true, version = "latest" }
+pkl = { lazy = true, version = "latest" }
+rumdl = { lazy = true, version = "latest" }
 shellcheck = "latest"
-shellharden = { version = "latest", lazy = true }
-shfmt = { version = "latest", lazy = true }
-tombi = { version = "latest", lazy = true }
+shellharden = { lazy = true, version = "latest" }
+shfmt = { lazy = true, version = "latest" }
+taplo = { lazy = true, version = "latest" }
+tombi = { lazy = true, version = "latest" }
