@@ -22,7 +22,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
 "~/.config/mbx/config.toml" = {}
-"~/.config/mise/" = { mode = "symlink" }
+"~/.config/mise/" = { mode = "symlink-each" }
 "~/.config/no-show-user-motd" = {}
 "~/.config/nushell/config.nu" = {}
 "~/.config/soar" = { mode = "symlink" }
