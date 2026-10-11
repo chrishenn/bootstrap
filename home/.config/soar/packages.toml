@@ -16,7 +16,7 @@ btop = "*"
 [packages.signal]
 url = "https://updates.signal.org/desktop/signal-desktop.AppImage"
 version_command = "curl -qfsSL https://api.github.com/repos/signalapp/signal-desktop/releases/latest | jq -r '.tag_name'"
-version = "8.29.0"
+version = "8.30.0"
 
 # version_command = "curl -qfsSLI https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/appimage | rg 'fluxer-stable-(.*)-x86_64.AppImage' -or '$1'"
 [packages.fluxer]
@@ -50,7 +50,7 @@ version = "2.9.6-5@2026-09-21_1789997558"
 [packages.handy]
 github = "cjpais/handy"
 asset_pattern = "Handy_*_amd64.AppImage"
-version = "*"
+version = "0.9.8"
 
 [packages.caligula]
 github = "ifd3f/caligula"
