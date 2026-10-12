@@ -18,7 +18,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/bottom/bottom.toml" = {}
 "~/.config/dolphinrc" = {}
 "~/.config/fnox/config.toml" = {}
-"~/.config/ghostty" = {}
+"~/.config/ghostty" = { mode = "symlink" }
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
 "~/.config/mbx/config.toml" = {}

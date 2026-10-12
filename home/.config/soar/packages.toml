@@ -22,7 +22,7 @@ version = "8.30.0"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.1009.45608"
+version = "2026.1012.194217"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
@@ -60,7 +60,7 @@ version = "*"
 [packages.yaak]
 github = "mountain-loop/yaak"
 asset_pattern = "yaak_*_amd64.AppImage"
-version = "2026.8.1"
+version = "2026.9.0"
 
 [packages.jellybox]
 github = "avdept/jellyboxplayer"
