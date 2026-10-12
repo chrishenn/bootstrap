@@ -22,7 +22,7 @@ version = "8.30.0"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.927.142044"
+version = "2026.1009.45608"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
