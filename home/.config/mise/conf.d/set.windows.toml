@@ -1,3 +1,7 @@
+[settings]
+minimum_release_age = "0h"
+self_update.minimum_release_age = "0h"
+
 [env]
 # fnox can't expand paths with ~ as home on windows, and tera templates can't expand ~ into C:/users/chris/
 FNOX_AGE_KEY_FILE = "C:/users/chris/.ssh/id_ed25519"
