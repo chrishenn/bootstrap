@@ -1,6 +1,9 @@
 [env]
 STARSHIP_CONFIG = "/home/chris/.config/starship/starship.toml"
 
+[bootstrap.services.mise-tool-update]
+builtin = "tool-update"
+
 [tools]
 "aqua:Canop/dysk" = { lazy = true, lazy_bins = ["dysk"], version = "latest" }
 7z = { lazy = true, version = "latest" }

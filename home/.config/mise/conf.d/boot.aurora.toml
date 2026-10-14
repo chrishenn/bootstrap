@@ -1,5 +1,5 @@
-[bootstrap.plugins]
-rpm-ostree = "https://github.com/ascarter/mise-rpm-ostree"
+[settings]
+system_packages.ostree = "layer"
 
 [bootstrap.groups.chris]
 system = true
@@ -13,6 +13,11 @@ uid = 1000
 
 [bootstrap.brew]
 adopt = true
+
+[bootstrap.brew.taps]
+"ublue-os/tap" = "https://github.com/ublue-os/homebrew-tap.git"
+"stalwartlabs/tap" = "https://github.com/stalwartlabs/homebrew-tap.git"
+"suzuki-shunsuke/ghtkn" = "https://github.com/suzuki-shunsuke/homebrew-ghtkn.git"
 
 [bootstrap.packages]
 # only "tapped casks" with no preflight_ or postflight_steps are supported by mise
@@ -49,6 +54,7 @@ adopt = true
 "flatpak:com.valvesoftware.Steam" = "latest"
 "flatpak:com.obsproject.Studio" = "latest"
 "flatpak:com.obsproject.Studio.Plugin.DroidCam" = "latest"
+# heic extension never reports installed, so reinstalls on every 'packages apply'. annoying
 "flatpak:org.gnome.Loupe" = "latest"
 #"flatpak:org.gnome.Loupe.HEIC" = "latest"
 "flatpak:be.alexandervanhee.gradia" = "latest"
@@ -57,6 +63,7 @@ adopt = true
 "flatpak:io.github.getnf.embellish" = "latest"
 "flatpak:com.usebottles.bottles" = "latest"
 
+# declarative removal not supported for flatpak (yet)
 # "flatpak:org.gnome.DejaDup" = { state = "absent" }
 # "flatpak:org.mozilla.Thunderbird" = { state = "absent" }
 # "flatpak:org.mozilla.firefox" = { state = "absent" }

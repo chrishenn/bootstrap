@@ -1,5 +1,6 @@
 [settings]
 auto_update = true
+tool_update.global_auto = "12h"
 trusted_config_paths = ["/"]
 
 experimental = true

@@ -10,7 +10,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 
 [dotfiles]
 "~/.bash_aliases" = { mode = "symlink", variants = [{ os = "linux" }] }
-"~/.bashrc" = { mode = "copy", variants = [{ os = "linux" }] }
+"~/.bashrc" = { mode = "symlink", variants = [{ os = "linux" }] }
 "~/.config/Code/User" = {}
 "~/.config/Kvantum" = {}
 "~/.config/Proton" = {}

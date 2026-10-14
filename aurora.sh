@@ -30,6 +30,7 @@ function installs {
 		org.kde.kclock \
 		org.fkoehler.KTailctl
 
+	# mise bootstrap packages: tapped casks do not support lifecycle hooks on linux
 	brew tap ublue-os/tap
 	brew install --cask \
 		zed-linux \

@@ -1,21 +1,13 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
 	*) return;;
 esac
 
-unset SSH_ASKPASS
-unset SSH_ASKPASS_REQUIRE
-
 # blesh
 #[[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --attach=none
 
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -25,12 +17,11 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
+# If set, the pattern "**" used in a pathname expansion context will match all files and zero or more directories and
+# subdirectories.
 shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -45,10 +36,6 @@ fi
 case "$TERM" in
 	xterm-color|*-256color) color_prompt=yes;;
 esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -78,7 +65,7 @@ xterm*|rxvt*)
 	;;
 esac
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -105,6 +92,12 @@ fi
 
 #### user settings
 export GTK_MENU_BAR_ACCEL=""
+unset SSH_ASKPASS
+unset SSH_ASKPASS_REQUIRE
+
+if test -f "/home/linuxbrew/.linuxbrew/bin/brew"; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 if test -d "$HOME/.local/bin"; then
 	export PATH="$PATH:$HOME/.local/bin"
@@ -131,10 +124,6 @@ if test -d "$HOME/.local/share/JetBrains/Toolbox/scripts"; then
 	export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 fi
 
-if test -f "/home/linuxbrew/.linuxbrew/bin/brew"; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 if test -d "$HOME/.local/share/soar/bin"; then
 	export PATH="$PATH:$HOME/.local/share/soar/bin"
 fi
@@ -144,10 +133,11 @@ if test -d "$HOME/.proto"; then
 	export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH";
 fi
 
-type -P op >&/dev/null && source <(op completion bash)
 type -P pixi >&/dev/null && eval "$(pixi completion --shell bash)"
 
+# ordering matters here: mise followed by bins that are installed by mise
 type -P mise >&/dev/null && eval "$(mise activate bash)"
 type -P zoxide >&/dev/null && eval "$(zoxide init bash)"
 type -P starship >&/dev/null && eval "$(starship init bash)"
 type -P fnox >&/dev/null && eval "$(fnox activate bash)"
+type -P op >&/dev/null && source <(op completion bash)
