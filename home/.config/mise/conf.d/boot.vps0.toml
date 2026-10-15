@@ -1,3 +1,5 @@
+# untested
+
 # todo: initial bootstrap should connect as root
 # todo: bootstrap creates the 'chris' user with no password - need to set after
 #   the included snippet to do this is untested

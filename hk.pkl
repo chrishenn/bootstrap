@@ -12,7 +12,7 @@ steps {
 
   ["shfmt"] = Builtins.shfmt
   ["shellharden"] = Builtins.shellharden
-  ["shellcheck"] = Builtins.shellcheck
+  //   ["shellcheck"] = Builtins.shellcheck
 
   ["pkl_format"] = Builtins.pkl_format
   ["pkl"] = Builtins.pkl

@@ -1,3 +1,6 @@
+[env]
+MISE_JOBS = 16
+
 [tools]
 semver = "latest"
 jless = "latest"
