@@ -1,29 +1,41 @@
 #!/bin/bash
 set -eu
 
-if [[ -z "${OP_SERVICE_ACCOUNT_TOKEN:-}" ]]; then
-	echo 'abort: OP_SERVICE_ACCOUNT_TOKEN not set'
-	exit 1
-fi
-if ! command -v mise >/dev/null; then
-	curl https://mise.run | sh
-	eval "$(~/.local/bin/mise activate bash)"
-fi
-
-mise use -g op
-
-if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-	"$(op read "op://homelab/github/token bash")"
-	if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-		echo 'abort: GITHUB_TOKEN not set and op read failed'
-		exit 1
+function credentials {
+	if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
+		export OP_SERVICE_ACCOUNT_TOKEN=$(op read op://homelab/svc/credential)
+		if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
+			echo "credentials error: OP_SERVICE_ACCOUNT_TOKEN not set"
+			exit 1
+		fi
 	fi
-fi
+	if [ "$GITHUB_TOKEN" = "" ]; then
+		export GITHUB_TOKEN=$(op read op://homelab/github/credential)
+		if [ "$GITHUB_TOKEN" = "" ]; then
+			echo "credentials error: GITHUB_TOKEN not set"
+			exit 1
+		fi
+	fi
+}
 
-if [[ ! -z "${DOT_ENV:-}" ]]; then
-	tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
-		env = $DOT_ENV
-	END
-fi
+function main {
+	if ! command -v mise >/dev/null; then
+		curl https://mise.run | sh
+	fi
 
-mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y "$@"
+	mise use -g op
+	eval "$(~/.local/bin/mise activate bash)"
+	credentials
+
+	if [ "$DOT_ENV" = "" ]; then
+		tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
+			env = $DOT_ENV
+		END
+	fi
+
+	repo="git@github.com:chrishenn/bootstrap.git"
+	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+}
+
+main "$@" && echo -e "\n SUCCESS" || echo -e "\n FAILED"
+exit $?

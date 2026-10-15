@@ -1,0 +1,5 @@
+[bootstrap.services]
+"sleep.target" = { enabled = false, masked = true, state = "stopped" }
+"suspend.target" = { enabled = false, masked = true, state = "stopped" }
+"hibernate.target" = { enabled = false, masked = true, state = "stopped" }
+"hybrid-sleep.target" = { enabled = false, masked = true, state = "stopped" }

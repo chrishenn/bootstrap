@@ -1,0 +1,12 @@
+# set custom sudo timeout
+
+[vars]
+# minutes
+sudo_timeout = 180
+
+[bootstrap.files."/etc/sudoers.d/sudo_timeout"]
+content = "Defaults timestamp_timeout={{ vars.sudo_timeout }}"
+template = true
+owner = "root"
+group = "root"
+mode = "0440"

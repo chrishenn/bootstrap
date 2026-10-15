@@ -74,33 +74,9 @@ group = "root"
 mode = "0644"
 notify = ["sshd"]
 
-[bootstrap.files."/etc/exports"]
-content = """
-/var/mnt/f 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash)
-/var/mnt/h 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash)
-/var/mnt/k 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash)
-/var/mnt/r 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash)
-"""
-owner = "root"
-group = "root"
-mode = "0644"
-
-[bootstrap.files."/etc/samba/smb.conf"]
-source = "smb.conf"
-owner = "root"
-group = "root"
-mode = "0644"
-notify = ["smb"]
-
 [bootstrap.services]
-"sleep.target" = { enabled = false, masked = true, state = "stopped" }
-"suspend.target" = { enabled = false, masked = true, state = "stopped" }
-"hibernate.target" = { enabled = false, masked = true, state = "stopped" }
-"hybrid-sleep.target" = { enabled = false, masked = true, state = "stopped" }
 sshd = { enabled = true, on_change = "reload_or_restart", state = "running" }
 docker = { enabled = true, on_change = "reload_or_restart", state = "running" }
-smb = { enabled = true, on_change = "reload_or_restart", state = "running" }
-nfs-server = { enabled = true, on_change = "reload_or_restart", state = "running" }
 
 [bootstrap.repos]
 "/var/home/chris/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }

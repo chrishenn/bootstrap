@@ -1,0 +1,14 @@
+[bootstrap.files."/etc/exports"]
+content = """
+/var/mnt/f 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash,mp)
+/var/mnt/h 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash,mp)
+/var/mnt/k 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash,mp)
+/var/mnt/r 192.168.1.0/24(rw,async,insecure,no_subtree_check,no_root_squash,mp)
+"""
+owner = "root"
+group = "root"
+mode = "0644"
+notify = ["nfs-server"]
+
+[bootstrap.services]
+nfs-server = { enabled = true, on_change = "reload_or_restart", state = "running" }

@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# fedora atomic init config
-
-# todo: write a vfox package or a homebrew cask for firefox
-# todo: write a vfox package or a homebrew cask for chrome
-# todo: write a vfox package or a homebrew cask for zen-browser
+# fedora atomic (universalblue/aurora) init config
 
 sdir=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]:-$0}")")
 
@@ -38,29 +34,11 @@ function installs {
 		1password-gui-linux
 }
 
-function chezmoi_init {
-	mise use -g op chezmoi
-	eval "$(mise activate bash)"
-
-	"$(op read "op://homelab/svc/bash")"
-	if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
-		echo "chezmoi boot error: OP_SERVICE_ACCOUNT_TOKEN not set"
-		return 1
-	fi
-	chezmoi init --apply chrishenn
-	. ~/.bashrc
-}
-
 function mise_init {
-	mise use -g op
-	eval "$(mise activate bash)"
-
-	export GITHUB_TOKEN=$(op read op://homelab/github/credential)
-	if [ "$GITHUB_TOKEN" = "" ]; then
-		echo "mise_init error: GITHUB_TOKEN not set"
-		return 1
-	fi
+	export DOT_ENV='["aurora", "nfsclient", "pwr", "stime"]'
+	curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 	mise i
+	soar apply -y
 }
 
 function gclone {
@@ -70,9 +48,14 @@ function gclone {
 	~/gclone.sh
 }
 
-function mise_boot {
-	mise bootstrap -y
+function zentool_init {
+	just -f ~/Projects/zentool/justfile build
+	just -f ~/Projects/zentool/justfile run install
+}
 
+# --- deprecated ---
+
+function deprecated_rpm_install {
 	# proton and chrome depend on mise-bootstrapped repo files.
 	# musl pkgs are needed to compile musl target with rust.
 	sudo rpm-ostree install \
@@ -81,30 +64,43 @@ function mise_boot {
 		kvantum \
 		firefox \
 		musl-gcc musl-libc-static musl-devel
-
-	# soar packages.toml is installed by chezmoi init
-	soar apply -y
 }
 
-function nfs {
+function deprecated_chezmoi_init {
+	mise use -g op chezmoi
+	eval "$(mise activate bash)"
+	chezmoi init --apply chrishenn
+	. ~/.bashrc
+}
+
+function deprecated_nfs {
+	sudo mkdir -p /etc/fstab.d
+	sudo mkdir -p /var/mnt/h /var/mnt/k /var/mnt/f /var/mnt/q /var/mnt/r
+
+	opt="auto,nofail,soft,intr,x-systemd.automount,x-systemd.mount-timeout=1s,timeo=10,retrans=3,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime"
+	sudo tee -a /etc/fstab.d/nfs >/dev/null <<-END
+		192.168.1.142:/var/mnt/f /var/mnt/f nfs $opt 0 0
+		192.168.1.142:/var/mnt/h /var/mnt/h nfs $opt 0 0
+		192.168.1.142:/var/mnt/k /var/mnt/k nfs $opt 0 0
+		192.168.1.142:/var/mnt/r /var/mnt/r nfs $opt 0 0
+	END
+	sudo systemctl daemon-reload
+	sudo mount -a --fstab /etc/fstab.d/nfs
+}
+
+function deprecated_nfs_2 {
 	# mounting to /mnt/* works, but displays as /var/mnt/* in dolphin, and shows up twice
 	sudo mkdir -p /var/mnt/h /var/mnt/k /var/mnt/f /var/mnt/q /var/mnt/r
+	opt="auto,nofail,soft,intr,x-systemd.automount,x-systemd.mount-timeout=1s,timeo=10,retrans=3,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime"
 	sudo tee -a /etc/fstab >/dev/null <<-END
-		192.168.1.142:/var/mnt/h /var/mnt/h nfs x-systemd.automount,x-systemd.mount-timeout=20,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime 0 0
-		192.168.1.142:/var/mnt/k /var/mnt/k nfs x-systemd.automount,x-systemd.mount-timeout=20,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime 0 0
-		192.168.1.142:/var/mnt/f /var/mnt/f nfs x-systemd.automount,x-systemd.mount-timeout=20,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime 0 0
-		192.168.1.142:/var/mnt/r /var/mnt/r nfs x-systemd.automount,x-systemd.mount-timeout=20,_netdev,x-systemd.after=network-online.target,defaults,proto=rdma,async,noatime,nodiratime 0 0
+		192.168.1.142:/var/mnt/f /var/mnt/f nfs $opt 0 0
+		192.168.1.142:/var/mnt/h /var/mnt/h nfs $opt 0 0
+		192.168.1.142:/var/mnt/k /var/mnt/k nfs $opt 0 0
+		192.168.1.142:/var/mnt/r /var/mnt/r nfs $opt 0 0
 	END
 	sudo systemctl daemon-reload
 	sudo mount -a
 }
-
-function zentool_init {
-	just -f ~/Projects/zentool/justfile build
-	just -f ~/Projects/zentool/justfile run install
-}
-
-# --- deprecated ---
 
 function deprecated_chrome {
 	# repo. replaced with mise bootstrap files

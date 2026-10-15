@@ -17,10 +17,13 @@ Can be used for linux desktop/server, or in conjunction with my other windows bo
 # force-overwrite dotfiles during bootstrap
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -s -- --force-dotfiles
 
-# profiles 'linux, aurora' active
+# aurora desktop profiles
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["aurora"]'
+export DOT_ENV='["aurora", "nfsclient", "pwr", "stime", "unsleep"]'
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
+
+# rack4 server profiles
+export DOT_ENV='["rack4", "nfsserver", "smbserver", "newt", "pwr", "stime", "unsleep"]'
 
 # just the automatic platform profiles ("unix", "linux", "windows", etc) are active
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
@@ -55,6 +58,9 @@ mbd apply -y -E aurora
 ## todo
 
 - bootstrap windows with 'mise bootstrap remote'
+- write a vfox package(?) or a homebrew cask for firefox
+- write a vfox package(?) or a homebrew cask for chrome
+- write a vfox package(?) or a homebrew cask for zen-browser
 
 ## notes
 

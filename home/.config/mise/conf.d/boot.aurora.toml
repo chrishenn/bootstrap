@@ -94,13 +94,6 @@ run = """
 sudo sysctl -q --system
 """
 
-# sudo timeout
-[bootstrap.files."/etc/sudoers.d/sudo_timeout"]
-content = "Defaults timestamp_timeout=180"
-owner = "root"
-group = "root"
-mode = "0440"
-
 # sysctl
 [bootstrap.files."/etc/sysctl.d/99-custom.conf"]
 content = """
@@ -114,49 +107,6 @@ net.ipv6.conf.all.disable_ipv6=1
 owner = "root"
 group = "root"
 mode = "0644"
-
-# power_shortcuts
-[bootstrap.files."~/.local/share/applications/restart.desktop"]
-template = true
-content = """
-[Desktop Entry]
-Name=Restart
-Exec=bash -c "sudo {{ env.HOME }}/.local/share/applications/restart.sh"
-Comment=Restart
-Terminal=true
-Type=Application
-Icon=system-reboot
-"""
-
-[bootstrap.files."~/.local/share/applications/shutdown.desktop"]
-template = true
-content = """
-[Desktop Entry]
-Name=Shutdown
-Exec=bash -c "sudo {{ env.HOME }}/.local/share/applications/shutdown.sh"
-Comment=Shutdown
-Terminal=true
-Type=Application
-Icon=system-shutdown
-"""
-
-[bootstrap.files."~/.local/share/applications/restart.sh"]
-content = "reboot now"
-mode = "0755"
-
-[bootstrap.files."~/.local/share/applications/shutdown.sh"]
-content = "shutdown now"
-mode = "0755"
-
-[bootstrap.files."/etc/sudoers.d/pwr"]
-content = """
-{{ exec(command='whoami') }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/shutdown.sh
-{{ exec(command='whoami') }} ALL=(root) NOPASSWD:{{ env.HOME }}/.local/share/applications/restart.sh
-"""
-template = true
-owner = "root"
-group = "root"
-mode = "0440"
 
 # docker config
 # equivalent to: sudo nvidia-ctk runtime configure --runtime=docker --set-as-default --quiet
