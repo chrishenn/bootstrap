@@ -8,6 +8,11 @@
 set -e
 sdir=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]:-$0}")")
 
+function get_deps {
+	local -n arr=$1
+	arr=("git" "gh" "jq" "tr" "awk" "ssh" "op" "parallel")
+}
+
 function check_or {
 	declare bry=$1
 	shift
@@ -86,14 +91,10 @@ function main {
 
 	END
 
-	check_or "git" || exit 1
-	check_or "gh" || exit 1
-	check_or "jq" || exit 1
-	check_or "tr" || exit 1
-	check_or "awk" || exit 1
-	check_or "ssh-keyscan" || exit 1
-	check_or "op" || exit 1
-	check_or "parallel" || exit 1
+	get_deps deps
+	for dep in "${deps[@]}"; do
+		check_or "$dep" || exit 1
+	done
 
 	# git and ssh setup
 	mkdir -p "$HOME/.ssh"
