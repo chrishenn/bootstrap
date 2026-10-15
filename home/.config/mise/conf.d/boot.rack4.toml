@@ -109,9 +109,8 @@ nfs-server = { enabled = true, on_change = "reload_or_restart", state = "running
 run = """
 sudo sysctl -q --system
 sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml --quiet
-
+"""
 # sudo smbpasswd -e chris
 # pass=$(op read op://homelab/chris/password)
 # echo -e "${pass}\n${pass}" | sudo smbpasswd -s chris
 # sudo systemctl restart smb
-"""
