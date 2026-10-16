@@ -1,11 +1,5 @@
 # pangolin site running on host as systemd service
 
-#[env]
-#PANGOLIN_SITE_PROVISION = { age = "YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNzaC1lZDI1NTE5IEhQWmRqQSBETG5xVE52d0Z3QnRlSmZ5NU8wMmdOYWlhaC9ETEZzK1lEY21NLzBCbXh3CjNnTStXUHNiN285WmJKWkdnSVMyRkNtNzRsaHNyZkoxamRSRjJVeXpQcU0KLT4gJGUvd30tZ3JlYXNlIGVdIyB+czJ7WnogIX01ID1ARApKbHlsdFFQaGFaYWFPWVI3cEtoYVJGZFN3cDBWRC9UbVBHc3lqR1dTNEZwUWlnOG5KWlVHZm5tTFpiTQotLS0gMi83TXhjOXdVeHBqYnVLMWlhK0FJcVphOW1XRmtkSkFNSVZMVSt6V2FSMAodszvHtlqKWUPg0VtUNQJMQkY9TtjBDGvJQYcmZu9JYMx+Dlkjad5PJwy7CBX5IgSi7oUYlsJHhbJW7zkCXSdymfts/axJSb/yOGfrH637Fu31/WloF46LA0aTrg" }
-#PANGOLIN_ENDPOINT = { default = "https://pangolin.chenn.dev" }
-#PANGOLIN_SITE_NAME = { default = "vps0" }
-#PANGOLIN_DOMAIN = { default = "chenn.dev" }
-
 [bootstrap.secrets]
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
 pangolin_endpoint = "PANGOLIN_ENDPOINT"
@@ -13,7 +7,7 @@ pangolin_site_name = "PANGOLIN_SITE_NAME"
 pangolin_domain = "PANGOLIN_DOMAIN"
 
 [bootstrap.hooks.post-packages]
-run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]'"
+run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]' >&/dev/null"
 
 [bootstrap.directories."/etc/pangolin/"]
 
@@ -56,6 +50,9 @@ public-resources:
     mode: ssh
     full-domain: "{{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}"
     policy: chris
+    sites:
+      - {{secret(name="pangolin_site_name")}}
+    tcp-ports: "2200"
 """
 template = true
 
