@@ -4,7 +4,6 @@ dotfiles.default_mode = "copy"
 
 [bootstrap.repos]
 "~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
-"~/Projects/zentool" = { url = "https://github.com/chrishenn/zentool" }
 
 [history.encryption]
 recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL"]
