@@ -42,6 +42,7 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 """
+template = true
 owner = "root"
 group = "root"
 mode = "0644"
