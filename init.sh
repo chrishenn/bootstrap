@@ -28,7 +28,11 @@ function main {
 	eval "$(~/.local/bin/mise activate bash)"
 	credentials
 
+	# todo: is this being overwritten by mise bootstrap dotfiles with ~/.config/mise symlink-each?
 	if [ "$DOT_ENV" = "" ]; then
+		echo
+		echo "init.sh: writing env ($DOT_ENV) to miserc.local.toml"
+		echo
 		tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
 			env = $DOT_ENV
 		END
