@@ -1,0 +1,81 @@
+# pangolin site running on host as systemd service
+
+[vars]
+pangolin_site_name = { prompt = "pangolin site name", required = true }
+pangolin_endpoint = { default = "https://pangolin.chenn.dev", prompt = "pangolin endpoint" }
+pangolin_domain = { default = "chenn.dev", prompt = "pangolin domain to attach machine ssh resources" }
+
+[bootstrap.secrets]
+pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
+
+[bootstrap.hooks.post-packages]
+run = "mise install --system github:fosrl/cli"
+
+[bootstrap.files."/etc/systemd/system/pangolin-site.service"]
+# use --provisioning-blueprint-file to apply once; --blueprint-file is re-applied when changed
+content = """
+[Unit]
+Description=Pangolin Site
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin-cli \
+    up site \
+    --name '{{vars.pangolin_site_name}}' \
+    --endpoint {{vars.pangolin_endpoint}} \
+    --provisioning-key '{{secret(name="pangolin_site_provision")}}' \
+    --blueprint-file /etc/pangolin/bootstrap.yaml
+Restart=always
+RestartSec=2
+UMask=0077
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+"""
+template = true
+owner = "root"
+group = "root"
+mode = "0644"
+notify = ["pangolin-site"]
+
+[bootstrap.directories."/etc/pangolin/"]
+
+# todo bug: public-resources bp do not handle "sites", so this bp succeeds but does not attach the site
+# requires manually attaching public resource to site in pangolin web UI. Private resource works as expected.
+[bootstrap.files."/etc/pangolin/bootstrap.yaml"]
+content = """
+public-resources:
+  {{vars.pangolin_site_name}}-ssh:
+    name: {{vars.pangolin_site_name}}-ssh
+    mode: ssh
+    full-domain: {{vars.pangolin_site_name}}.{{vars.pangolin_domain}}
+    auth-daemon:
+      pam: passthrough
+      mode: native
+    sites:
+      - {{vars.pangolin_site_name}}
+    policy: chris
+
+private-resources:
+  {{vars.pangolin_site_name}}-ssh:
+    name: {{vars.pangolin_site_name}}-ssh
+    mode: ssh
+    alias: {{vars.pangolin_site_name}}.{{vars.pangolin_domain}}
+    auth-daemon:
+      pam: passthrough
+      mode: native
+    sites:
+      - {{vars.pangolin_site_name}}
+    policy: chris
+"""
+template = true
+
+[bootstrap.services.pangolin-site]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"

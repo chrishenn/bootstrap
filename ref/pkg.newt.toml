@@ -1,9 +1,8 @@
-# newt agent running on host as systemd service
+# deprecated "newt site"; replaced with "pangolin site"
 
-[bootstrap.secrets]
-newt_id = "NEWT_ID"
-newt_secret = "NEWT_SECRET"
-pangolin_endpoint = "PANGOLIN_ENDPOINT"
+# newt agent running on host as systemd service
+[env]
+NEWT_PROF = { default = "rack4_newt" }
 
 [bootstrap.files."/etc/systemd/system/newt.service"]
 content = """
@@ -31,11 +30,7 @@ group = "root"
 mode = "0644"
 
 [bootstrap.files."/etc/newt/newt.env"]
-content = """
-NEWT_ID={{ secret(name="newt_id") }}
-NEWT_SECRET={{ secret(name="newt_secret") }}
-PANGOLIN_ENDPOINT={{ secret(name="pangolin_endpoint") }}
-"""
+content = "{{exec(command='mise exec fnox -- fnox export -P env.NEWT_PROF --no-defaults --non-interactive')}}"
 template = true
 owner = "root"
 group = "root"

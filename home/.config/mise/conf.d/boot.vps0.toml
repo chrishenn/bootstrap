@@ -1,19 +1,14 @@
-# untested
+## ubuntu server (vps0)
 
 # todo: initial bootstrap should connect as root
 # todo: bootstrap creates the 'chris' user with no password - need to set after
 #   the included snippet to do this is untested
 
-## ubuntu server (vps0)
-##
 # echo "chris:$(op read 'op://homelab/vps0/chris_pass')" | $SSH_ROOT "chpasswd"
-[bootstrap.remote.hosts.vps0]
-host = "chenn.dev"
-# user = "root"
-# port = 22
-user = "chris"
-port = 2200
-tags = ["production"]
+#[bootstrap.remote.hosts.vps0]
+#host = "chenn.dev"
+#user = "root"
+#port = 22
 
 [bootstrap.user]
 login_shell = "/bin/bash"
@@ -75,30 +70,12 @@ group = "root"
 mode = "0644"
 notify = ["docker"]
 
-# sshd
-[bootstrap.files."/etc/ssh/sshd_config"]
-content = """
-AcceptEnv LANG LC_* COLORTERM NO_COLOR
-Include /etc/ssh/sshd_config.d/*.conf
-KbdInteractiveAuthentication no
-PasswordAuthentication no
-PermitRootLogin no
-Port 2200
-PrintMotd no
-Subsystem sftp /usr/lib/openssh/sftp-server
-UsePAM yes
-X11Forwarding yes
-"""
-owner = "root"
-group = "root"
-mode = "0644"
-
-# todo: verify that this env is evaluated locally, then piped into the remote bootstrap
 [bootstrap.hooks.final]
 run = """
 sudo sysctl -q --system
-echo "$VPS0_CHRIS_PASS"
 """
+# todo: set user password
+# echo "$VPS0_CHRIS_PASS"
 # echo "${VPS0_CHRIS_PASS}" | sudo chpasswd
 
 [bootstrap.services.docker]
@@ -107,4 +84,5 @@ enabled = true
 on_change = "reload_or_restart"
 
 [bootstrap.repos]
-"/home/chris/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }
+"~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
+"~/Projects/homelab" = { url = "git@github.com:chrishenn/homelab" }
