@@ -30,6 +30,7 @@ curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 # vps0 server profiles
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
 export DOT_ENV='["vps0", "pangolin", "unsleep", "sshd_ubuntu"]'
+export FNOX_PROF='vps0'
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
 # just the automatic platform profiles ("unix", "linux", "windows", etc) are active

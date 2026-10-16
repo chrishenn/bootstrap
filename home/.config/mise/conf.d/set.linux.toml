@@ -53,3 +53,4 @@ dir = "{{cwd}}"
 # sync global secrets to age provider for global fnox file
 # fnox sync --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml -f
 # fnox sync -P rack4_newt --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml --no-defaults -f
+# fnox sync -P vps0 --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml --no-defaults -f

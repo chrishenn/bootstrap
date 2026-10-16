@@ -25,7 +25,11 @@ function main {
 	if ! command -v op >/dev/null; then
 		mise use -g op
 	fi
+	if ! command -v fnox >/dev/null; then
+		mise use -g fnox
+	fi
 	eval "$(~/.local/bin/mise activate bash)"
+	eval "$(fnox activate bash)"
 	credentials
 
 	# todo: is this being overwritten by mise bootstrap dotfiles with ~/.config/mise symlink-each?
@@ -39,7 +43,8 @@ function main {
 	fi
 
 	repo="git@github.com:chrishenn/bootstrap.git"
-	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+	fnox exec -P "$FNOX_PROF" -- \
+		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n SUCCESS" || echo -e "\n FAILED"
