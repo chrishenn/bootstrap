@@ -1,5 +1,8 @@
 # newt agent running on host as systemd service
 
+[env]
+NEWT_PROF = { default = "rack4_newt" }
+
 [bootstrap.files."/etc/systemd/system/newt.service"]
 content = """
 [Unit]
@@ -26,7 +29,7 @@ group = "root"
 mode = "0644"
 
 [bootstrap.files."/etc/newt/newt.env"]
-content = "{{exec(command='mise exec fnox -- fnox export -P rack4_newt --no-defaults --non-interactive')}}"
+content = "{{exec(command='mise exec fnox -- fnox export -P env.NEWT_PROF --no-defaults --non-interactive')}}"
 template = true
 owner = "root"
 group = "root"

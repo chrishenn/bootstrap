@@ -10,7 +10,7 @@ Subsystem sftp /usr/libexec/openssh/sftp-server
 notify = ["sshd"]
 
 [bootstrap.hooks]
-post-packages = "sudo semanage port -a -t ssh_port_t -p tcp 2200 &>/dev/null"
+post-packages = "sudo semanage port -a -t ssh_port_t -p tcp 2200 &>/dev/null || true"
 
 [bootstrap.services]
 sshd = { enabled = true, on_change = "reload_or_restart", state = "running" }

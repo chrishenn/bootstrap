@@ -103,3 +103,4 @@ shfmt = { lazy = true, version = "latest" }
 taplo = { lazy = true, version = "latest" }
 tombi = { lazy = true, version = "latest" }
 "github:rustfs/cli" = { lazy = true, lazy_bins = ["rc"], version = "latest" }
+age = "latest"

@@ -64,7 +64,7 @@ notify = ["docker"]
 docker = { enabled = true, on_change = "reload_or_restart", state = "running" }
 
 [bootstrap.repos]
-"/var/home/chris/Projects/homelab" = { url = "https://github.com/chrishenn/homelab" }
+"~/Projects/homelab" = { url = "git@github.com:chrishenn/homelab" }
 
 [bootstrap.hooks.final]
 run = """

@@ -1,0 +1,56 @@
+# pangolin site running on host as systemd service
+
+[env]
+PANGOLIN_SITE_PROVISION = { age = "YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNzaC1lZDI1NTE5IEhQWmRqQSBETG5xVE52d0Z3QnRlSmZ5NU8wMmdOYWlhaC9ETEZzK1lEY21NLzBCbXh3CjNnTStXUHNiN285WmJKWkdnSVMyRkNtNzRsaHNyZkoxamRSRjJVeXpQcU0KLT4gJGUvd30tZ3JlYXNlIGVdIyB+czJ7WnogIX01ID1ARApKbHlsdFFQaGFaYWFPWVI3cEtoYVJGZFN3cDBWRC9UbVBHc3lqR1dTNEZwUWlnOG5KWlVHZm5tTFpiTQotLS0gMi83TXhjOXdVeHBqYnVLMWlhK0FJcVphOW1XRmtkSkFNSVZMVSt6V2FSMAodszvHtlqKWUPg0VtUNQJMQkY9TtjBDGvJQYcmZu9JYMx+Dlkjad5PJwy7CBX5IgSi7oUYlsJHhbJW7zkCXSdymfts/axJSb/yOGfrH637Fu31/WloF46LA0aTrg" }
+PANGOLIN_ENDPOINT = { default = "https://pangolin.chenn.dev" }
+PANGOLIN_SITE_NAME = { default = "vps0" }
+PANGOLIN_DOMAIN = { default = "chenn.dev" }
+
+[bootstrap.hooks.post-packages]
+run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]'"
+
+[bootstrap.files."/etc/systemd/system/pangolin-site.service"]
+content = """
+[Unit]
+Description=Pangolin Site
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin \
+    up site \
+    --name '{{env.PANGOLIN_SITE_NAME}}' \
+    --endpoint {{env.PANGOLIN_ENDPOINT}} \
+    --provisioning-key '{{env.PANGOLIN_SITE_PROVISION}}' \
+    --provisioning-blueprint-file /etc/pangolin/bootstrap.yaml
+Restart=always
+RestartSec=2
+UMask=0077
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+"""
+owner = "root"
+group = "root"
+mode = "0644"
+notify = ["pangolin-site"]
+
+[bootstrap.files."/etc/pangolin/bootstrap.yaml"]
+content = """
+public-resources:
+  host-ssh:
+    name: Host SSH
+    mode: ssh
+    full-domain: "{{env.PANGOLIN_SITE_NAME}}.{{env.PANGOLIN_DOMAIN}}"
+    policy: chris
+"""
+template = true
+
+[bootstrap.services.pangolin-site]
+state = "running"
+enabled = true
+on_change = "reload_or_restart"
