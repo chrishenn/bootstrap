@@ -1,9 +1,9 @@
 # newt agent running on host as systemd service
 
-[bootstrap.secrets]
-newt_id = "NEWT_ID"
-newt_secret = "NEWT_SECRET"
-pangolin_endpoint = "PANGOLIN_ENDPOINT"
+#[bootstrap.secrets]
+#newt_id = "NEWT_ID"
+#newt_secret = "NEWT_SECRET"
+#pangolin_endpoint = "PANGOLIN_ENDPOINT"
 
 [bootstrap.files."/etc/systemd/system/newt.service"]
 content = """
@@ -31,11 +31,12 @@ group = "root"
 mode = "0644"
 
 [bootstrap.files."/etc/newt/newt.env"]
-content = """
-NEWT_ID={{ secret(name="newt_id") }}
-NEWT_SECRET={{ secret(name="newt_secret") }}
-PANGOLIN_ENDPOINT={{ secret(name="pangolin_endpoint") }}
-"""
+#content = """
+#NEWT_ID={{ secret(name="newt_id") }}
+#NEWT_SECRET={{ secret(name="newt_secret") }}
+#PANGOLIN_ENDPOINT={{ secret(name="pangolin_endpoint") }}
+#"""
+content = "{{exec(command='fnox export -P rack4_newt --no-defaults --non-interactive')}}"
 template = true
 owner = "root"
 group = "root"
