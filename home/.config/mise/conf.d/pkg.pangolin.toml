@@ -7,7 +7,7 @@ pangolin_site_name = "PANGOLIN_SITE_NAME"
 pangolin_domain = "PANGOLIN_DOMAIN"
 
 [bootstrap.hooks.post-packages]
-run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]' >&/dev/null"
+run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]' &>/dev/null"
 
 [bootstrap.directories."/etc/pangolin/"]
 
