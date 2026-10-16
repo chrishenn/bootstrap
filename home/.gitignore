@@ -1,3 +1,5 @@
 .pixi/
 .idea/
 .git/
+.rumdl_cache/
+node_modules/

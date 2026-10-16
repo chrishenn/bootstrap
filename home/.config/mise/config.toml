@@ -1,5 +1,5 @@
 [settings]
-auto_update = true
+self_update.auto = true
 tool_update.global_auto = "12h"
 trusted_config_paths = ["/"]
 
