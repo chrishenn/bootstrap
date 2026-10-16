@@ -43,8 +43,14 @@ function main {
 	fi
 
 	repo="git@github.com:chrishenn/bootstrap.git"
-	fnox exec -P "$FNOX_PROF" -- \
+	if [ "$FNOX_PROF" != "" ]; then
+		# sync fnox first, then use fnox profiles to populate pangolin secrets
+		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
+		fnox exec -P "$FNOX_PROF" -- \
+			mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+	else
 		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+	fi
 }
 
 main "$@" && echo -e "\n SUCCESS" || echo -e "\n FAILED"
