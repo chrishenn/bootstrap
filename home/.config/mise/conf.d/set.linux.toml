@@ -49,3 +49,7 @@ dir = "{{cwd}}"
 description = "sync fnox secrets to age-encrypted plaintext local file"
 run = "fnox sync --provider age --local-file -f"
 dir = "{{cwd}}"
+
+# sync global secrets to age provider for global fnox file
+# fnox sync --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml -f
+# fnox sync -P rack4_newt --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml --no-defaults -f
