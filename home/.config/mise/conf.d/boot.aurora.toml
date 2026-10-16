@@ -220,4 +220,4 @@ on_change = "reload_or_restart"
 # "~/Projects/unattend" = { url = "https://github.com/chrishenn/unattend" }
 # "~/Projects/vscode" = { url = "https://github.com/chrishenn/vscode" }
 # "~/Projects/zenprof" = { url = "https://github.com/chrishenn/zenprof" }
-"~/Projects/zentool" = { url = "https://github.com/chrishenn/zentool" }
+"~/Projects/zentool" = { url = "git@github.com:chrishenn/zentool" }
