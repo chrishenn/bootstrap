@@ -19,12 +19,12 @@ curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -
 
 # aurora desktop profiles
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["aurora", "nfsclient", "pwr", "stime", "unsleep"]'
+export DOT_ENV='["aurora", "nfsclient", "pwr", "stime", "unsleep", "sshd_fedora"]'
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
 # rack4 server profiles. The "newt" profile requires these additional secrets. This will not work with "bootstrap remote"
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["rack4", "nfsserver", "smbserver", "newt", "pwr", "stime", "unsleep"]'
+export DOT_ENV='["rack4", "nfsserver", "smbserver", "newt", "pwr", "stime", "unsleep", "sshd_fedora"]'
 export NEWT_ID="$(op read op://homelab/pangolin/rack4_newt_id)"
 export NEWT_SECRET="$(op read op://homelab/pangolin/rack4_newt_secret)"
 export PANGOLIN_ENDPOINT="$(op read op://homelab/pangolin/vps0_PANGOLIN_ENDPOINT)"

@@ -8,7 +8,7 @@ gid = 1000
 [bootstrap.users.chris]
 system = true
 group = "chris"
-groups = ["docker", "incus-admin", "libvirt"]
+groups = ["docker", "incus-admin", "libvirt", "wheel"]
 uid = 1000
 
 [bootstrap.brew]
@@ -92,6 +92,7 @@ flatpak override --user --device=all com.obsproject.Studio
 [bootstrap.hooks.final]
 run = """
 sudo sysctl -q --system
+sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml --quiet
 """
 
 # sysctl
@@ -109,7 +110,6 @@ group = "root"
 mode = "0644"
 
 # docker config
-# equivalent to: sudo nvidia-ctk runtime configure --runtime=docker --set-as-default --quiet
 [bootstrap.files."/etc/docker/daemon.json"]
 content = """
 {

@@ -1,0 +1,8 @@
+module sshd 1.0;
+
+require {
+    type sshd_t;
+    type unreserved_port_t;
+    class tcp_socket { name_bind };
+}
+allow sshd_t unreserved_port_t:tcp_socket name_bind;

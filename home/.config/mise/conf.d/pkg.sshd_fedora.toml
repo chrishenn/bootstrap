@@ -1,0 +1,16 @@
+[bootstrap.files."/etc/ssh/sshd_config"]
+content = """
+AuthorizedKeysFile .ssh/authorized_keys
+Include /etc/ssh/sshd_config.d/*.conf
+PasswordAuthentication no
+PermitRootLogin no
+Port 2200
+Subsystem sftp /usr/libexec/openssh/sftp-server
+"""
+notify = ["sshd"]
+
+[bootstrap.hooks]
+post-packages = "sudo semanage port -a -t ssh_port_t -p tcp 2200 &>/dev/null"
+
+[bootstrap.services]
+sshd = { enabled = true, on_change = "reload_or_restart", state = "running" }

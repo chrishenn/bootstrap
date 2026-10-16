@@ -60,22 +60,7 @@ group = "root"
 mode = "0644"
 notify = ["docker"]
 
-[bootstrap.files."/etc/ssh/sshd_config"]
-content = """
-AuthorizedKeysFile .ssh/authorized_keys
-Include /etc/ssh/sshd_config.d/*.conf
-PasswordAuthentication no
-PermitRootLogin no
-Port 2200
-Subsystem sftp /usr/libexec/openssh/sftp-server
-"""
-owner = "root"
-group = "root"
-mode = "0644"
-notify = ["sshd"]
-
 [bootstrap.services]
-sshd = { enabled = true, on_change = "reload_or_restart", state = "running" }
 docker = { enabled = true, on_change = "reload_or_restart", state = "running" }
 
 [bootstrap.repos]
