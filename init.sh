@@ -42,15 +42,12 @@ function main {
 		END
 	fi
 
-	repo="git@github.com:chrishenn/bootstrap.git"
-	if [ "$FNOX_PROF" != "" ]; then
-		# sync fnox first, then use fnox profiles to populate pangolin secrets
-		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
-		fnox exec -P "$FNOX_PROF" -- \
-			mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
-	else
-		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
-	fi
+#	repo="git@github.com:chrishenn/bootstrap.git"
+#	if echo "$DOT_ENV" | grep -q "pangolin"; then
+#		# sync dotfiles to get latest fnox secrets into env. Then, pangolin site boot should work
+#		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
+#	fi
+	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n SUCCESS" || echo -e "\n FAILED"

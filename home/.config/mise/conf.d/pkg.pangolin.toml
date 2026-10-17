@@ -1,17 +1,18 @@
 # pangolin site running on host as systemd service
 
+[vars]
+pangolin_site_name = { prompt = "pangolin site name" }
+pangolin_endpoint = { prompt = "pangolin endpoint", default = "https://pangolin.chenn.dev" }
+pangolin_domain = { prompt = "pangolin domain to attach machine ssh resources", default = "chenn.dev" }
+
 [bootstrap.secrets]
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
-pangolin_endpoint = "PANGOLIN_ENDPOINT"
-pangolin_site_name = "PANGOLIN_SITE_NAME"
-pangolin_domain = "PANGOLIN_DOMAIN"
 
 [bootstrap.hooks.post-packages]
 run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]' 1>/dev/null"
 
-[bootstrap.directories."/etc/pangolin/"]
-
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
+# use --provisioning-blueprint-file to apply once; --blueprint-file is continually applied
 content = """
 [Unit]
 Description=Pangolin Site
@@ -24,8 +25,8 @@ User=root
 Group=root
 ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin \
     up site \
-    --name '{{secret(name="pangolin_site_name")}}' \
-    --endpoint {{secret(name="pangolin_endpoint")}} \
+    --name '{{vars.pangolin_site_name}}' \
+    --endpoint {{vars.pangolin_endpoint}} \
     --provisioning-key '{{secret(name="pangolin_site_provision")}}' \
     --blueprint-file /etc/pangolin/bootstrap.yaml
 Restart=always
@@ -42,32 +43,34 @@ group = "root"
 mode = "0644"
 notify = ["pangolin-site"]
 
+[bootstrap.directories."/etc/pangolin/"]
+
 # todo bug: public-resources do not allow "sites", so this bp succeeds but does not attach the site
-# requires manually attaching resource to site in pangolin web UI
+# requires manually attaching public resource to site in pangolin web UI. Private resource works as expected.
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
 content = """
 public-resources:
-  {{secret(name="pangolin_site_name")}}-ssh:
-    name: {{secret(name="pangolin_site_name")}}-ssh
+  {{vars.pangolin_site_name}}-ssh:
+    name: {{vars.pangolin_site_name}}-ssh
     mode: ssh
-    full-domain: {{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}
+    full-domain: {{vars.pangolin_site_name}}.{{vars.pangolin_domain}}
     auth-daemon:
       pam: passthrough
       mode: native
     sites:
-      - {{secret(name="pangolin_site_name")}}
+      - {{vars.pangolin_site_name}}
     policy: chris
 
 private-resources:
-  {{secret(name="pangolin_site_name")}}-ssh:
-    name: {{secret(name="pangolin_site_name")}}-ssh
+  {{vars.pangolin_site_name}}-ssh:
+    name: {{vars.pangolin_site_name}}-ssh
     mode: ssh
-    alias: {{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}
+    alias: {{vars.pangolin_site_name}}.{{vars.pangolin_domain}}
     auth-daemon:
       pam: passthrough
       mode: native
     sites:
-      - {{secret(name="pangolin_site_name")}}
+      - {{vars.pangolin_site_name}}
     policy: chris
 """
 template = true
