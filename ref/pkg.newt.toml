@@ -1,5 +1,6 @@
-# newt agent running on host as systemd service
+# deprecated "newt site"; replaced with "pangolin site"
 
+# newt agent running on host as systemd service
 [env]
 NEWT_PROF = { default = "rack4_newt" }
 

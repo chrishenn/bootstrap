@@ -47,7 +47,7 @@ function main {
 #		# sync dotfiles to get latest fnox secrets into env. Then, pangolin site boot should work
 #		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
 #	fi
-	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n SUCCESS" || echo -e "\n FAILED"
