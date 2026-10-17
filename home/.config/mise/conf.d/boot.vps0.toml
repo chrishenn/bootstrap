@@ -1,10 +1,8 @@
-# untested
+## ubuntu server (vps0)
 
 # todo: initial bootstrap should connect as root
 # todo: bootstrap creates the 'chris' user with no password - need to set after
 #   the included snippet to do this is untested
-
-## ubuntu server (vps0)
 
 # echo "chris:$(op read 'op://homelab/vps0/chris_pass')" | $SSH_ROOT "chpasswd"
 #[bootstrap.remote.hosts.vps0]

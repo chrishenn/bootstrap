@@ -43,10 +43,8 @@ function main {
 	fi
 
 	repo="git@github.com:chrishenn/bootstrap.git"
-#	if echo "$DOT_ENV" | grep -q "pangolin"; then
-#		# sync dotfiles to get latest fnox secrets into env. Then, pangolin site boot should work
-#		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
-#	fi
+	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
+	#	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --force-dotfiles --only dotfiles
 	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
 }
 

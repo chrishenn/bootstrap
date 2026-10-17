@@ -2,8 +2,8 @@
 
 [vars]
 pangolin_site_name = { prompt = "pangolin site name", required = true }
-pangolin_endpoint = { prompt = "pangolin endpoint", default = "https://pangolin.chenn.dev" }
-pangolin_domain = { prompt = "pangolin domain to attach machine ssh resources", default = "chenn.dev" }
+pangolin_endpoint = { default = "https://pangolin.chenn.dev", prompt = "pangolin endpoint" }
+pangolin_domain = { default = "chenn.dev", prompt = "pangolin domain to attach machine ssh resources" }
 
 [bootstrap.secrets]
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
@@ -12,7 +12,7 @@ pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
 run = "mise install --system github:fosrl/cli"
 
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
-# use --provisioning-blueprint-file to apply once; --blueprint-file is continually applied
+# use --provisioning-blueprint-file to apply once; --blueprint-file is re-applied when changed
 content = """
 [Unit]
 Description=Pangolin Site
@@ -45,7 +45,7 @@ notify = ["pangolin-site"]
 
 [bootstrap.directories."/etc/pangolin/"]
 
-# todo bug: public-resources do not allow "sites", so this bp succeeds but does not attach the site
+# todo bug: public-resources bp do not handle "sites", so this bp succeeds but does not attach the site
 # requires manually attaching public resource to site in pangolin web UI. Private resource works as expected.
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
 content = """
