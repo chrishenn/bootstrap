@@ -42,7 +42,7 @@ function main {
 		END
 	fi
 
-#	repo="git@github.com:chrishenn/bootstrap.git"
+	repo="git@github.com:chrishenn/bootstrap.git"
 #	if echo "$DOT_ENV" | grep -q "pangolin"; then
 #		# sync dotfiles to get latest fnox secrets into env. Then, pangolin site boot should work
 #		mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --only dotfiles
