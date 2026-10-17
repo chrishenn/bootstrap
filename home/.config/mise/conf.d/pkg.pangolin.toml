@@ -9,7 +9,7 @@ pangolin_domain = { prompt = "pangolin domain to attach machine ssh resources", 
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
 
 [bootstrap.hooks.post-packages]
-run = "mise install --system 'github:fosrl/cli[rename_exe=pangolin]' 1>/dev/null"
+run = "mise install --system github:fosrl/cli"
 
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
 # use --provisioning-blueprint-file to apply once; --blueprint-file is continually applied
@@ -23,7 +23,7 @@ After=network-online.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin \
+ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin-cli \
     up site \
     --name '{{vars.pangolin_site_name}}' \
     --endpoint {{vars.pangolin_endpoint}} \
