@@ -27,7 +27,7 @@ ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin \
     --name '{{secret(name="pangolin_site_name")}}' \
     --endpoint {{secret(name="pangolin_endpoint")}} \
     --provisioning-key '{{secret(name="pangolin_site_provision")}}' \
-    --provisioning-blueprint-file /etc/pangolin/bootstrap.yaml
+    --blueprint-file /etc/pangolin/bootstrap.yaml
 Restart=always
 RestartSec=2
 UMask=0077
@@ -42,17 +42,20 @@ group = "root"
 mode = "0644"
 notify = ["pangolin-site"]
 
+# known bug: public-resources do not allow "sites", so this bp succeeds butand does not attach the site
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
 content = """
 public-resources:
-  host-ssh:
-    name: Host SSH
+  {{secret(name="pangolin_site_name")}}-ssh:
+    name: {{secret(name="pangolin_site_name")}}-ssh
     mode: ssh
     full-domain: "{{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}"
     policy: chris
+    auth-daemon:
+      pam: passthrough
+      mode: native
     sites:
       - {{secret(name="pangolin_site_name")}}
-    tcp-ports: "2200"
 """
 template = true
 
