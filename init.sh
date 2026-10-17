@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -e
 
 function credentials {
 	if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
