@@ -1,7 +1,7 @@
 # pangolin site running on host as systemd service
 
 [vars]
-pangolin_site_name = { prompt = "pangolin site name" }
+pangolin_site_name = { prompt = "pangolin site name", required = true }
 pangolin_endpoint = { prompt = "pangolin endpoint", default = "https://pangolin.chenn.dev" }
 pangolin_domain = { prompt = "pangolin domain to attach machine ssh resources", default = "chenn.dev" }
 
