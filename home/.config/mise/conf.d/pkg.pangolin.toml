@@ -42,20 +42,33 @@ group = "root"
 mode = "0644"
 notify = ["pangolin-site"]
 
-# known bug: public-resources do not allow "sites", so this bp succeeds butand does not attach the site
+# todo bug: public-resources do not allow "sites", so this bp succeeds but does not attach the site
+# requires manually attaching resource to site in pangolin web UI
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
 content = """
 public-resources:
   {{secret(name="pangolin_site_name")}}-ssh:
     name: {{secret(name="pangolin_site_name")}}-ssh
     mode: ssh
-    full-domain: "{{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}"
-    policy: chris
+    full-domain: {{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}
     auth-daemon:
       pam: passthrough
       mode: native
     sites:
       - {{secret(name="pangolin_site_name")}}
+    policy: chris
+
+private-resources:
+  {{secret(name="pangolin_site_name")}}-ssh:
+    name: {{secret(name="pangolin_site_name")}}-ssh
+    mode: ssh
+    alias: {{secret(name="pangolin_site_name")}}.{{secret(name="pangolin_domain")}}
+    auth-daemon:
+      pam: passthrough
+      mode: native
+    sites:
+      - {{secret(name="pangolin_site_name")}}
+    policy: chris
 """
 template = true
 
