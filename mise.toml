@@ -34,7 +34,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/yazi/yazi.toml" = {}
 "~/.config/zed/settings.json" = {}
 "~/.config/zellij/config.kdl" = {}
-"~/.gitconfig" = { mode = "symlink", variants = [{ os = "linux" }] }
+"~/.gitconfig" = { mode = "copy", variants = [{ os = "linux" }] }
 "~/.hushlogin" = {}
 "~/.local/share/color-schemes/UtterlySweet.colors" = {}
 "~/.local/share/custom_icons" = {}
