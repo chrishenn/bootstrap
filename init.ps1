@@ -82,10 +82,10 @@ function init (
     if ($profs) {
         $profs = $profs | select -unique | % { "`"" + $_ + "`"" }
         $profs = $profs -join (", ")
+        set-content ~/.config/mise/miserc.local.toml "env = [$profs]"
     }
-    set-content ~/.config/mise/miserc.local.toml "env = [$profs]"
-
-    mise bootstrap --from git@github.com:chrishenn/bootstrap.git --from-dir ~/Projects/bootstrap --skip-dirty --update -y
+    $rp = "git@github.com:chrishenn/bootstrap.git"
+    mise bootstrap --from $rp --from-dir ~/Projects/bootstrap --skip-dirty --update --force-dotfiles -y
 }
 
 init $hw_auto
