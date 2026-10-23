@@ -5,10 +5,10 @@
 #   the included snippet to do this is untested
 
 # echo "chris:$(op read 'op://homelab/vps0/chris_pass')" | $SSH_ROOT "chpasswd"
-#[bootstrap.remote.hosts.vps0]
-#host = "chenn.dev"
-#user = "root"
-#port = 22
+# [bootstrap.remote.hosts.vps0]
+# host = "chenn.dev"
+# user = "root"
+# port = 22
 
 [bootstrap.user]
 login_shell = "/bin/bash"

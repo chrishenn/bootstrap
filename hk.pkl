@@ -1,6 +1,6 @@
-amends "package://github.com/jdx/hk/releases/download/v2.7.1/hk@2.7.1#/Config.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.8.1/hk@2.8.1#/Config.pkl"
 
-import "package://github.com/jdx/hk/releases/download/v2.7.1/hk@2.7.1#/Builtins.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.8.1/hk@2.8.1#/Builtins.pkl"
 
 steps {
   ["oxfmt"] = Builtins.oxfmt
@@ -25,6 +25,8 @@ steps {
   }
   ["taplo"] = Builtins.taplo
   ["taplo_format"] = Builtins.taplo_format
+  ["tombi"] = Builtins.tombi
+  ["tombi_format"] = Builtins.tombi_format
 
   ["shfmt"] = Builtins.shfmt
   ["shellharden"] = Builtins.shellharden

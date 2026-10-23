@@ -56,7 +56,7 @@ adopt = true
 "flatpak:com.obsproject.Studio.Plugin.DroidCam" = "latest"
 # heic extension never reports installed, so reinstalls on every 'packages apply'. annoying
 "flatpak:org.gnome.Loupe" = "latest"
-#"flatpak:org.gnome.Loupe.HEIC" = "latest"
+# "flatpak:org.gnome.Loupe.HEIC" = "latest"
 "flatpak:be.alexandervanhee.gradia" = "latest"
 "flatpak:io.github.DenysMb.Kontainer" = "latest"
 "flatpak:org.fedoraproject.MediaWriter" = "latest"

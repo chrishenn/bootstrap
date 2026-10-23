@@ -43,8 +43,6 @@ group = "root"
 mode = "0644"
 notify = ["pangolin-site"]
 
-[bootstrap.directories."/etc/pangolin/"]
-
 # todo bug: public-resources bp do not handle "sites", so this bp succeeds but does not attach the site
 # requires manually attaching public resource to site in pangolin web UI. Private resource works as expected.
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
@@ -74,6 +72,8 @@ private-resources:
     policy: chris
 """
 template = true
+
+[bootstrap.directories."/etc/pangolin/"]
 
 [bootstrap.services.pangolin-site]
 state = "running"

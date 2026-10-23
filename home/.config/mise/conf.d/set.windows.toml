@@ -33,7 +33,7 @@ atuin = "latest"
 
 bun = "latest"
 
-[dotfiles]
-"~/.gitconfig" = { mode = "symlink", source = "~/Projects/bootstrap/home/.gitconfig_windows", variants = [
-  { os = "windows" },
-] }
+# [dotfiles]
+# "~/.gitconfig" = { mode = "symlink", source = "~/Projects/bootstrap/home/.gitconfig_windows", variants = [
+#  { os = "windows" },
+# ] }

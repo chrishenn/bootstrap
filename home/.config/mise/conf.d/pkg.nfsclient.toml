@@ -80,14 +80,17 @@ WantedBy=multi-user.target
 state = "running"
 enabled = true
 on_change = "reload_or_restart"
+
 [bootstrap.services."var-mnt-h.mount"]
 state = "running"
 enabled = true
 on_change = "reload_or_restart"
+
 [bootstrap.services."var-mnt-k.mount"]
 state = "running"
 enabled = true
 on_change = "reload_or_restart"
+
 [bootstrap.services."var-mnt-r.mount"]
 state = "running"
 enabled = true
