@@ -22,7 +22,7 @@ version = "8.32.0"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.1018.223341"
+version = "2026.1024.213614"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
@@ -66,3 +66,13 @@ version = "2026.9.0"
 github = "avdept/jellyboxplayer"
 asset_pattern = "jellybox-linux-x86_64.AppImage"
 version = "2.10.0"
+
+[packages.termix]
+github = "termix-ssh/termix"
+asset_pattern = "*_x64_*.AppImage"
+version = "26.10.5"
+
+[packages.sonora]
+github = "sonorahq/sonora"
+asset_pattern = "sonora-*-x86_64.AppImage"
+version = "0.44.2"

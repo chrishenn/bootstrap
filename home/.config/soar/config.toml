@@ -16,6 +16,6 @@ desktop_integration = true
 pubkey = "RWQ109gKujRqohsA7RERlXFfeJi23EcHN3Dz8TxyPAywa5mLw/fbcbU4"
 
 [display]
-progress_style = "modern" # classic, modern, minimal
+progress_style = "modern"  # classic, modern, minimal
 icons = true
 spinners = true
