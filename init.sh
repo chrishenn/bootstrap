@@ -45,7 +45,7 @@ function main {
 	repo="git@github.com:chrishenn/bootstrap.git"
 	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
 	#	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --skip-dirty --update -y --force-dotfiles "$@"
+	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --config-dir home/.config/mise --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"
