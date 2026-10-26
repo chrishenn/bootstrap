@@ -72,17 +72,32 @@ github = "termix-ssh/termix"
 asset_pattern = "*_x64_*.AppImage"
 version = "26.10.5"
 
-[packages.sonora]
-github = "sonorahq/sonora"
-asset_pattern = "sonora-*-x86_64.AppImage"
-version = "0.44.2"
-
 [packages.navibeat]
 github = "nenadjokic/navibeat-linux"
 asset_pattern = "NaviBeat-linux-x86_64.AppImage"
 version = "1.0.45"
 
-# [packages.sonicfast]
-# github = "1800alex/sonicfast"
-# asset_pattern = "sonicfast-*-x86_64.AppImage"
-# version = "0.16.0"
+[packages.psysonic]
+github = "Psysonic/psysonic"
+asset_pattern = "Psysonic_*_amd64.AppImage"
+version = "app-v1.56.0"
+
+[packages.inlark]
+github = "inlark/inlark"
+asset_pattern = "inlark-*-x86_64.AppImage"
+version = "0.6.0"
+
+[packages.yapfast]
+github = "yapfast/yapfast"
+asset_pattern = "Yapfast-*-x86_64.AppImage"
+version = "0.2.0"
+
+[packages.tuma]
+github = "MorrisKM/Tuma"
+asset_pattern = "Tuma_*_amd64.AppImage"
+version = "1.0.1"
+
+[packages.backtickle]
+github = "masud90/backtickle"
+asset_pattern = "Backtickle_*_amd64.AppImage"
+version = "0.2.1"
