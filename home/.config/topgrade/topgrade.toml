@@ -13,6 +13,7 @@ disable = [
   "chezmoi",
   "containers",
   "firmware",
+  "helm",
   "jetbrains_clion",
   "jetbrains_goland",
   "jetbrains_pycharm",
@@ -23,7 +24,6 @@ disable = [
   "shell",
   "system",
   "vscode",
-  "helm"
 ]
 
 # Ignore failures for these steps

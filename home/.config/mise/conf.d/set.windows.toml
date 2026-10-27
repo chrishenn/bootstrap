@@ -35,5 +35,5 @@ bun = "latest"
 
 [dotfiles]
 "~/.gitconfig" = { mode = "symlink", source = "~/Projects/bootstrap/home/.gitconfig_windows", variants = [
-{ os = "windows" },
+  { os = "windows" },
 ] }

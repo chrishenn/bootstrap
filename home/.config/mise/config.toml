@@ -83,8 +83,8 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 [dotfiles.mpv]
 source = "~/Projects/bootstrap/home/.config/mpv/mpv.conf"
 variants = [
-    { os = "linux", target = "~/.config/mpv/mpv.conf" },
-    { os = "windows", target = "~/AppData/Roaming/mpv/mpv.conf" },
+  { os = "linux", target = "~/.config/mpv/mpv.conf" },
+  { os = "windows", target = "~/AppData/Roaming/mpv/mpv.conf" },
 ]
 
 [dotfiles.gh]
@@ -92,7 +92,6 @@ source = "~/Projects/bootstrap/home/.config/gh"
 variants = [{ os = "linux", target = "~/.config/gh" }, { os = "windows", target = "~/AppData/Roaming/Github CLI/" }]
 
 [tasks]
-
 [tasks.apply]
 alias = "a"
 run = "mise dot apply -y"
