@@ -31,7 +31,7 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/soar" = { mode = "symlink" }
 "~/.config/starship/starship.toml" = {}
 "~/.config/tealdeer/config.toml" = {}
-"~/.config/topgrade/topgrade.toml" = {}
+"~/.config/topgrade/topgrade.toml" = { mode = "symlink" }
 "~/.config/wezterm/wezterm.lua" = {}
 "~/.config/yazi/yazi.toml" = {}
 "~/.config/zed/settings.json" = {}

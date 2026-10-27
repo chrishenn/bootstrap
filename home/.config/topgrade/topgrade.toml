@@ -23,6 +23,7 @@ disable = [
   "shell",
   "system",
   "vscode",
+  "helm"
 ]
 
 # Ignore failures for these steps
