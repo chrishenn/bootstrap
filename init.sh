@@ -32,20 +32,25 @@ function main {
 	eval "$(fnox activate bash)"
 	credentials
 
-	# todo: is this being overwritten by mise bootstrap dotfiles with ~/.config/mise symlink-each?
-	if [ "$DOT_ENV" != "" ]; then
+	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
+	repo="git@github.com:chrishenn/bootstrap.git"
+	dir="~/Projects/bootstrap"
+	cfg="home/.config/mise"
+	# mise bootstrap --from "$repo" --from-dir "$dir" --update -y --force-dotfiles --only dotfiles
+	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
+
+	if [ "$MISE_ENV" != "" ]; then
+		IFS=',' read -ra envs <<<"$MISE_ENV"
+		envs_rc=$(printf '"%s",' "${envs[@]}")
+		envs_rc="[${envs_rc%,}]"
+
 		echo
-		echo "init.sh: writing env ($DOT_ENV) to miserc.local.toml"
+		echo "init.sh: writing env ($MISE_ENV) to miserc.local.toml"
 		echo
 		tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
-			env = $DOT_ENV
+			env = $envs_rc
 		END
 	fi
-
-	repo="git@github.com:chrishenn/bootstrap.git"
-	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
-	#	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --config-dir home/.config/mise --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"

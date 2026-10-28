@@ -1,16 +1,8 @@
-# usage:
-#
-# $env:OP_SERVICE_ACCOUNT_TOKEN = <token>
-# $env:DOT_ENV = 'nvgpu, amdapu'
-# irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1 | iex
-#
-# or, enable hardware detection for some hardware types; profiles in DOT_ENV are merged with auto-detected profiles
-# $env:DOT_ENV = 'nvgpu, amdcpu'
-# iex "& {$(irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1)} -hw_auto"
-
 param (
     [switch] $hw_auto
 )
+$ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 
 function inst_gcm (
     [parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][string] $name
@@ -18,13 +10,55 @@ function inst_gcm (
     return [bool](gcm $name -ea 0)
 }
 
+function credentials {
+    if (! $env:OP_SERVICE_ACCOUNT_TOKEN) {
+        $env:OP_SERVICE_ACCOUNT_TOKEN = (op read op://homelab/svc/credential)
+        if (! $env:OP_SERVICE_ACCOUNT_TOKEN) {
+            write-host -f r "abort: OP_SERVICE_ACCOUNT_TOKEN not set and op read failed"
+            return 1
+        }
+    }
+    if (! $env:GITHUB_TOKEN) {
+        $env:GITHUB_TOKEN = (op read op://homelab/github/credential)
+        if (! $env:GITHUB_TOKEN) {
+            write-host -f r "abort: GITHUB_TOKEN not set and op read failed"
+            return 1
+        }
+    }
+}
+
+function hw_detect {
+    # functions from chplib are found automatically, but types don't appear until you touch the chplib module
+    # 'touch' in this case could mean `get-command hw_cpu`, or `import-module chplib -force`, etc
+    scoop install chplib
+    import-module chplib -force
+    $envs = @()
+    $cput = hw_cpu
+    if ($cput -eq [Cpu]::amd) {
+        $envs += "amdcpu"
+    }
+    if ($cput -eq [Cpu]::intel) {
+        $envs += "intelcpu"
+    }
+    if (hw_amdapu) {
+        $envs += "amdapu"
+    }
+    if (hw_intelapu) {
+        $envs += "intelapu"
+    }
+    if (hw_intelwifi) {
+        $envs += "intelwifi"
+    }
+    if (hw_nvgpu) {
+        $envs += "nvgpu"
+    }
+    return $envs
+}
+
 function init (
     [bool] $hw_auto = $false
 ) {
-    if (! $env:OP_SERVICE_ACCOUNT_TOKEN) {
-        write-host -f r "abort: OP_SERVICE_ACCOUNT_TOKEN not set"
-        return
-    }
+    # todo: it would be nice to use the mise install script here, but the pwsh installer appears to take ~60s to activate mise?
     if (! (inst_gcm mise)) {
         write-host -f c 'mise not installed; attempting scoop install'
         if (! (inst_gcm scoop)) {
@@ -32,60 +66,31 @@ function init (
             iex "& {$(irm get.scoop.sh -useb)} -RunAsAdmin"
         }
         scoop install mise
+        (&mise activate pwsh) | Out-String | Invoke-Expression
     }
-    mise use -g op
-    (&mise activate pwsh) | Out-String | Invoke-Expression
-    if (! $env:GITHUB_TOKEN) {
-        $env:GITHUB_TOKEN = (op read "op://homelab/github/credential")
-        if (! $env:GITHUB_TOKEN) {
-            write-host -f r "abort: GITHUB_TOKEN not set and op read failed"
-            return
-        }
-    }
+    credentials
 
-    $profs = @()
-    if ($env:DOT_ENV) {
-        $profs += $env:DOT_ENV.split(',').trim()
+    $envs = @()
+    if ($env:MISE_ENV) {
+        $envs += $env:MISE_ENV.split(',').trim()
     }
     if ($hw_auto) {
-        if (! (inst_gcm hw_cpu)) {
-            scoop install chplib
-            import-module chplib -force
-            if (! (inst_gcm hw_cpu)) {
-                write-host -f r "abort: chplib function 'hw_cpu' not findable with pwsh get-command"
-                return
-            }
-        }
-        # functions from chplib are found automatically, but types don't appear until you touch the chplib module
-        # 'touch' in this case could mean `get-command hw_cpu`, or `import-module chplib`, etc
-        import-module chplib -force
-        $cput = hw_cpu
-        if ($cput -eq [Cpu]::amd) {
-            $profs += "amdcpu"
-        }
-        if ($cput -eq [Cpu]::intel) {
-            $profs += "intelcpu"
-        }
-        if (hw_amdapu) {
-            $profs += "amdapu"
-        }
-        if (hw_intelapu) {
-            $profs += "intelapu"
-        }
-        if (hw_intelwifi) {
-            $profs += "intelwifi"
-        }
-        if (hw_nvgpu) {
-            $profs += "nvgpu"
-        }
+        $envs += hw_detect
+        $envs = $envs | select -unique
+        $env:MISE_ENV = $envs -join ","
     }
-    if ($profs) {
-        $profs = $profs | select -unique | % { "`"" + $_ + "`"" }
-        $profs = $profs -join (", ")
-        set-content ~/.config/mise/miserc.local.toml "env = [$profs]"
-    }
+
     $rp = "git@github.com:chrishenn/bootstrap.git"
-    mise bootstrap --from $rp --from-dir ~/Projects/bootstrap --skip-dirty --update --force-dotfiles -y
+    $dir = "~/Projects/bootstrap"
+    $cfg = "home/.config/mise"
+    # mise bootstrap --from $rp --from-dir $dir --config-dir $cfg --update -y --force-dotfiles --only dotfiles
+    mise bootstrap --from $rp --from-dir $dir --config-dir $cfg --skip-dirty --update --force-dotfiles -y
+
+    if ($envs) {
+        $envs = $envs | % { "`"" + $_ + "`"" }
+        $envs = $envs -join ","
+        set-content ~/.config/mise/miserc.local.toml "env = [$envs]"
+    }
 }
 
 init $hw_auto

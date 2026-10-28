@@ -4,7 +4,7 @@ A mise bootstrap project providing my dotfiles, and bootstrap profiles for vario
 
 All profiles require a service account token for 1password-cli to render my secrets to disk.
 
-Can be used for linux desktop/server, or in conjunction with my other windows bootstrapping projects:
+Can be used for {linux,windows} x {desktop,server}, and/or in conjunction with my other windows bootstrapping projects:
 
 - <https://github.com/chrishenn/unattend>
 - <https://github.com/chrishenn/chplib>
@@ -14,50 +14,40 @@ Can be used for linux desktop/server, or in conjunction with my other windows bo
 ## usage
 
 ```bash
-# force-overwrite dotfiles during bootstrap
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -s -- --force-dotfiles
-
-# aurora desktop profiles
+# required
 export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["aurora", "nfsclient", "pwr", "stime", "unsleep", "sshd_fedora"]'
+
+# aurora desktop profiles (fedora atomic)
+export MISE_ENV=aurora,nfsclient,pwr,stime,unsleep,sshd_fedora
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
-# rack4 server profiles.
-export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["rack4", "nfsserver", "smbserver", "pangolin", "pwr", "stime", "unsleep", "sshd_fedora"]'
+# rack4 server profiles (fedora atomic)
+export MISE_ENV=rack4,nfsserver,smbserver,pangolin,pwr,stime,unsleep,sshd_fedora
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
-# vps0 server profiles
-export OP_SERVICE_ACCOUNT_TOKEN=<token>
-export DOT_ENV='["vps0", "pangolin", "unsleep", "sshd_ubuntu"]'
+# vps0 server profiles (ubuntu)
+export MISE_ENV=vps0,pangolin,unsleep,sshd_ubuntu
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
-# just the automatic platform profiles ("unix", "linux", "windows", etc) are active
-export OP_SERVICE_ACCOUNT_TOKEN=<token>
+# just the automatic platform profiles ("unix,linux,windows", etc) are active
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
+
+# pass other flags to mise bootstrap
+curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -s -- --other-flag
 ```
 
 ```pwsh
-# profiles 'windows, nvgpu, amdcpu' active. Note the different list format for pwsh as opposed to bash
+# required
 $env:OP_SERVICE_ACCOUNT_TOKEN = <token>
-$env:DOT_ENV = 'nvgpu, amdcpu'
+
+# profiles 'windows,nvgpu,amdcpu' active
+$env:MISE_ENV = 'nvgpu,amdcpu'
 irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1 | iex
 
-# run with flag `hw_auto` to auto-detect select hardware types, and activate matching mise profiles
-# profiles specified manually with DOT_ENV are merged with auto-detected profiles
-$env:DOT_ENV = 'nvgpu, amdcpu'
+# Run with flag `hw_auto` to auto-detect supported hardware types and activate matching mise profiles
+# Profiles specified with MISE_ENV are merged with auto-detected profiles
+$env:MISE_ENV = 'nvgpu,amdcpu'
 iex "& {$(irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1)} -hw_auto"
-```
-
-```bash
-# general commands
-mise bootstrap dotfiles apply -E aurora -C ~/Projects/bootstrap -y
-mise settings get env
-mise settings set env ["aurora"]
-mise bootstrap --skip-dirty -y
-mise bootstrap dotfiles apply -y
-mise bootstrap -E aurora --skip-dirty -y
-mbd apply -y -E aurora
 ```
 
 ---
@@ -65,6 +55,7 @@ mbd apply -y -E aurora
 ## todo
 
 - bootstrap windows with 'mise bootstrap remote'
+- bootstrap vps0 with root user account, setting up 'chris' user and ssh login
 - write a vfox package(?) or a homebrew cask for firefox
 - write a vfox package(?) or a homebrew cask for chrome
 - write a vfox package(?) or a homebrew cask for zen-browser
@@ -73,6 +64,9 @@ mbd apply -y -E aurora
 
 The only clunky bit is manually setting the miserc environment(s) for the machine. ~/.config/mise/miserc.toml does not
 support templating, and the only per-machine setting is the `env = [..]` line, which is slightly irritating.
+Update: mise added per-machine ~/.config/mise/miserc.local.toml, as I had originally expected to be present - irritation
+above still stands. Afaik there's no programmatic way to write miserc.local.toml built into mise, so the scripts will
+have to stay
 
 ## ref
 
