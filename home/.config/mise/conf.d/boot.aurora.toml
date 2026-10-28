@@ -181,7 +181,7 @@ on_change = "reload_or_restart"
 # My parallel gclone.sh is much faster for initial clones, since mise here fetches serially.
 #   However, this mise update is safe for dirty worktrees, where gclone.sh
 #   is destructive because it was designed for backing up github repos to a restic target.
-"~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
+#"~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
 
 # "~/Projects/a4dj" = { url = "git@github.com:chrishenn/a4dj" }
 # "~/Projects/agent_interface" = { url = "git@github.com:chrishenn/agent_interface" }
