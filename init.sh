@@ -37,7 +37,9 @@ function main {
 	cfg="home/.config/mise"
 	rm -rf ~/.config/mise
 	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --skip-dirty --update -y "$@"
+	fnox c # any command here to force fnox to reload secrets from global config
+	mise bootstrap --from "$repo" --from-dir "$dir" --skip-dirty --update -y "$@"
+	mise i # bootstrap doesn't run this?
 
 	if [ "$MISE_ENV" != "" ]; then
 		IFS=',' read -ra envs <<<"$MISE_ENV"
@@ -55,3 +57,12 @@ function main {
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"
 exit $?
+
+function reset {
+	sudo rm -rf /usr/local/share/mise
+	mise cache clear
+	mise implode --config -y
+	rm -rf ~/.config/fnox
+	rm -rf ~/.local/state/mise
+	rm -rf ~/.ssh
+}
