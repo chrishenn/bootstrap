@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+function reset {
+	sudo rm -rf /usr/local/share/mise
+	mise cache clear
+	mise implode --config -y
+	rm -rf ~/.config/fnox
+	rm -rf ~/.local/state/mise
+	rm -rf ~/.ssh
+}
+
 function credentials {
 	if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
 		export OP_SERVICE_ACCOUNT_TOKEN=$(op read op://homelab/svc/credential)
@@ -20,7 +29,7 @@ function credentials {
 
 function main {
 	if ! command -v mise >/dev/null; then
-		curl https://mise.run | sh
+		curl -fsSL https://mise.run | sh
 	fi
 	if ! command -v op >/dev/null; then
 		mise use -g op
@@ -32,20 +41,26 @@ function main {
 	eval "$(fnox activate bash)"
 	credentials
 
-	# todo: is this being overwritten by mise bootstrap dotfiles with ~/.config/mise symlink-each?
-	if [ "$DOT_ENV" != "" ]; then
+	repo="https://github.com/chrishenn/bootstrap.git"
+	dir="Projects/bootstrap"
+	cfg="home/.config/mise"
+	rm -rf ~/.config/mise
+	# todo: prompt-vars doesn't work in script
+	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
+	fnox exec -- mise bootstrap --from "$repo" --from-dir "$dir" --skip-dirty --update -y
+
+	if [ "$MISE_ENV" != "" ]; then
+		IFS=',' read -ra envs <<<"$MISE_ENV"
+		envs_rc=$(printf '"%s",' "${envs[@]}")
+		envs_rc="[${envs_rc%,}]"
+
 		echo
-		echo "init.sh: writing env ($DOT_ENV) to miserc.local.toml"
+		echo "init.sh: writing env ($MISE_ENV) to miserc.local.toml"
 		echo
 		tee ~/.config/mise/miserc.local.toml >/dev/null <<-END
-			env = $DOT_ENV
+			env = $envs_rc
 		END
 	fi
-
-	repo="git@github.com:chrishenn/bootstrap.git"
-	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
-	#	mise bootstrap --from "$repo" --from-dir ~/Projects/bootstrap --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --from-dir ~/Projects/bootstrap --config-dir home/.config/mise --skip-dirty --update -y --force-dotfiles "$@"
 }
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"

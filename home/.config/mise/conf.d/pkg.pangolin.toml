@@ -13,6 +13,7 @@ run = "mise install --system github:fosrl/cli"
 
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
 # use --provisioning-blueprint-file to apply once; --blueprint-file is re-applied when changed
+# todo: because the bp's ssh public resource is bugged, --blueprint-file continually re-breaks the resource
 content = """
 [Unit]
 Description=Pangolin Site
@@ -28,7 +29,7 @@ ExecStart=/usr/local/share/mise/installs/github-fosrl-cli/latest/pangolin-cli \
     --name '{{vars.pangolin_site_name}}' \
     --endpoint {{vars.pangolin_endpoint}} \
     --provisioning-key '{{secret(name="pangolin_site_provision")}}' \
-    --blueprint-file /etc/pangolin/bootstrap.yaml
+    --provisioning-blueprint-file /etc/pangolin/bootstrap.yaml
 Restart=always
 RestartSec=2
 UMask=0077

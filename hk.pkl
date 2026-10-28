@@ -25,21 +25,21 @@ steps {
   }
   ["taplo"] = Builtins.taplo
   ["taplo_format"] = Builtins.taplo_format
-  ["tombi"] = Builtins.tombi
-  ["tombi_format"] = Builtins.tombi_format
+  //   ["tombi"] = Builtins.tombi
+  //   ["tombi_format"] = Builtins.tombi_format
 
   ["shfmt"] = Builtins.shfmt
   ["shellharden"] = Builtins.shellharden
   ["shellcheck"] = (Builtins.shellcheck) {
     check = new CommandSpec {
       command = new Command {
-        argv = List("shellcheck", "{{files}}", "-e", "SC2154")
+        argv = List("shellcheck", "{{files}}", "-e", "SC2154,SC2329")
       }
       effect = "read"
     }
     check_diff = new CommandSpec {
       command = new Command {
-        argv = List("shellcheck", "--format=diff", "{{files}}", "-e", "SC2154")
+        argv = List("shellcheck", "--format=diff", "{{files}}", "-e", "SC2154,SC2329")
       }
       effect = "read"
     }

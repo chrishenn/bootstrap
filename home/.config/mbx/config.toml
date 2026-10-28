@@ -1,1 +1,6 @@
 savings = "off"
+
+[remote]
+url = "https://mbx.chenn.dev"
+namespace = "chris/src"
+mode = "read-write"
