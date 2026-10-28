@@ -37,7 +37,7 @@ function main {
 	cfg="home/.config/mise"
 	rm -rf ~/.config/mise
 	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
+	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --skip-dirty --update -y "$@"
 
 	if [ "$MISE_ENV" != "" ]; then
 		IFS=',' read -ra envs <<<"$MISE_ENV"
