@@ -41,7 +41,7 @@ function main {
 	dir="~/Projects/bootstrap"
 	cfg="home/.config/mise"
 	# mise bootstrap --from "$repo" --from-dir "$dir" --update -y --force-dotfiles --only dotfiles
-	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
+	mise bootstrap --prompt-vars --from "$repo" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
 
 	if [ "$MISE_ENV" != "" ]; then
 		IFS=',' read -ra envs <<<"$MISE_ENV"
@@ -59,3 +59,4 @@ function main {
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"
 exit $?
+

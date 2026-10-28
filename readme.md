@@ -11,6 +11,18 @@ Can be used for {linux,windows} x {desktop,server}, and/or in conjunction with m
 - <https://github.com/chrishenn/scoops>
 - <https://github.com/chrishenn/drivers>
 
+---
+
+## bugs
+
+`mise bootstrap --from` insists that ~/Projects/bootstrap uses git@url, the ssh url, even though I've removed it, and I've 
+deleted all mise cache, state, and config, and run `mise implode` - WHERE IS THIS STATE BEING STORED? I used the ssh
+url in `mise bootstrap repos` previously, but obviously all traces (THAT I KNOW OF) of that config have been removed.
+
+gh repo clone is failing with permission denied (publickey) even though `agh auth status` shows I'm logged in
+gh repo list succeeds? wtf
+git clone succeeds from https url! WTF IS GOING ON
+
 ## usage
 
 ```bash
