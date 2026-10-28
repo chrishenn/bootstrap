@@ -20,7 +20,7 @@ function credentials {
 
 function main {
 	if ! command -v mise >/dev/null; then
-		curl https://mise.run | sh
+		curl -fsSL https://mise.run | sh
 	fi
 	if ! command -v op >/dev/null; then
 		mise use -g op
@@ -33,9 +33,9 @@ function main {
 	credentials
 
 	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
-	# todo: initial clone must use github https repo url, because ssh creds are not on disk. However, this sets the https as git remote
+	# wait - fnox should read secrets from op?
+	# todo: initial clone must use github https repo url, because ssh creds are not on disk. However, this sets https as git remote
 	# gh login is not used, github_token is not used
-	echo "$(op read op://homelab/github/credential)" | gh auth login -h github.com -p ssh --with-token --skip-ssh-key
 #	repo="git@github.com:chrishenn/bootstrap.git"
 	repo="https://github.com/chrishenn/bootstrap.git"
 	dir="~/Projects/bootstrap"
