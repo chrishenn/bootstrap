@@ -26,8 +26,8 @@ UV_PREVIEW = 1
 JUST_UNSTABLE = 1
 
 # conflicts with https remote needed by bootstrap from github
-#[bootstrap.repos]
-#"~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
+[bootstrap.repos]
+"~/Projects/bootstrap" = { url = "https://github.com/chrishenn/bootstrap.git" }
 
 [history.encryption]
 recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWUVB+Q4EFt4llpPDL"]

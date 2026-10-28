@@ -23,6 +23,8 @@ gh repo clone is failing with permission denied (publickey) even though `agh aut
 gh repo list succeeds? wtf
 git clone succeeds from https url! WTF IS GOING ON
 
+ok the clone succeeded. So some subsequent bootstrap step is throwing this error
+
 ## usage
 
 ```bash

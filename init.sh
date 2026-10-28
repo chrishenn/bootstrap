@@ -59,4 +59,3 @@ function main {
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"
 exit $?
-
