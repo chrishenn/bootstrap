@@ -33,7 +33,11 @@ function main {
 	credentials
 
 	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox
-	repo="git@github.com:chrishenn/bootstrap.git"
+	# todo: initial clone must use github https repo url, because ssh creds are not on disk. However, this sets the https as git remote
+	# gh login is not used, github_token is not used
+	echo "$(op read op://homelab/github/credential)" | gh auth login -h github.com -p ssh --with-token --skip-ssh-key
+#	repo="git@github.com:chrishenn/bootstrap.git"
+	repo="https://github.com/chrishenn/bootstrap.git"
 	dir="~/Projects/bootstrap"
 	cfg="home/.config/mise"
 	# mise bootstrap --from "$repo" --from-dir "$dir" --update -y --force-dotfiles --only dotfiles
