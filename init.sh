@@ -32,14 +32,11 @@ function main {
 	eval "$(fnox activate bash)"
 	credentials
 
-	# todo: on fresh bootstrap the pangolin site service requires dotfiles be applied first, because it uses secrets from fnox global config file
-	# todo: initial clone must use github https repo url, because ssh creds are not on disk. However, this sets https as git remote
-	# gh login is not used, github_token is not used
-#	repo="git@github.com:chrishenn/bootstrap.git"
 	repo="https://github.com/chrishenn/bootstrap.git"
-	dir="~/Projects/bootstrap"
+	dir="Projects/bootstrap"
 	cfg="home/.config/mise"
-	mise bootstrap --from "$repo" --from-dir "$dir" --update -y --force-dotfiles --only dotfiles
+	rm -rf ~/.config/mise
+	mise bootstrap --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
 	mise bootstrap --prompt-vars --from "$repo" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
 
 	if [ "$MISE_ENV" != "" ]; then
