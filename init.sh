@@ -36,7 +36,7 @@ function main {
 	dir="Projects/bootstrap"
 	cfg="home/.config/mise"
 	rm -rf ~/.config/mise
-	mise bootstrap --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
+	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
 	mise bootstrap --prompt-vars --from "$repo" --config-dir "$cfg" --skip-dirty --update -y --force-dotfiles "$@"
 
 	if [ "$MISE_ENV" != "" ]; then
