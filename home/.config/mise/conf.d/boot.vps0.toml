@@ -84,5 +84,5 @@ enabled = true
 on_change = "reload_or_restart"
 
 [bootstrap.repos]
-#"~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
+# "~/Projects/bootstrap" = { url = "git@github.com:chrishenn/bootstrap.git" }
 "~/Projects/homelab" = { url = "git@github.com:chrishenn/homelab" }

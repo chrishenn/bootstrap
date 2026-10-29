@@ -15,17 +15,9 @@ Can be used for {linux,windows} x {desktop,server}, and/or in conjunction with m
 
 ## bugs
 
-`mise bootstrap --from` insists that ~/Projects/bootstrap uses git@url, the ssh url, even though I've removed it, and I've 
-deleted all mise cache, state, and config, and run `mise implode` - WHERE IS THIS STATE BEING STORED? I used the ssh
-url in `mise bootstrap repos` previously, but obviously all traces (THAT I KNOW OF) of that config have been removed.
-
-gh repo clone is failing with permission denied (publickey) even though `agh auth status` shows I'm logged in
-gh repo list succeeds? wtf
-git clone succeeds from https url! WTF IS GOING ON
-
-ok the clone succeeded. So some subsequent bootstrap step is throwing this error
-
 --promp-vars does not work in script
+
+fnox cannot reload in script
 
 ## usage
 
@@ -37,10 +29,12 @@ export OP_SERVICE_ACCOUNT_TOKEN=<token>
 export MISE_ENV=aurora,nfsclient,pwr,stime,unsleep,sshd_fedora
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
+# todo: pangolin uses mise vars, but --prompt-vars doesn't work in scripts. Run manually
 # rack4 server profiles (fedora atomic)
 export MISE_ENV=rack4,nfsserver,smbserver,pangolin,pwr,stime,unsleep,sshd_fedora
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
 
+# todo: pangolin uses mise vars, but --prompt-vars doesn't work in scripts. Run manually
 # vps0 server profiles (ubuntu)
 export MISE_ENV=vps0,pangolin,unsleep,sshd_ubuntu
 curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash

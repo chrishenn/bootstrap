@@ -80,11 +80,12 @@ function init (
         $env:MISE_ENV = $envs -join ","
     }
 
-    $rp = "git@github.com:chrishenn/bootstrap.git"
-    $dir = "~/Projects/bootstrap"
+    $repo = "https://github.com/chrishenn/bootstrap.git"
+    $dir = "Projects/bootstrap"
     $cfg = "home/.config/mise"
-    # mise bootstrap --from $rp --from-dir $dir --config-dir $cfg --update -y --force-dotfiles --only dotfiles
-    mise bootstrap --from $rp --from-dir $dir --config-dir $cfg --skip-dirty --update --force-dotfiles -y
+    rm -r -force ~/.config/mise
+    mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
+    fnox exec -- mise bootstrap --from "$repo" --from-dir "$dir" --skip-dirty --update -y
 
     if ($envs) {
         $envs = $envs | % { "`"" + $_ + "`"" }

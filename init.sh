@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+function reset {
+	sudo rm -rf /usr/local/share/mise
+	mise cache clear
+	mise implode --config -y
+	rm -rf ~/.config/fnox
+	rm -rf ~/.local/state/mise
+	rm -rf ~/.ssh
+}
+
 function credentials {
 	if [ "$OP_SERVICE_ACCOUNT_TOKEN" = "" ]; then
 		export OP_SERVICE_ACCOUNT_TOKEN=$(op read op://homelab/svc/credential)
@@ -36,10 +45,9 @@ function main {
 	dir="Projects/bootstrap"
 	cfg="home/.config/mise"
 	rm -rf ~/.config/mise
+	# todo: prompt-vars doesn't work in script
 	mise bootstrap --prompt-vars --from "$repo" --from-dir "$dir" --config-dir "$cfg" --update -y --force-dotfiles --only dotfiles
-	fnox c # any command here to force fnox to reload secrets from global config
-	mise bootstrap --from "$repo" --from-dir "$dir" --skip-dirty --update -y "$@"
-	mise i # bootstrap doesn't run this?
+	fnox exec -- mise bootstrap --from "$repo" --from-dir "$dir" --skip-dirty --update -y
 
 	if [ "$MISE_ENV" != "" ]; then
 		IFS=',' read -ra envs <<<"$MISE_ENV"
@@ -57,12 +65,3 @@ function main {
 
 main "$@" && echo -e "\n init.sh: SUCCESS" || echo -e "\n init.sh: FAILED"
 exit $?
-
-function reset {
-	sudo rm -rf /usr/local/share/mise
-	mise cache clear
-	mise implode --config -y
-	rm -rf ~/.config/fnox
-	rm -rf ~/.local/state/mise
-	rm -rf ~/.ssh
-}

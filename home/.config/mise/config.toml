@@ -9,6 +9,9 @@ registry_floating = true
 dotfiles.root = "~/Projects/bootstrap/home"
 dotfiles.default_mode = "copy"
 
+task.cache.remote_url = "https://mbx.chenn.dev"
+task.cache.remote_namespace = "chris/mise"
+
 [env]
 FNOX_AGE_KEY_FILE = "~/.ssh/id_ed25519"
 FNOX_CONFIG_DIR = "~/.config/fnox"
@@ -42,11 +45,11 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/.config/bottom/bottom.toml" = {}
 "~/.config/dolphinrc" = {}
 "~/.config/easyeffects" = {}
-"~/.config/fnox/config.toml" = {}
+"~/.config/fnox/config.toml" = { mode = "symlink" }
 "~/.config/ghostty" = { mode = "symlink" }
 "~/.config/glab-cli" = {}
 "~/.config/input-remapper-2" = {}
-"~/.config/mbx/config.toml" = {}
+"~/.config/mbx/config.toml" = { mode = "symlink" }
 "~/.config/mise/" = { mode = "symlink-each" }
 "~/.config/no-show-user-motd" = {}
 "~/.config/nushell/config.nu" = {}
