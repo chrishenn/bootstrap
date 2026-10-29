@@ -1,21 +1,17 @@
 [settings]
 self_update.auto = true
 tool_update.global_auto = "12h"
-trusted_config_paths = ["/"]
-
 experimental = true
 registry_floating = true
+trusted_config_paths = ["/"]
 
+age.key_file = "~/.ssh/id_ed25519"
 dotfiles.root = "~/Projects/bootstrap/home"
 dotfiles.default_mode = "copy"
-
 task.cache.remote_url = "https://mbx.chenn.dev"
 task.cache.remote_namespace = "chris/mise"
 
 [env]
-FNOX_AGE_KEY_FILE = "~/.ssh/id_ed25519"
-FNOX_CONFIG_DIR = "~/.config/fnox"
-MISE_AGE_KEY_FILE = "~/.ssh/id_ed25519"
 STARSHIP_CONFIG = "~/.config/starship/starship.toml"
 
 TERM = "xterm-256color"
@@ -23,7 +19,6 @@ EDITOR = "nano"
 KUBE_EDITOR = "nano"
 COMPOSE_BAKE = true
 OP_RUN_NO_MASKING = true
-
 HK_MISE = 1
 UV_PREVIEW = 1
 JUST_UNSTABLE = 1
@@ -79,10 +74,10 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/justfile" = {}
 "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = { mode = "copy", variants = [{ os = "windows" }] }
 
-"~/.ssh/authorized_keys" = { mode = "template", permissions = "0600" }
-"~/.ssh/id_ed25519.pub" = { mode = "template", permissions = "0644" }
-"~/.ssh/id_ed25519" = { mode = "template", permissions = "0600" }
-"~/.ssh/known_hosts" = { mode = "template", permissions = "0600" }
+"~/.ssh/authorized_keys" = { mode = "fnox", permissions = "0600" }
+"~/.ssh/id_ed25519.pub" = { mode = "fnox", permissions = "0644" }
+"~/.ssh/id_ed25519" = { mode = "fnox", permissions = "0600" }
+"~/.ssh/known_hosts" = { mode = "fnox", permissions = "0600" }
 
 [dotfiles.mpv]
 source = "~/Projects/bootstrap/home/.config/mpv/mpv.conf"
