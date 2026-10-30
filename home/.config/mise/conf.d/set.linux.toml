@@ -53,6 +53,7 @@ dir = "{{cwd}}"
 [tasks.ss_global]
 description = "sync fnox secrets to age-encrypted plaintext global file"
 run = "fnox sync --provider age -c ~/.config/fnox/config.toml -f"
+dir = "{{cwd}}"
 
 # sync global secrets to age provider for global fnox file
 # fnox sync --provider age -c ~/Projects/bootstrap/home/.config/fnox/config.toml -f

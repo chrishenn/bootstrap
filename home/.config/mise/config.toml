@@ -23,8 +23,8 @@ HK_MISE = 1
 UV_PREVIEW = 1
 JUST_UNSTABLE = 1
 
-# conflicts with https remote needed by bootstrap from github
 [bootstrap.repos]
+# use the https remote so that initial bootstrap can clone the repo without ~/.ssh dotfiles on disk
 "~/Projects/bootstrap" = { url = "https://github.com/chrishenn/bootstrap.git" }
 
 [history.encryption]
@@ -74,10 +74,10 @@ recipients = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDbuPSH93RCTHG7iTHxg+De/yMWU
 "~/justfile" = {}
 "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = { mode = "copy", variants = [{ os = "windows" }] }
 
-"~/.ssh/authorized_keys" = { mode = "fnox", permissions = "0600" }
-"~/.ssh/id_ed25519.pub" = { mode = "fnox", permissions = "0644" }
-"~/.ssh/id_ed25519" = { mode = "fnox", permissions = "0600" }
-"~/.ssh/known_hosts" = { mode = "fnox", permissions = "0600" }
+"~/.ssh/authorized_keys" = { mode = "template", permissions = "0600" }
+"~/.ssh/id_ed25519.pub" = { mode = "template", permissions = "0644" }
+"~/.ssh/id_ed25519" = { mode = "template", permissions = "0600" }
+"~/.ssh/known_hosts" = { mode = "template", permissions = "0600" }
 
 [dotfiles.mpv]
 source = "~/Projects/bootstrap/home/.config/mpv/mpv.conf"
