@@ -1,5 +1,8 @@
 # pangolin site running on host as systemd service
 
+# todo: pangolin bug: public ssh resource requires manually attaching to site in pangolin web UI. Private resource works as expected.
+# todo: because the bp's ssh public resource is bugged, --blueprint-file continually re-breaks the resource
+
 [vars]
 pangolin_site_name = { prompt = "pangolin site name", required = true }
 pangolin_endpoint = { default = "https://pangolin.chenn.dev", prompt = "pangolin endpoint" }
@@ -13,7 +16,6 @@ run = "mise install --system github:fosrl/cli"
 
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
 # use --provisioning-blueprint-file to apply once; --blueprint-file is re-applied when changed
-# todo: because the bp's ssh public resource is bugged, --blueprint-file continually re-breaks the resource
 content = """
 [Unit]
 Description=Pangolin Site
@@ -44,8 +46,6 @@ group = "root"
 mode = "0644"
 notify = ["pangolin-site"]
 
-# todo bug: public-resources bp do not handle "sites", so this bp succeeds but does not attach the site
-# requires manually attaching public resource to site in pangolin web UI. Private resource works as expected.
 [bootstrap.files."/etc/pangolin/bootstrap.yaml"]
 content = """
 public-resources:

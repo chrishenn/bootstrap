@@ -11,6 +11,7 @@ function inst_gcm (
 }
 
 function credentials {
+    # todo: see init.sh for other necessary bootstrap vars
     if (! $env:OP_SERVICE_ACCOUNT_TOKEN) {
         $env:OP_SERVICE_ACCOUNT_TOKEN = (op read op://homelab/svc/credential)
         if (! $env:OP_SERVICE_ACCOUNT_TOKEN) {

@@ -1,6 +1,7 @@
 [settings]
 minimum_release_age = "0h"
 self_update.minimum_release_age = "0h"
+upgrade.auto_prune = false
 
 [env]
 MISE_JOBS = 16

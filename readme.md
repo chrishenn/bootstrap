@@ -13,49 +13,34 @@ Can be used for {linux,windows} x {desktop,server}, and/or in conjunction with m
 
 ---
 
-## bugs
-
---promp-vars does not work in script
-
-fnox cannot reload in script
-
 ## usage
 
 ```bash
-# required
-export OP_SERVICE_ACCOUNT_TOKEN=<token>
+# required for bootstrapping secrets
+export OP_SERVICE_ACCOUNT_TOKEN=<key>
 
-# aurora desktop profiles (fedora atomic)
-export MISE_ENV=aurora,nfsclient,pwr,stime,unsleep,sshd_fedora
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
+# required becase init.sh calls `mise bootstrap --save-env`
+# aurora desktop profile group (fedora atomic)
+export MISE_ENV=aurora_set
+# rack4 server profile group (fedora atomic)
+export MISE_ENV=rack4_set
+# vps0 server profile group (ubuntu)
+export MISE_ENV=vps0_set
 
-# todo: pangolin uses mise vars, but --prompt-vars doesn't work in scripts. Run manually
-# rack4 server profiles (fedora atomic)
-export MISE_ENV=rack4,nfsserver,smbserver,pangolin,pwr,stime,unsleep,sshd_fedora
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
-
-# todo: pangolin uses mise vars, but --prompt-vars doesn't work in scripts. Run manually
-# vps0 server profiles (ubuntu)
-export MISE_ENV=vps0,pangolin,unsleep,sshd_ubuntu
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
-
-# just the automatic platform profiles ("unix,linux,windows", etc) are active
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash
-
-# pass other flags to mise bootstrap
-curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh | bash -s -- --other-flag
+# use process substitution rather than `curl | bash`, so that mise bootstrap prompts for vars/secrets work on stdout
+bash <(curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh)
 ```
 
 ```pwsh
-# required
-$env:OP_SERVICE_ACCOUNT_TOKEN = <token>
+# required for bootstrapping secrets
+$env:OP_SERVICE_ACCOUNT_TOKEN = "<key>"
 
 # profiles 'windows,nvgpu,amdcpu' active
 $env:MISE_ENV = 'nvgpu,amdcpu'
 irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1 | iex
 
 # Run with flag `hw_auto` to auto-detect supported hardware types and activate matching mise profiles
-# Profiles specified with MISE_ENV are merged with auto-detected profiles
+# Profiles specified with MISE_ENV are merged with auto-detected profiles in init.ps1
 $env:MISE_ENV = 'nvgpu,amdcpu'
 iex "& {$(irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps1)} -hw_auto"
 ```
@@ -64,6 +49,7 @@ iex "& {$(irm https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.ps
 
 ## todo
 
+- add bootstrap for windows server
 - bootstrap windows with 'mise bootstrap remote'
 - bootstrap vps0 with root user account, setting up 'chris' user and ssh login
 - write a vfox package(?) or a homebrew cask for firefox
@@ -77,6 +63,17 @@ support templating, and the only per-machine setting is the `env = [..]` line, w
 Update: mise added per-machine ~/.config/mise/miserc.local.toml, as I had originally expected to be present - irritation
 above still stands. Afaik there's no programmatic way to write miserc.local.toml built into mise, so the scripts will
 have to stay
+Update: programmatic way to write miserc.local.toml is now built into mise. yay. `mise bootstrap --save-env` will err if
+there are no envs set, so I guess we'll have to manually check for that in the init.sh script - not the worst thing, and
+necessary because ~/.config/mise is wiped out by `mise bootstrap --config-dir`. So --save-env plus --config-dir should
+give us the correct ordering, and we just need to make sure MISE_ENV is set on running init.sh.
+
+github caches downloads, so check if the server-side cache is expired when you're debugging the script invoke syntax:
+
+```bash
+curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh > tmp.bash
+cat tmp.bash
+```
 
 ## ref
 

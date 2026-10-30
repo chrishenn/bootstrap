@@ -22,7 +22,7 @@ version = "8.33.0"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.1026.22540"
+version = "2026.1101.102914"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
@@ -50,7 +50,7 @@ version = "2.9.6-5@2026-10-21_1792586224"
 [packages.handy]
 github = "cjpais/handy"
 asset_pattern = "Handy_*_amd64.AppImage"
-version = "0.9.8"
+version = "0.10.0"
 
 [packages.caligula]
 github = "ifd3f/caligula"
@@ -60,22 +60,22 @@ version = "*"
 [packages.yaak]
 github = "mountain-loop/yaak"
 asset_pattern = "yaak_*_amd64.AppImage"
-version = "2026.9.0"
+version = "2026.9.1"
 
 [packages.jellybox]
 github = "avdept/jellyboxplayer"
 asset_pattern = "jellybox-linux-x86_64.AppImage"
-version = "2.11.0"
+version = "2.11.1"
 
 [packages.termix]
 github = "termix-ssh/termix"
 asset_pattern = "termix_linux_x64_appimage.AppImage"
-version = "26.10.5"
+version = "26.11.0"
 
 [packages.navibeat]
 github = "nenadjokic/navibeat-linux"
 asset_pattern = "NaviBeat-linux-x86_64.AppImage"
-version = "1.0.47"
+version = "1.0.61"
 
 [packages.psysonic]
 github = "Psysonic/psysonic"
@@ -85,7 +85,7 @@ version = "app-v1.56.0"
 [packages.inlark]
 github = "inlark/inlark"
 asset_pattern = "inlark-*-x86_64.AppImage"
-version = "0.6.0"
+version = "0.6.1"
 
 [packages.yapfast]
 github = "yapfast/yapfast"
@@ -95,7 +95,7 @@ version = "0.2.0"
 [packages.tuma]
 github = "MorrisKM/Tuma"
 asset_pattern = "Tuma_*_amd64.AppImage"
-version = "1.3.1"
+version = "1.4.0"
 
 [packages.backtickle]
 github = "masud90/backtickle"
