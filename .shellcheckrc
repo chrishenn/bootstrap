@@ -7,3 +7,5 @@ disable=SC2164
 disable=SC2317
 disable=SC1090
 disable=SC2155
+disable=SC2154
+disable=SC2329

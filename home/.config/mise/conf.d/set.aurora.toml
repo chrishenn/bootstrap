@@ -37,10 +37,10 @@ rclone = "latest"
 aws-cli = "latest"
 ruff = "latest"
 shellcheck = "latest"
-mr-boxington = "latest"
+mr-boxington = { version = "latest", workflow = "release.yml@refs/heads/main" }
 helm = "latest"
 
-rust = "latest"
+rust = { version = "latest", mr_boxington = true }
 go = "latest"
 zig = "latest"
 zls = "latest"

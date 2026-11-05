@@ -1,6 +1,6 @@
-amends "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Config.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.11.1/hk@2.11.1#/Config.pkl"
 
-import "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Builtins.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.11.1/hk@2.11.1#/Builtins.pkl"
 
 steps {
   ["oxfmt"] = Builtins.oxfmt
@@ -33,13 +33,13 @@ steps {
   ["shellcheck"] = (Builtins.shellcheck) {
     check = new CommandSpec {
       command = new Command {
-        argv = List("shellcheck", "{{files}}", "-e", "SC2154,SC2329")
+        argv = List("shellcheck", "{{files}}")
       }
       effect = "read"
     }
     check_diff = new CommandSpec {
       command = new Command {
-        argv = List("shellcheck", "--format=diff", "{{files}}", "-e", "SC2154,SC2329")
+        argv = List("shellcheck", "--format=diff", "{{files}}")
       }
       effect = "read"
     }

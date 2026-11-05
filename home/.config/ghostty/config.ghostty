@@ -21,4 +21,4 @@ scrollback-limit = 1000000000000000000
 
 # gtk only
 app-notifications = no-clipboard-copy
-mouse-scroll-multiplier = 1
+mouse-scroll-multiplier = 3
