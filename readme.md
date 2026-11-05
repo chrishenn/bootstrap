@@ -75,6 +75,13 @@ curl https://raw.githubusercontent.com/chrishenn/bootstrap/main/init.sh > tmp.ba
 cat tmp.bash
 ```
 
+mise clones the bootstrap repo with https, setting an https git remote, which cannot accept pushes. To set an ssh url
+for pushes:
+
+```bash
+git remote set-url --push origin git@github.com:chrishenn/bootstrap.git
+```
+
 ## ref
 
 - <https://github.com/bassemkaroui/.dotfiles-mise>
