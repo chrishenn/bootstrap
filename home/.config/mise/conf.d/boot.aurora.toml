@@ -62,6 +62,8 @@ adopt = true
 "flatpak:org.fedoraproject.MediaWriter" = "latest"
 "flatpak:io.github.getnf.embellish" = "latest"
 "flatpak:com.usebottles.bottles" = "latest"
+"flatpak:com.google.Chrome" = "latest"
+"flatpak:app.zen_browser.zen" = "latest"
 
 # declarative removal not supported for flatpak (yet)
 # "flatpak:org.gnome.DejaDup" = { state = "absent" }
@@ -73,9 +75,8 @@ adopt = true
 # "flatpak:org.kde.kclock"= { state = "absent" }
 # "flatpak:org.fkoehler.KTailctl"= { state = "absent" }
 
-"rpm-ostree:firefox" = "latest"
-"rpm-ostree:google-chrome-stable" = "latest"
 "rpm-ostree:kvantum" = "latest"
+"rpm-ostree:firefox" = "latest"
 "rpm-ostree:proton-vpn-gnome-desktop" = "latest"
 "rpm-ostree:musl-devel" = "latest"
 "rpm-ostree:musl-gcc" = "latest"
