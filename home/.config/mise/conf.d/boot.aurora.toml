@@ -33,42 +33,55 @@ adopt = true
 "brew:trash-cli" = "latest"
 "brew:stalwartlabs/tap/stalwart-cli" = "latest"
 
+# video
 "flatpak:io.mpv.Mpv" = "latest"
 "flatpak:org.kde.haruna" = "latest"
 "flatpak:org.kde.kdenlive" = "latest"
-"flatpak:com.belmoussaoui.Obfuscate" = "latest"
-"flatpak:org.darktable.Darktable" = "latest"
-"flatpak:com.github.wwmm.easyeffects" = "latest"
-"flatpak:org.audacityteam.Audacity" = "latest"
-"flatpak:md.obsidian.Obsidian" = "latest"
-"flatpak:io.github.cboxdoerfer.FSearch" = "latest"
-"flatpak:com.prusa3d.PrusaSlicer" = "latest"
-"flatpak:org.onlyoffice.desktopeditors" = "latest"
-"flatpak:io.missioncenter.MissionCenter" = "latest"
-"flatpak:me.iepure.devtoolbox" = "latest"
-"flatpak:com.github.tchx84.Flatseal" = "latest"
-"flatpak:io.github.flattool.Warehouse" = "latest"
-"flatpak:com.vysp3r.ProtonPlus" = "latest"
-"flatpak:org.deskflow.deskflow" = "latest"
-"flatpak:io.gitlab.adhami3310.Converter" = "latest"
-"flatpak:com.valvesoftware.Steam" = "latest"
 "flatpak:com.obsproject.Studio" = "latest"
 "flatpak:com.obsproject.Studio.Plugin.DroidCam" = "latest"
+
+# image
+"flatpak:com.belmoussaoui.Obfuscate" = "latest"
+"flatpak:org.darktable.Darktable" = "latest"
 # heic extension never reports installed, so reinstalls on every 'packages apply'. annoying
 "flatpak:org.gnome.Loupe" = "latest"
 # "flatpak:org.gnome.Loupe.HEIC" = "latest"
+"flatpak:io.gitlab.adhami3310.Converter" = "latest"
 "flatpak:be.alexandervanhee.gradia" = "latest"
+
+# audio
+"flatpak:com.github.wwmm.easyeffects" = "latest"
+"flatpak:org.audacityteam.Audacity" = "latest"
+
+# file/note
+"flatpak:md.obsidian.Obsidian" = "latest"
+"flatpak:io.github.cboxdoerfer.FSearch" = "latest"
+"flatpak:org.onlyoffice.desktopeditors" = "latest"
+"flatpak:io.github.getnf.embellish" = "latest"
+
+# flatpak tool
+"flatpak:me.iepure.devtoolbox" = "latest"
+"flatpak:com.github.tchx84.Flatseal" = "latest"
+
+# misc
+"flatpak:com.prusa3d.PrusaSlicer" = "latest"
+"flatpak:io.missioncenter.MissionCenter" = "latest"
+"flatpak:io.github.flattool.Warehouse" = "latest"
+"flatpak:com.vysp3r.ProtonPlus" = "latest"
+"flatpak:org.deskflow.deskflow" = "latest"
+"flatpak:com.valvesoftware.Steam" = "latest"
 "flatpak:io.github.DenysMb.Kontainer" = "latest"
 "flatpak:org.fedoraproject.MediaWriter" = "latest"
-"flatpak:io.github.getnf.embellish" = "latest"
 "flatpak:com.usebottles.bottles" = "latest"
+
+# browser
 "flatpak:com.google.Chrome" = "latest"
 "flatpak:app.zen_browser.zen" = "latest"
+"flatpak:org.mozilla.firefox" = "latest"
 
 # declarative removal not supported for flatpak (yet)
 # "flatpak:org.gnome.DejaDup" = { state = "absent" }
 # "flatpak:org.mozilla.Thunderbird" = { state = "absent" }
-# "flatpak:org.mozilla.firefox" = { state = "absent" }
 # "flatpak:org.kde.skanpage" = { state = "absent" }
 # "flatpak:org.kde.okular" = { state = "absent" }
 # "flatpak:org.kde.kontact" = { state = "absent" }
@@ -76,7 +89,6 @@ adopt = true
 # "flatpak:org.fkoehler.KTailctl"= { state = "absent" }
 
 "rpm-ostree:kvantum" = "latest"
-"rpm-ostree:firefox" = "latest"
 "rpm-ostree:proton-vpn-gnome-desktop" = "latest"
 "rpm-ostree:musl-devel" = "latest"
 "rpm-ostree:musl-gcc" = "latest"

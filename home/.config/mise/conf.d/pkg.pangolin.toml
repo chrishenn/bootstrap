@@ -8,6 +8,9 @@ pangolin_site_name = { prompt = "pangolin site name", required = true }
 pangolin_endpoint = { default = "https://pangolin.chenn.dev", prompt = "pangolin endpoint" }
 pangolin_domain = { default = "chenn.dev", prompt = "pangolin domain to attach machine ssh resources" }
 
+[tools]
+"github:fosrl/cli" = "latest"
+
 [bootstrap.secrets]
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
 
