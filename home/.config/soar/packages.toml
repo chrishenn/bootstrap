@@ -16,13 +16,13 @@ btop = "*"
 [packages.signal]
 url = "https://updates.signal.org/desktop/signal-desktop.AppImage"
 version_command = "curl -qfsSL https://api.github.com/repos/signalapp/signal-desktop/releases/latest | jq -r '.tag_name'"
-version = "8.34.0"
+version = "8.35.0"
 
 # version_command = "curl -qfsSLI https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/appimage | rg 'fluxer-stable-(.*)-x86_64.AppImage' -or '$1'"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.1105.25346"
+version = "2026.1111.222723"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
@@ -64,18 +64,18 @@ version = "2026.9.1"
 
 [packages.jellybox]
 github = "avdept/jellyboxplayer"
-asset_pattern = "jellybox-linux-x86_64.AppImage"
-version = "2.11.1"
+asset_pattern = "JellyBox-x86_64.AppImage"
+version = "2.11.3"
 
 [packages.termix]
 github = "termix-ssh/termix"
 asset_pattern = "termix_linux_x64_appimage.AppImage"
-version = "26.11.0"
+version = "26.11.1"
 
 [packages.navibeat]
 github = "nenadjokic/navibeat-linux"
 asset_pattern = "NaviBeat-linux-x86_64.AppImage"
-version = "1.0.64"
+version = "1.0.70"
 
 [packages.psysonic]
 github = "Psysonic/psysonic"
@@ -95,7 +95,7 @@ version = "0.3.0"
 [packages.tuma]
 github = "MorrisKM/Tuma"
 asset_pattern = "Tuma_*_amd64.AppImage"
-version = "1.4.1"
+version = "1.5.0"
 
 [packages.backtickle]
 github = "masud90/backtickle"
