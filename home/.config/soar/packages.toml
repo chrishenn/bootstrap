@@ -22,7 +22,7 @@ version = "8.35.0"
 [packages.fluxer]
 url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage"
 version_command = "curl -qfsSLI https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/latest/appimage | rg 'Fluxer.*Canary-(.*)-linux-x86_64.AppImage' -or '$1'"
-version = "2026.1111.222723"
+version = "2026.1115.224930"
 
 [packages.kicad]
 url = "https://mirrors.mit.edu/kicad/appimage/stable/kicad-{version}-x86_64.AppImage.tar"
@@ -50,7 +50,7 @@ version = "2.9.6-5@2026-10-21_1792586224"
 [packages.handy]
 github = "cjpais/handy"
 asset_pattern = "Handy_*_amd64.AppImage"
-version = "0.10.0"
+version = "0.10.1"
 
 [packages.caligula]
 github = "ifd3f/caligula"
@@ -65,7 +65,7 @@ version = "2026.9.1"
 [packages.jellybox]
 github = "avdept/jellyboxplayer"
 asset_pattern = "JellyBox-x86_64.AppImage"
-version = "2.11.3"
+version = "2.12.0"
 
 [packages.termix]
 github = "termix-ssh/termix"
@@ -75,7 +75,7 @@ version = "26.11.1"
 [packages.navibeat]
 github = "nenadjokic/navibeat-linux"
 asset_pattern = "NaviBeat-linux-x86_64.AppImage"
-version = "1.0.70"
+version = "1.0.74"
 
 [packages.psysonic]
 github = "Psysonic/psysonic"
@@ -90,7 +90,7 @@ version = "0.6.1"
 [packages.yapfast]
 github = "yapfast/yapfast"
 asset_pattern = "Yapfast-*-x86_64.AppImage"
-version = "0.3.0"
+version = "0.4.1"
 
 [packages.tuma]
 github = "MorrisKM/Tuma"

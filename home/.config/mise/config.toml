@@ -96,3 +96,6 @@ run = "mise bootstrap --skip-dirty"
 [tasks.pkg]
 alias = "p"
 run = "mise bootstrap packages"
+
+[tools]
+yt-dlp = "latest"
