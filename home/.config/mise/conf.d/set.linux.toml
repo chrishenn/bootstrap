@@ -12,7 +12,7 @@ bottom = { lazy = true, version = "latest" }
 dust = { lazy = true, version = "latest" }
 eza = { lazy = true, version = "latest" }
 fd = { lazy = true, version = "latest" }
-fnox = { lazy = true, version = "latest" }
+"packslip:github.com/jdx/fnox" = { lazy = true, version = "latest", variant = "lite", workflow = "release.yml" }
 gh = { lazy = true, version = "latest" }
 jq = { lazy = true, version = "latest" }
 op = { lazy = true, version = "latest" }

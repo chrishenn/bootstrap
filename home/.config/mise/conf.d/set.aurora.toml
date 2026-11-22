@@ -24,7 +24,7 @@ yazi = "latest"
 fzf = "latest"
 
 op = "latest"
-fnox = "latest"
+"packslip:github.com/jdx/fnox" = { version = "latest", variant = "lite", workflow = "release.yml" }
 starship = "latest"
 zoxide = "latest"
 zellij = "latest"
