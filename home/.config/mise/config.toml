@@ -1,5 +1,6 @@
 [settings]
 self_update.auto = true
+tool_update.self_update_first = true
 tool_update.global_auto = "12h"
 experimental = true
 registry_floating = true

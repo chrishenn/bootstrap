@@ -8,14 +8,8 @@ pangolin_site_name = { prompt = "pangolin site name", required = true }
 pangolin_endpoint = { default = "https://pangolin.chenn.dev", prompt = "pangolin endpoint" }
 pangolin_domain = { default = "chenn.dev", prompt = "pangolin domain to attach machine ssh resources" }
 
-[tools]
-"github:fosrl/cli" = "latest"
-
 [bootstrap.secrets]
 pangolin_site_provision = "PANGOLIN_SITE_PROVISION"
-
-[bootstrap.hooks.post-packages]
-run = "mise install --system github:fosrl/cli"
 
 [bootstrap.files."/etc/systemd/system/pangolin-site.service"]
 # use --provisioning-blueprint-file to apply once; --blueprint-file is re-applied when changed
@@ -83,3 +77,10 @@ template = true
 state = "running"
 enabled = true
 on_change = "reload_or_restart"
+
+[bootstrap.directories."/etc/mise/"]
+[bootstrap.files."/etc/mise/config.toml"]
+content = """
+[tools]
+"github:fosrl/cli" = "latest"
+"""
