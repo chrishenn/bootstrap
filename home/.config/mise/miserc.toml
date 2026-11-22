@@ -3,5 +3,5 @@ auto_env = true
 
 [env_sets]
 aurora_set = ["aurora", "nfsclient", "pangolin", "pwr", "sshd_fedora", "stime", "unsleep"]
-rack4_set = ["nfsserver", "pangolin", "pwr", "rack4", "smbserver", "sshd_fedora", "stime", "unsleep"]
+rack4_set = ["nfsserver", "pangolin", "pwr", "rack4", "smbserver", "sshd_ubuntu", "stime", "unsleep"]
 vps0_set = ["pangolin", "sshd_ubuntu", "unsleep", "vps0"]
