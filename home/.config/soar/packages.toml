@@ -101,3 +101,7 @@ version = "1.6.0"
 github = "masud90/backtickle"
 asset_pattern = "Backtickle_*_amd64.AppImage"
 version = "0.2.1"
+
+[packages.stash]
+github = "itsmeares/staaash"
+asset_pattern = "Staaash-Desktop-*-x86_64.AppImage"
